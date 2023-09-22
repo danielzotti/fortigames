@@ -7,9 +7,11 @@ import { routeLoader$ } from "@builder.io/qwik-city";
 import { createServerClient } from "supabase-auth-helpers-qwik";
 import { supabaseClient } from "~/supabase/supabase-client";
 import type { User } from "@supabase/supabase-js";
+import { Database } from "~/models/database.types";
+import { Participant } from "~/models/participant.types";
 
 export const useDbUsers = routeLoader$(async (requestEv) => {
-  const supabaseClient = createServerClient(
+  const supabaseClient = createServerClient<Database>(
     requestEv.env.get("PUBLIC_SUPABASE_URL")!,
     requestEv.env.get("PUBLIC_SUPABASE_ANON_KEY")!,
     requestEv,
@@ -25,14 +27,22 @@ export const useDbUsers = routeLoader$(async (requestEv) => {
 export default component$(() => {
   const user = useSignal<User | null>(null);
 
-  const testTable = useDbUsers();
+  const people = useDbUsers();
 
   useVisibleTask$(async () => {
     const {
       data: { user: userInfo },
     } = await supabaseClient.auth.getUser();
-    user.value = userInfo;
     console.log({ userInfo });
+    user.value = userInfo;
+
+    if (userInfo?.email) {
+      const { data: otherInfo } = await supabaseClient
+        .from("users")
+        .select("*")
+        .eq("email", userInfo.email);
+      console.log({ otherInfo });
+    }
   });
 
   if (!user.value) {
@@ -47,7 +57,52 @@ export default component$(() => {
 
       <pre>User: {user.value.email}</pre>
 
-      <pre>Test table data: {JSON.stringify(testTable.value ?? "none")}</pre>
+      {people.value && (
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>N.</th>
+              <th>Team</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Company</th>
+              <th>Form</th>
+              <th>Soccer</th>
+              <th>Volley</th>
+              <th>Ping Pong</th>
+              <th>Board Games</th>
+              <th>Referee</th>
+              <th>Facilitator</th>
+            </tr>
+          </thead>
+          <tbody>
+            {people.value.map((p) => (
+              <tr key={p.id}>
+                <td>{p.id}</td>
+                <td>{p.number}</td>
+                <td>{p.team}</td>
+                <td>{p.firstname}</td>
+                <td>{p.lastname}</td>
+                <td>{p.email}</td>
+                <td>{p.company}</td>
+                <td>{p.has_filled_form ? "X" : ""}</td>
+                <td>{p.is_playing_soccer ? "X" : ""}</td>
+                <td>{p.is_playing_volley ? "X" : ""}</td>
+                <td>{p.is_playing_pingpong ? "X" : ""}</td>
+                <td>{p.is_playing_boardgames ? "X" : ""}</td>
+                <td>{p.is_referee ? "X" : ""}</td>
+                <td>{p.is_facilitator ? "X" : ""}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+
+      <pre>
+        Test table data: {JSON.stringify(people.value ?? "none", null, 2)}
+      </pre>
     </>
   );
 });

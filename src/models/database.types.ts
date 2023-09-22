@@ -11,46 +11,55 @@ export interface Database {
     Tables: {
       users: {
         Row: {
-          created_at: string
+          company: string | null
           email: string
           firstname: string | null
+          has_filled_form: boolean
           id: number
-          is_admin: boolean
-          is_facilitator: boolean
-          is_playing_boardgames: boolean
-          is_playing_pingpong: boolean
-          is_playing_soccer: boolean
-          is_playing_volley: boolean
-          is_referee: boolean
+          is_admin: boolean | null
+          is_facilitator: boolean | null
+          is_playing_boardgames: boolean | null
+          is_playing_pingpong: boolean | null
+          is_playing_soccer: boolean | null
+          is_playing_volley: boolean | null
+          is_referee: boolean | null
           lastname: string | null
+          number: number | null
+          team: string | null
         }
         Insert: {
-          created_at?: string
+          company?: string | null
           email: string
           firstname?: string | null
+          has_filled_form?: boolean
           id?: number
-          is_admin?: boolean
-          is_facilitator?: boolean
-          is_playing_boardgames?: boolean
-          is_playing_pingpong?: boolean
-          is_playing_soccer?: boolean
-          is_playing_volley?: boolean
-          is_referee?: boolean
+          is_admin?: boolean | null
+          is_facilitator?: boolean | null
+          is_playing_boardgames?: boolean | null
+          is_playing_pingpong?: boolean | null
+          is_playing_soccer?: boolean | null
+          is_playing_volley?: boolean | null
+          is_referee?: boolean | null
           lastname?: string | null
+          number?: number | null
+          team?: string | null
         }
         Update: {
-          created_at?: string
+          company?: string | null
           email?: string
           firstname?: string | null
+          has_filled_form?: boolean
           id?: number
-          is_admin?: boolean
-          is_facilitator?: boolean
-          is_playing_boardgames?: boolean
-          is_playing_pingpong?: boolean
-          is_playing_soccer?: boolean
-          is_playing_volley?: boolean
-          is_referee?: boolean
+          is_admin?: boolean | null
+          is_facilitator?: boolean | null
+          is_playing_boardgames?: boolean | null
+          is_playing_pingpong?: boolean | null
+          is_playing_soccer?: boolean | null
+          is_playing_volley?: boolean | null
+          is_referee?: boolean | null
           lastname?: string | null
+          number?: number | null
+          team?: string | null
         }
         Relationships: []
       }
