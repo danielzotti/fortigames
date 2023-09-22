@@ -21,7 +21,8 @@
     "lint": "eslint \"src/**/*.ts*\"",
     "preview": "qwik build preview && vite preview --open",
     "start": "vite --open --mode ssr",
-    "qwik": "qwik"
+    "qwik": "qwik",
+    "generate-db-ts": " supabase gen types typescript --project-id rssysdcagradockllkkv > src/models/database.types.ts"
   },
   "devDependencies": {
     "@builder.io/qwik": "^1.2.12",
@@ -33,9 +34,15 @@
     "eslint": "8.45.0",
     "eslint-plugin-qwik": "^1.2.12",
     "prettier": "3.0.0",
+    "sass": "^1.68.0",
+    "supabase": "^1.99.5",
     "typescript": "5.1.6",
     "undici": "5.22.1",
     "vite": "4.4.7",
     "vite-tsconfig-paths": "4.2.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.36.0",
+    "supabase-auth-helpers-qwik": "^0.0.3"
   }
 }

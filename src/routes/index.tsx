@@ -1,112 +1,61 @@
-import { component$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import {component$, useSignal, useVisibleTask$} from "@builder.io/qwik";
+import type {DocumentHead} from "@builder.io/qwik-city";
 
-import Counter from "~/components/starter/counter/counter";
-import Hero from "~/components/starter/hero/hero";
-import Infobox from "~/components/starter/infobox/infobox";
-import Starter from "~/components/starter/next-steps/next-steps";
+import {Login} from "~/components/auth/login/login";
+import {Logout} from "~/components/auth/logout/logout";
+import {routeLoader$} from "@builder.io/qwik-city";
+import {createServerClient} from "supabase-auth-helpers-qwik";
+import {supabaseClient} from "~/supabase/supabase-client";
+import {User} from "@supabase/supabase-js";
+
+export const useDbTest = routeLoader$(async (requestEv) => {
+    const supabaseClient = createServerClient(
+        requestEv.env.get("PUBLIC_SUPABASE_URL")!,
+        requestEv.env.get("PUBLIC_SUPABASE_ANON_KEY")!,
+        requestEv,
+        {},
+    );
+    const {data, error} = await supabaseClient.from('test').select('id')
+    console.log('Test table', {data, error})
+    return data;
+});
 
 export default component$(() => {
-  return (
-    <>
-      <Hero />
-      <Starter />
 
-      <div role="presentation" class="ellipsis"></div>
-      <div role="presentation" class="ellipsis ellipsis-purple"></div>
+    const user = useSignal<User | null>(null);
 
-      <div class="container container-center container-spacing-xl">
-        <h3>
-          You can <span class="highlight">count</span>
-          <br /> on me
-        </h3>
-        <Counter />
-      </div>
+    const testTable = useDbTest();
 
-      <div class="container container-flex">
-        <Infobox>
-          <div q:slot="title" class="icon icon-cli">
-            CLI Commands
-          </div>
-          <>
-            <p>
-              <code>npm run dev</code>
-              <br />
-              Starts the development server and watches for changes
-            </p>
-            <p>
-              <code>npm run preview</code>
-              <br />
-              Creates production build and starts a server to preview it
-            </p>
-            <p>
-              <code>npm run build</code>
-              <br />
-              Creates production build
-            </p>
-            <p>
-              <code>npm run qwik add</code>
-              <br />
-              Runs the qwik CLI to add integrations
-            </p>
-          </>
-        </Infobox>
+    useVisibleTask$(async () => {
 
-        <div>
-          <Infobox>
-            <div q:slot="title" class="icon icon-apps">
-              Example Apps
-            </div>
-            <p>
-              Have a look at the <a href="/demo/flower">Flower App</a> or the{" "}
-              <a href="/demo/todolist">Todo App</a>.
-            </p>
-          </Infobox>
+        const {data: {user: userInfo}} = await supabaseClient.auth.getUser();
+        user.value = userInfo;
+        console.log({userInfo})
+    });
 
-          <Infobox>
-            <div q:slot="title" class="icon icon-community">
-              Community
-            </div>
-            <ul>
-              <li>
-                <span>Questions or just want to say hi? </span>
-                <a href="https://qwik.builder.io/chat" target="_blank">
-                  Chat on discord!
-                </a>
-              </li>
-              <li>
-                <span>Follow </span>
-                <a href="https://twitter.com/QwikDev" target="_blank">
-                  @QwikDev
-                </a>
-                <span> on Twitter</span>
-              </li>
-              <li>
-                <span>Open issues and contribute on </span>
-                <a href="https://github.com/BuilderIO/qwik" target="_blank">
-                  GitHub
-                </a>
-              </li>
-              <li>
-                <span>Watch </span>
-                <a href="https://qwik.builder.io/media/" target="_blank">
-                  Presentations, Podcasts, Videos, etc.
-                </a>
-              </li>
-            </ul>
-          </Infobox>
-        </div>
-      </div>
-    </>
-  );
+    if (!user.value) {
+        return <Login/>
+    }
+
+    return (
+        <>
+            <h1>Welcome to Fortigames 2023</h1>
+
+            <Logout/>
+
+            <pre>User: {user.value?.email}</pre>
+
+            <pre>Test table data: {JSON.stringify(testTable.value ?? 'none')}</pre>
+        </>
+    );
 });
 
 export const head: DocumentHead = {
-  title: "Welcome to Qwik",
-  meta: [
-    {
-      name: "description",
-      content: "Qwik site description",
-    },
-  ],
+    title: "Fortigames 2023 title",
+    meta: [
+        {
+            name: "description",
+            content: "Fortigames 2023 description",
+        },
+    ],
 };

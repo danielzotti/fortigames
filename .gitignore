@@ -39,3 +39,7 @@ lerna-debug.log*
 # Yarn
 .yarn/*
 !.yarn/releases
+
+# Env variables
+!.env_Example
+.env
