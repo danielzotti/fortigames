@@ -22,7 +22,7 @@
     "preview": "qwik build preview && vite preview --open",
     "start": "vite --open --mode ssr",
     "qwik": "qwik",
-    "generate-db-ts": " supabase gen types typescript --project-id rssysdcagradockllkkv > src/models/database.types.ts"
+    "generate-db-ts": "supabase gen types typescript --project-id iszvergenpotigthgvtr > src/models/database.types.ts"
   },
   "devDependencies": {
     "@builder.io/qwik": "^1.2.12",
