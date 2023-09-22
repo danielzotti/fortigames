@@ -3,46 +3,34 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 
 import { Login } from "~/components/auth/login/login";
 import { Logout } from "~/components/auth/logout/logout";
-import { routeLoader$ } from "@builder.io/qwik-city";
-import { createServerClient } from "supabase-auth-helpers-qwik";
 import { supabaseClient } from "~/supabase/supabase-client";
 import type { User } from "@supabase/supabase-js";
-import { Database } from "~/models/database.types";
 import { Participant } from "~/models/participant.types";
-
-export const useDbUsers = routeLoader$(async (requestEv) => {
-  const supabaseClient = createServerClient<Database>(
-    requestEv.env.get("PUBLIC_SUPABASE_URL")!,
-    requestEv.env.get("PUBLIC_SUPABASE_ANON_KEY")!,
-    requestEv,
-    {},
-  );
-  const { data, error } = await supabaseClient.from("users").select("*");
-
-  error && console.log({ error });
-
-  return data;
-});
 
 export default component$(() => {
   const user = useSignal<User | null>(null);
 
-  const people = useDbUsers();
+  const people = useSignal<Array<Participant> | null>();
 
   useVisibleTask$(async () => {
     const {
       data: { user: userInfo },
     } = await supabaseClient.auth.getUser();
-    console.log({ userInfo });
     user.value = userInfo;
 
-    if (userInfo?.email) {
-      const { data: otherInfo } = await supabaseClient
-        .from("users")
-        .select("*")
-        .eq("email", userInfo.email);
-      console.log({ otherInfo });
-    }
+    const { data: participantList } = await supabaseClient
+      .from("users")
+      .select("*");
+
+    people.value = participantList;
+
+    /*if (userInfo?.email) {
+              const { data: otherInfo } = await supabaseClient
+                .from("users")
+                .select("*")
+                .eq("email", userInfo.email);
+              console.log({ otherInfo });
+            }*/
   });
 
   if (!user.value) {
@@ -55,7 +43,7 @@ export default component$(() => {
 
       <Logout />
 
-      <pre>User: {user.value.email}</pre>
+      <pre>Current user: {user.value.email}</pre>
 
       {people.value && (
         <table>
@@ -100,9 +88,11 @@ export default component$(() => {
         </table>
       )}
 
-      <pre>
-        Test table data: {JSON.stringify(people.value ?? "none", null, 2)}
-      </pre>
+      <h2>User Auth</h2>
+      <pre>{JSON.stringify(user.value, null, 2)}</pre>
+
+      <h2>Participants</h2>
+      <pre>{JSON.stringify(people.value ?? "none", null, 2)}</pre>
     </>
   );
 });

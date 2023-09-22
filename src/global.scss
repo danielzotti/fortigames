@@ -1,4 +1,8 @@
 // TOOD: temporary!
+html {
+  font-family: sans-serif;
+}
+
 table {
   border:1px solid lightgray;
   border-collapse: collapse;
@@ -6,6 +10,14 @@ table {
   td {
     border:1px solid lightgray;
     text-align: center;
+  }
+
+  thead {
+    tr {
+      position: sticky;
+      top: 0;
+      background-color: white;
+    }
   }
 
   tr {
