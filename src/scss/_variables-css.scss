@@ -1,0 +1,59 @@
+@use "theme";
+
+:root {
+  color-scheme: light dark;
+
+  //STRUCTURE
+  --html-min-width: 300px;
+
+  --cursor-default: default;
+  --cursor-pointer: pointer;
+
+  //COLORS
+  --black: #000;
+  --black-light: #0f0f0f;
+  --white: #fff;
+  --white-dark: #d0d0d0;
+  --gray-dark: #151515;
+  --gray-light: #c5c4c5;
+  --blue: #2daae1;
+  --red: #d70d1f;
+
+  --link-color: inherit;
+
+  //FONTS
+  --font-family-title: Exo, Georgia, serif;
+  --font-family-text: 'Roboto Condensed', Verdana, Helvetica, Arial, sans-serif;
+
+  //MARGINS
+  --margin-small: 5px;
+  --margin-default: 15px;
+  --margin-medium: 30px;
+  --margin-big: 60px;
+
+  //BORDERS
+  --border-radius: 10px;
+
+  //TRANSITIONS
+  --transition-duration: .2s;
+  --navbar-transition-duration: .5s;
+}
+
+[data-theme=light] {
+  @include theme.light;
+}
+
+[data-theme=dark] {
+  @include theme.dark;
+}
+
+// OS Default.
+:root:not([data-theme=light]):not([data-theme=dark]) {
+  @media (prefers-color-scheme: light) {
+    @include theme.light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @include theme.dark;
+  }
+}

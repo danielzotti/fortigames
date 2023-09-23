@@ -1,7 +1,9 @@
-import { component$ } from '@builder.io/qwik';
+import { component$ } from "@builder.io/qwik";
 
 export default component$(() => {
-    return <>
-        <h1>Info</h1>
-        </>;
+  return (
+    <>
+      <h1>Info</h1>
+    </>
+  );
 });
