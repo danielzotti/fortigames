@@ -1,5 +1,5 @@
 import {component$, Slot, useStyles$} from "@builder.io/qwik";
-import {routeLoader$} from "@builder.io/qwik-city";
+import {routeLoader$, Link} from "@builder.io/qwik-city";
 import type {RequestHandler} from "@builder.io/qwik-city";
 
 import styles from "./styles.scss?inline";
@@ -25,6 +25,13 @@ export default component$(() => {
     useStyles$(styles);
     return (
         <>
+            <nav>
+                <ul>
+                    <li><Link href="/">Dashboard</Link></li>
+                    <li><Link href="/teams">Teams</Link></li>
+                    <li><Link href="/info">Info</Link></li>
+                </ul>
+            </nav>
             <main>
                 <Slot/>
             </main>
