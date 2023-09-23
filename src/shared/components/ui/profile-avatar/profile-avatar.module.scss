@@ -1,0 +1,16 @@
+@use "@scss/mixins/button";
+
+.profile {
+  @include button.reset();
+  color: var(--profile-avatar-text-color);
+  background-color: var(--profile-avatar-bg-color);
+  padding: var(--spacing-small);
+  border-radius: 50%;
+  aspect-ratio: 1;
+  width: 3em;
+  display: inline-block;
+
+  i {
+    font-size: 2em;
+  }
+}

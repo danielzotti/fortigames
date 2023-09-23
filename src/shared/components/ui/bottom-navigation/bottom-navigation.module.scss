@@ -1,0 +1,48 @@
+@use "@scss/mixins/button";
+@use "@scss/variables";
+
+.container {
+  padding: var(--spacing-small);
+}
+
+.menu {
+  background-color: var(--bottom-navigation-bg-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  font-size: 3em;
+  padding: var(--spacing-default);
+}
+
+.menuItem {
+  color: var(--bottom-navigation-text-color);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border-bottom: none;
+
+  i {
+    display: inline-block;
+    font-size: 0.85em;
+    @media(min-width: variables.$container-xs-min) {
+      font-size: 1.2em;
+    }
+    @media(min-width: variables.$container-sm-min) {
+      font-size: 1.5em;
+    }
+  }
+
+  &:global(.active) {
+    background-color: var(--accent-color);
+
+    &:hover {
+      color: var(--bottom-navigation-text-color);
+    }
+  }
+}

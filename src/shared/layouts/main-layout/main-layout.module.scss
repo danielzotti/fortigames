@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  //overflow: hidden;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.profileAvatar {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: var(--spacing-small)
+}
+
+.content {
+  flex-grow: 1;
+  max-height: 100%;
+  overflow-y: auto;
+  padding: var(--spacing-default);
+
+  h1:first-child {
+    margin-top: 0;
+  }
+}
+
+.bottomNavigation {
+  //position: fixed;
+  //bottom:0;
+  //right: 0;
+  //left: 0;
+}

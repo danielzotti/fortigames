@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  height: 100dvh;
+  overflow: hidden;
+  background: rgb(0,0,0);
+  background: linear-gradient(-45deg,var(--black-light) 50%, var(--white) 50%);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  max-height: 100%;
+  overflow-y: auto;
+  padding: var(--spacing-default);
+
+  h1:first-child {
+    margin-top: 0;
+  }
+}

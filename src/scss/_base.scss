@@ -72,14 +72,12 @@ img {
 a {
   color: inherit;
   text-decoration: none;
-  border-bottom: 1px solid var(--accent-color);
-  transition: transform var(--transition-duration) ease-in-out;
+  border-bottom: 2px solid var(--accent-color);
 
   &:hover, &:focus, &:active {
+    text-decoration: none;
     color: var(--accent-color);
     cursor: var(--cursor-pointer);
-    text-decoration: none;
-    transform: rotate(-3deg);
   }
 }
 

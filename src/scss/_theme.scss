@@ -21,6 +21,12 @@
   --btn-outline-text-color: var(--accent-color);
   --btn-outline-border-color: var(--accent-color);
   --btn-clean-text-color: var(--accent-color);
+
+  --bottom-navigation-bg-color: var(--white);
+  --bottom-navigation-text-color: var(--black-light);
+
+  --profile-avatar-bg-color: var(--white);
+  --profile-avatar-text-color: var(--black-light);
 }
 
 @mixin light {
@@ -47,16 +53,9 @@
   --btn-outline-border-color: var(--accent-color);
   --btn-clean-text-color: var(--accent-color);
 
-  --home-banner-bg-color: var(--black-light);
-  --home-banner-text-color: var(--white-dark);
+  --bottom-navigation-bg-color: var(--black-light);
+  --bottom-navigation-text-color: var(--white);
 
-  --cookie-banner-bg-color: var(--black-light);
-  --cookie-banner-text-color: var(--white);
-
-  --cv-language-bg-color: #2daae1aa;
-  --cv-language-text-color: var(--black-light);
-
-  --code-bg-color: var(--white);
-  --code-color: var(--gray-dark);
-  --code-border-color: var(--gray-dark);
+  --profile-avatar-bg-color: var(--black-light);
+  --profile-avatar-text-color: var(--white);
 }
