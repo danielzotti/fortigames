@@ -1,40 +1,53 @@
-import {component$, Slot, useStyles$} from "@builder.io/qwik";
-import {routeLoader$, Link} from "@builder.io/qwik-city";
-import type {RequestHandler} from "@builder.io/qwik-city";
+import { component$, Slot, useStyles$ } from "@builder.io/qwik";
+import { routeLoader$, DocumentHead } from "@builder.io/qwik-city";
+import type { RequestHandler } from "@builder.io/qwik-city";
 
-import styles from "./styles.scss?inline";
+// import styles from "./styles.scss?inline";
+import variablesCss from "../scss/_variables-css.scss?inline";
 
-export const onGet: RequestHandler = async ({cacheControl}) => {
-    // Control caching for this request for best performance and to reduce hosting costs:
-    // https://qwik.builder.io/docs/caching/
-    cacheControl({
-        // Always serve a cached response by default, up to a week stale
-        staleWhileRevalidate: 60 * 60 * 24 * 7,
-        // Max once every 5 seconds, revalidate on the server to get a fresh version of this page
-        maxAge: 5,
-    });
+import fontawesome from "@fortawesome/fontawesome-free/css/fontawesome.min.css?inline";
+import fontawesomeBrands from "@fortawesome/fontawesome-free/css/brands.min.css?inline";
+import fontawesomeSolid from "@fortawesome/fontawesome-free/css/solid.min.css?inline";
+
+import { config } from "~/config";
+
+export const onGet: RequestHandler = async ({ cacheControl }) => {
+  // Control caching for this request for best performance and to reduce hosting costs:
+  // https://qwik.builder.io/docs/caching/
+  cacheControl({
+    // Always serve a cached response by default, up to a week stale
+    staleWhileRevalidate: 60 * 60 * 24 * 7,
+    // Max once every 5 seconds, revalidate on the server to get a fresh version of this page
+    maxAge: 5,
+  });
 };
 
 export const useServerTimeLoader = routeLoader$(() => {
-    return {
-        date: new Date().toISOString(),
-    };
+  return {
+    date: new Date().toISOString(),
+  };
 });
 
+export const head: DocumentHead = {
+  links: [
+    ...config.fontUrls.map((font) => ({
+      rel: "stylesheet",
+      href: font,
+    })),
+  ],
+};
+
 export default component$(() => {
-    useStyles$(styles);
-    return (
-        <>
-            <nav>
-                <ul>
-                    <li><Link href="/">Dashboard</Link></li>
-                    <li><Link href="/teams">Teams</Link></li>
-                    <li><Link href="/info">Info</Link></li>
-                </ul>
-            </nav>
-            <main>
-                <Slot/>
-            </main>
-        </>
-    );
+  useStyles$(variablesCss);
+  // useStyles$(styles);
+  useStyles$(fontawesome);
+  useStyles$(fontawesomeBrands);
+  useStyles$(fontawesomeSolid);
+  return (
+    <>
+      <main>
+        <Slot />
+      </main>
+    </>
+  );
 });

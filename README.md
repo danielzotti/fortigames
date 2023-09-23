@@ -12,7 +12,7 @@
 
 ## Regenerate DB TypeScript models
 
-run `npm run generate-db-ts` it will create (or update) types in `src/models/database.types.ts`:
+run `npm run generate-db-ts` it will create (or update) types in `src/types/database.types.ts`:
 
 Prerequisites:
 

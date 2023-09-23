@@ -5,7 +5,9 @@ import { Login } from "~/components/auth/login/login";
 import { Logout } from "~/components/auth/logout/logout";
 import { supabaseClient } from "~/supabase/supabase-client";
 import type { User } from "@supabase/supabase-js";
-import { Participant } from "~/models/participant.types";
+import { Participant } from "~/types/participant.types";
+import { Link } from "@builder.io/qwik-city";
+import { config } from "~/config";
 
 export default component$(() => {
   const user = useSignal<User | null>(null);
@@ -25,12 +27,12 @@ export default component$(() => {
     people.value = participantList;
 
     /*if (userInfo?.email) {
-              const { data: otherInfo } = await supabaseClient
-                .from("users")
-                .select("*")
-                .eq("email", userInfo.email);
-              console.log({ otherInfo });
-            }*/
+                                  const { data: otherInfo } = await supabaseClient
+                                    .from("users")
+                                    .select("*")
+                                    .eq("email", userInfo.email);
+                                  console.log({ otherInfo });
+                                }*/
   });
 
   if (!user.value) {
@@ -40,6 +42,33 @@ export default component$(() => {
   return (
     <>
       <h1>Welcome to Fortigames 2023</h1>
+
+      <p>
+        FontAwesome Test:
+        <i class="fa-solid fa-user"></i>
+        <i class="fa-brands fa-github-square"></i>
+      </p>
+
+      <ul>
+        <li>
+          <Link href={config.urls.teams}>Teams</Link>
+        </li>
+        <li>
+          <Link href={config.urls.info}>Info</Link>
+        </li>
+        <li>
+          <Link href={config.urls.games}>Games</Link>
+        </li>
+        <li>
+          <Link href={config.urls.boardGames}>Board Games</Link>
+        </li>
+        <li>
+          <Link href={config.urls.me}>Me (profile)</Link>
+        </li>
+        <li>
+          <Link href={config.urls.admin}>Admin</Link>
+        </li>
+      </ul>
 
       <Logout />
 

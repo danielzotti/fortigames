@@ -1,0 +1,28 @@
+// These variables are still needed since CSS vars cannot be used in media query
+// TODO: env() will solve the problem, but it will be supported sometime in the future.
+
+//MARGINS
+$margin-small: 5px;
+$margin-default: 15px;
+$margin-medium: 30px;
+$margin-big: 60px;
+
+//BREAKPOINT
+$xxs-max: 450px;
+$xs-min: $xxs-max + 1px;
+$xs-max: 767px;
+$sm-min: $xs-max + 1px;
+$sm-max: 991px;
+$md-min: $sm-max + 1px;
+$md-max: 1199px;
+$lg-min: $md-max + 1px;
+
+//CONTAINER
+$container-xs-min: $xs-min - (2 * $margin-default);
+$container-sm-min: $sm-min - (2 * $margin-default);
+$container-md-min: $md-min - (2 * $margin-default);
+$container-lg-min: $lg-min - (2 * $margin-default);
+
+$container-xs-max: $container-sm-min - 1;
+$container-sm-max: $container-md-min - 1;
+$container-md-max: $container-lg-min - 1;

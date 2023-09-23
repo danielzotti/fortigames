@@ -1,0 +1,39 @@
+@use "variables";
+
+.clearfix {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+.container {
+  @extend .clearfix;
+  padding-right: var(--margin-default);
+  padding-left: var(--margin-default);
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (min-width: variables.$sm-min) {
+    width: variables.$container-sm-min;
+  }
+
+  @media (min-width: variables.$md-min) {
+    width: variables.$container-md-min;
+  }
+
+  @media (min-width: variables.$lg-min) {
+    width: variables.$container-lg-min;
+  }
+}
+
+.row {
+  @extend .clearfix;
+  margin-inline: calc(var(--margin-default) * -1);
+}
+
+.col {
+  @extend .clearfix;
+  padding-inline: var(--margin-default);
+}

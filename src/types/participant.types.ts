@@ -1,3 +1,3 @@
-import { Database } from "~/models/database.types";
+import { Database } from "~/types/database.types";
 
 export type Participant = Database["public"]["Tables"]["users"]["Row"];
