@@ -11,6 +11,7 @@ export const config = {
     height: 627,
     alt: "Fortigames | Convention 2023",
   },
+  jwtTokenLocalStorageName: "sb-iszvergenpotigthgvtr-auth-token",
   themeColor: "#1976d2", // TODO: choose color
   manifest: "/manifest.json",
   faviconUrl: "/static/icons/favicon.png",
@@ -33,7 +34,7 @@ export const config = {
     // TODO: set urls here
     home: "/",
     login: "/login",
-    me: "/me",
+    profile: "/profile",
     admin: "/admin",
     teams: "/teams",
     games: "/games",

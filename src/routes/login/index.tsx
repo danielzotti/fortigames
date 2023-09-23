@@ -1,22 +1,10 @@
 import { component$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import { Login } from "~/components/auth/login/login";
 
 export default component$(() => {
   return (
     <>
-      <div>
-        <h1 class="title">Ciao</h1>
-      </div>
+      <Login />
     </>
   );
 });
-
-export const head: DocumentHead = {
-  title: "Fortigames 2023 title",
-  meta: [
-    {
-      name: "description",
-      content: "Fortigames 2023 description",
-    },
-  ],
-};

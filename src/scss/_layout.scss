@@ -10,8 +10,8 @@
 
 .container {
   @extend .clearfix;
-  padding-right: var(--margin-default);
-  padding-left: var(--margin-default);
+  padding-right: var(--spacing-default);
+  padding-left: var(--spacing-default);
   margin-right: auto;
   margin-left: auto;
 
@@ -30,10 +30,10 @@
 
 .row {
   @extend .clearfix;
-  margin-inline: calc(var(--margin-default) * -1);
+  margin-inline: calc(var(--spacing-default) * -1);
 }
 
 .col {
   @extend .clearfix;
-  padding-inline: var(--margin-default);
+  padding-inline: var(--spacing-default);
 }

@@ -2,7 +2,6 @@ import { component$, Slot, useStyles$ } from "@builder.io/qwik";
 import { routeLoader$, DocumentHead } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
 
-// import styles from "./styles.scss?inline";
 import variablesCss from "../scss/_variables-css.scss?inline";
 
 import fontawesome from "@fortawesome/fontawesome-free/css/fontawesome.min.css?inline";
@@ -39,7 +38,6 @@ export const head: DocumentHead = {
 
 export default component$(() => {
   useStyles$(variablesCss);
-  // useStyles$(styles);
   useStyles$(fontawesome);
   useStyles$(fontawesomeBrands);
   useStyles$(fontawesomeSolid);

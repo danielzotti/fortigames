@@ -1,6 +1,7 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { supabaseClient } from "~/supabase/supabase-client";
 import { Participant } from "~/types/participant.types";
+import MainLayout from "~/shared/layouts/main-layout/main-layout";
 
 export default component$(() => {
   const people = useSignal<Array<Participant> | null>();
@@ -14,7 +15,7 @@ export default component$(() => {
   });
 
   return (
-    <>
+    <MainLayout>
       <h1>Teams</h1>
       <div>White / Black</div>
       <div>
@@ -32,6 +33,6 @@ export default component$(() => {
             </div>
           ))}
       </div>
-    </>
+    </MainLayout>
   );
 });

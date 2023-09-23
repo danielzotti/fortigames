@@ -1,46 +1,23 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
-
-import { Login } from "~/components/auth/login/login";
-import { Logout } from "~/components/auth/logout/logout";
 import { supabaseClient } from "~/supabase/supabase-client";
-import type { User } from "@supabase/supabase-js";
 import { Participant } from "~/types/participant.types";
-import { Link } from "@builder.io/qwik-city";
-import { config } from "~/config";
+
+import MainLayout from "~/shared/layouts/main-layout/main-layout";
 
 export default component$(() => {
-  const user = useSignal<User | null>(null);
-
   const people = useSignal<Array<Participant> | null>();
 
   useVisibleTask$(async () => {
-    const {
-      data: { user: userInfo },
-    } = await supabaseClient.auth.getUser();
-    user.value = userInfo;
-
     const { data: participantList } = await supabaseClient
       .from("users")
       .select("*");
 
     people.value = participantList;
-
-    /*if (userInfo?.email) {
-                                  const { data: otherInfo } = await supabaseClient
-                                    .from("users")
-                                    .select("*")
-                                    .eq("email", userInfo.email);
-                                  console.log({ otherInfo });
-                                }*/
   });
 
-  if (!user.value) {
-    return <Login />;
-  }
-
   return (
-    <>
+    <MainLayout>
       <h1>Welcome to Fortigames 2023</h1>
 
       <p>
@@ -48,31 +25,6 @@ export default component$(() => {
         <i class="fa-solid fa-user"></i>
         <i class="fa-brands fa-github-square"></i>
       </p>
-
-      <ul>
-        <li>
-          <Link href={config.urls.teams}>Teams</Link>
-        </li>
-        <li>
-          <Link href={config.urls.info}>Info</Link>
-        </li>
-        <li>
-          <Link href={config.urls.games}>Games</Link>
-        </li>
-        <li>
-          <Link href={config.urls.boardGames}>Board Games</Link>
-        </li>
-        <li>
-          <Link href={config.urls.me}>Me (profile)</Link>
-        </li>
-        <li>
-          <Link href={config.urls.admin}>Admin</Link>
-        </li>
-      </ul>
-
-      <Logout />
-
-      <pre>Current user: {user.value.email}</pre>
 
       {people.value && (
         <table>
@@ -116,13 +68,7 @@ export default component$(() => {
           </tbody>
         </table>
       )}
-
-      <h2>User Auth</h2>
-      <pre>{JSON.stringify(user.value, null, 2)}</pre>
-
-      <h2>Participants</h2>
-      <pre>{JSON.stringify(people.value ?? "none", null, 2)}</pre>
-    </>
+    </MainLayout>
   );
 });
 
