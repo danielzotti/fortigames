@@ -40,7 +40,16 @@ export default component$(({ editMode }: Props) => {
     });
 
     useVisibleTask$(async () => {
-        const gamesResults = supabaseClient.channel('custom-update-channel')
+        const { data } = await supabaseClient
+            .from("games_results")
+            .select("*")
+
+        data?.forEach((row) => {
+            results[row.name as keyof Results].dragons = row.dragons;
+            results[row.name as keyof Results].tigers = row.tigers;
+        });
+
+        supabaseClient.channel('custom-update-channel')
             .on(
                 'postgres_changes',
                 { event: 'UPDATE', schema: 'public', table: 'games_results' },
@@ -56,8 +65,8 @@ export default component$(({ editMode }: Props) => {
   return (
     <div class={styles.resultContainer}>
         {Object.keys(results).map(k => (
-            <div>
-                <div class={styles.result} key={k}>
+            <div key={k}>
+                <div class={styles.result}>
                     <i class={[config.games[k as keyof Games].icon, styles.resultIcon]}></i>
                     <span class={styles.resultInfo}>{results[k as keyof Results].dragons} - {results[k as keyof Results].tigers}</span>
                     <span class={styles.resultLabel}>{config.games[k as keyof Games].label}</span>
