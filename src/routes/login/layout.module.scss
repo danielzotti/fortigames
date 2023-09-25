@@ -2,7 +2,8 @@
   display: flex;
   height: 100dvh;
   overflow: hidden;
-  background: var(--black) url('../../img/cover_tiger.png') no-repeat;
+  background: var(--black) url('../../img/cover_tiger_big.png') no-repeat;
+  background-position: bottom; 
 }
 
 .content {
