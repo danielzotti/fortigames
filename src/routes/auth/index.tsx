@@ -11,27 +11,17 @@ export default component$(() => {
   useVisibleTask$(async () => {
     const session = getSessionFromHash(window.location.hash);
 
-    console.log({ session });
-    if (session) {
-      localStorage.setItem(
-        config.jwtTokenLocalStorageName,
-        JSON.stringify(session),
-      );
-      auth.value = session;
-      await navigate(config.urls.home);
-    } else {
+    if (!session) {
       console.log("error with JWT");
+      return;
     }
+    localStorage.setItem(
+      config.jwtTokenLocalStorageName,
+      JSON.stringify(session),
+    );
+    auth.value = session;
+    await navigate(config.urls.home);
   });
 
-  if (!auth.value) {
-    return <p>Loading JWT...</p>;
-  }
-
-  return (
-    <>
-      <h1>Auth</h1>
-      <pre>{JSON.stringify(auth.value?.user, null, 2)}</pre>
-    </>
-  );
+  return <p>Checking JWT... Do not refresh page!</p>;
 });
