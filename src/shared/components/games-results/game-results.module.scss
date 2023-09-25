@@ -8,9 +8,21 @@
     border-radius: 50%;
     text-align: center;
     min-width: 120px;
+    position: relative;
 
     .resultLabel {
       font-size: 1.1em;
+      border-width: 1px 2px 2px 1px;
+      border-style: solid;
+      border-color: white;
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #DBDBDB;
+      display: inline-block;
+      color: #000;
+      padding: 4px 10px 4px 10px;
     }
 
     .resultInfo {
