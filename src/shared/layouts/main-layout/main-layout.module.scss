@@ -2,33 +2,74 @@
   display: flex;
   flex-direction: column;
   height: 100dvh;
-  //overflow: hidden;
-  max-width: 800px;
+  //max-width: 800px;
   margin: 0 auto;
+  overflow-y: scroll;
+
 }
 
-.profileAvatar {
+.blur {
+  backdrop-filter: blur(5px);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.title {
+  //font-size: 1.5em;
+  font-family: var(--font-family-title);
+  background-color: var(--text-color);
+  color: var(--text-bg-color);
+  margin-block: 0;
+  margin-inline: var(--spacing-small);
+  padding-inline: var(--spacing-small);
+  z-index: 1;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+.top {
+  position: fixed;
+  z-index: 1;
+  //top: var(--spacing-small);
+  //left: var(--spacing-small);
+  //right: var(--spacing-small);
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
-  width: 100%;
+  //width: 100%;
+  max-width: 800px;
+  margin: auto;
   flex-direction: row;
-  justify-content: flex-end;
-  padding: var(--spacing-small)
+  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
+  padding: var(--spacing-small);
 }
 
 .content {
-  flex-grow: 1;
-  max-height: 100%;
-  overflow-y: auto;
-  padding: var(--spacing-default);
+  position: relative;
+  padding-inline: var(--spacing-default);
+  padding-top: 80px; // TODO: check this height!
+  padding-bottom: 120px; // TODO: check this height!
+  max-width: 800px;
+  margin: 0 auto;
+  word-wrap: break-word;
+  white-space: break-spaces;
 
-  h1:first-child {
-    margin-top: 0;
+  h1, h2, h3, h4, h5, h6 {
+    &:first-child {
+      margin-top: 0;
+    }
   }
 }
 
 .bottomNavigation {
-  //position: fixed;
-  //bottom:0;
-  //right: 0;
-  //left: 0;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }

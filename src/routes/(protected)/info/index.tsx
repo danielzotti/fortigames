@@ -1,15 +1,15 @@
 import { component$ } from "@builder.io/qwik";
-import { Link } from "@builder.io/qwik-city";
+import MainLayout from "~/shared/layouts/main-layout/main-layout";
 
 export default component$(() => {
   return (
-    <>
+    <MainLayout title="Info">
       <h2>Location</h2>
       <p>
-        Lorem ipsum dolor sit amet, <Link href={"/test"}>consectetur</Link>{" "}
-        adipisicing elit. Accusantium aliquam, dicta et exercitationem facere
-        ipsum officia officiis provident qui, quo quos reiciendis rerum tenetur.
-        Cumque magni nihil quae voluptate voluptatem.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
+        aliquam, dicta et exercitationem facere ipsum officia officiis provident
+        qui, quo quos reiciendis rerum tenetur. Cumque magni nihil quae
+        voluptate voluptatem.
       </p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
@@ -48,6 +48,6 @@ export default component$(() => {
         pallavolo (2) <i class="fa-solid fa-arrow-right"></i> Il torneo lo
         vincono i Dragons
       </p>
-    </>
+    </MainLayout>
   );
 });

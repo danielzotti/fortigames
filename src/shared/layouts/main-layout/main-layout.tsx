@@ -4,10 +4,16 @@ import BottomNavigation from "~/shared/components/ui/bottom-navigation/bottom-na
 
 import styles from "./main-layout.module.scss";
 
-export default component$(() => {
+interface Props {
+  title?: string;
+}
+
+export default component$(({ title }: Props) => {
   return (
     <div class={styles.container}>
-      <div class={styles.profileAvatar}>
+      <div class={styles.top}>
+        <div class={styles.blur}></div>
+        <h1 class={styles.title}>{title}</h1>
         <ProfileAvatar />
       </div>
       <div class={styles.content}>

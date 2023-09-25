@@ -22,7 +22,7 @@
   --btn-outline-border-color: var(--accent-color);
   --btn-clean-text-color: var(--accent-color);
 
-  --bottom-navigation-bg-color: var(--white);
+  --bottom-navigation-bg-color: rgba(255, 255, 255, 0.7); // var(--white)
   --bottom-navigation-text-color: var(--black-light);
 
   --profile-avatar-bg-color: var(--white);
@@ -53,7 +53,7 @@
   --btn-outline-border-color: var(--accent-color);
   --btn-clean-text-color: var(--accent-color);
 
-  --bottom-navigation-bg-color: var(--black-light);
+  --bottom-navigation-bg-color: rgba(0, 0, 0, 0.7); // var(--black-light)
   --bottom-navigation-text-color: var(--white);
 
   --profile-avatar-bg-color: var(--black-light);

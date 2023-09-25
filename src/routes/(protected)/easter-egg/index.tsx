@@ -3,8 +3,8 @@ import MainLayout from "~/shared/layouts/main-layout/main-layout";
 
 export default component$(() => {
   return (
-    <MainLayout title="Board games">
-      <p>Todo: list of boardgames</p>
+    <MainLayout title="Ben fatta!">
+      <p>Hai trovato un easter egg! Non hai vinto nulla se non la gloria</p>
     </MainLayout>
   );
 });
