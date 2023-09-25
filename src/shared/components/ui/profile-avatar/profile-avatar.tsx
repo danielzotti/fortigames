@@ -1,11 +1,11 @@
-import { component$, useContext } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import styles from "./profile-avatar.module.scss";
 import { useNavigate } from "@builder.io/qwik-city";
 import { config } from "~/config";
-import { AuthContext } from "~/contexts/auth.context";
+import { useAuth } from "~/hooks/useAuth";
 
 export default component$(() => {
-  const auth = useContext(AuthContext);
+  const { auth } = useAuth();
   const navigate = useNavigate();
 
   const getUserInitialLetters = () => {

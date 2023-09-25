@@ -1,42 +1,24 @@
-import { component$, useContext } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import { Logout } from "~/components/auth/logout/logout";
-import { AuthContext } from "~/contexts/auth.context";
+import { config } from "~/config";
+import { Link } from "@builder.io/qwik-city";
+import { useAuth } from "~/hooks/useAuth";
 
 export default component$(() => {
-  const auth = useContext(AuthContext);
+  const { auth } = useAuth();
 
   return (
     <>
       <h1>Profile</h1>
       <h2>{auth.value?.user?.email}</h2>
+
+      {auth.value?.is_admin === true && (
+        <p>
+          <Link href={config.urls.admin}>Admin</Link>
+        </p>
+      )}
       <Logout />
-      <h3>ToDo</h3>
-      <ul>
-        <li>ALL:</li>
-        <ul>
-          <li>Avatar</li>
-          <li>Name</li>
-          <li>Link to convention's chat</li>
-          <li>Logout button</li>
-        </ul>
-
-        <li>PARTICIPANT:</li>
-        <ul>
-          <li>Sports icons (+ board games icon?)</li>
-          <li>Link to team's chat</li>
-          <li>Link to team's page</li>
-        </ul>
-
-        <li>REFEREE:</li>
-        <ul>
-          <li>?</li>
-        </ul>
-
-        <li>ADMIN:</li>
-        <ul>
-          <li>Link to admin section</li>
-        </ul>
-      </ul>
+      <pre>{JSON.stringify(auth.value, null, 2)}</pre>
     </>
   );
 });

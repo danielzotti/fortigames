@@ -19,6 +19,7 @@ export default component$(() => {
     const { data: participantList } = await supabaseClient
       .from("users")
       .select("*")
+      .order("is_admin", { ascending: false })
       .order("email", { ascending: true });
 
     people.value = participantList;
@@ -43,6 +44,7 @@ export default component$(() => {
               <th>Team</th>
               <th>First Name</th>
               <th>Last Name</th>
+              <th>Admin</th>
               <th>Email</th>
               <th>Company</th>
               <th>Form</th>
@@ -62,6 +64,7 @@ export default component$(() => {
                 <td>{p.team}</td>
                 <td>{p.firstname}</td>
                 <td>{p.lastname}</td>
+                <td>{p.is_admin ? "X" : ""}</td>
                 <td>
                   <Link href={"/admin/" + p.id}>{p.email}</Link>
                 </td>
