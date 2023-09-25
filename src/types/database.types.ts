@@ -38,18 +38,21 @@ export interface Database {
           games_ended_at: string | null
           games_started_at: string | null
           id: number
+          planned_end: string | null
           planned_start: string | null
         }
         Insert: {
           games_ended_at?: string | null
           games_started_at?: string | null
           id?: number
+          planned_end?: string | null
           planned_start?: string | null
         }
         Update: {
           games_ended_at?: string | null
           games_started_at?: string | null
           id?: number
+          planned_end?: string | null
           planned_start?: string | null
         }
         Relationships: []
@@ -63,18 +66,18 @@ export interface Database {
           tigers: number
         }
         Insert: {
-          dragons?: number | null
+          dragons?: number
           id?: number
           last_update?: string | null
           name?: string | null
-          tigers?: number | null
+          tigers?: number
         }
         Update: {
-          dragons?: number | null
+          dragons?: number
           id?: number
           last_update?: string | null
           name?: string | null
-          tigers?: number | null
+          tigers?: number
         }
         Relationships: []
       }

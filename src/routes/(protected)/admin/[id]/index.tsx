@@ -16,6 +16,7 @@ import { Participant } from "~/types/participant.types";
 import { supabaseClient } from "~/supabase/supabase-client";
 import { config } from "~/config";
 import BackButton from "~/shared/components/ui/back-button/back-button";
+import Loader from "~/shared/components/ui/loader/loader";
 
 const participantDefaultValue: Participant = {
   company: "",
@@ -43,6 +44,7 @@ const participantSchema = z.object({
   firstname: z.string().nullable(),
   lastname: z.string().nullable(),
   company: z.string().nullable(),
+  is_admin: z.boolean().nullable(),
   is_playing_soccer: z.boolean().nullable(),
   is_playing_volley: z.boolean().nullable(),
   is_playing_pingpong: z.boolean().nullable(),
@@ -109,7 +111,7 @@ export default component$(() => {
   });
 
   if (!participant.value) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   return (
@@ -137,6 +139,9 @@ export default component$(() => {
         </Field>
         <Field name="number" type="number">
           {(field, props) => InputNumber(field, props)}
+        </Field>
+        <Field name="is_admin" type="boolean">
+          {(field, props) => InputCheckbox(field, props)}
         </Field>
         <Field name="is_playing_soccer" type="boolean">
           {(field, props) => InputCheckbox(field, props)}
