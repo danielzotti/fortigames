@@ -1,13 +1,9 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
-
 import { Login } from "~/components/auth/login/login";
-import { Logout } from "~/components/auth/logout/logout";
 import { supabaseClient } from "~/supabase/supabase-client";
 import type { User } from "@supabase/supabase-js";
 import { Participant } from "~/types/participant.types";
 import { Link } from "@builder.io/qwik-city";
-import MainLayout from "~/shared/layouts/main-layout/main-layout";
 
 export default component$(() => {
   const user = useSignal<User | null>(null);
@@ -33,7 +29,7 @@ export default component$(() => {
   }
 
   return (
-    <MainLayout fullWidth={true}>
+    <>
       <h1>Admin</h1>
 
       <pre>Current user: {user.value.email}</pre>
@@ -82,6 +78,6 @@ export default component$(() => {
           </tbody>
         </table>
       )}
-    </MainLayout>
+    </>
   );
 });

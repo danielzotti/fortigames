@@ -15,7 +15,6 @@ import { setValues, useForm, zodForm$ } from "@modular-forms/qwik";
 import { Participant } from "~/types/participant.types";
 import { supabaseClient } from "~/supabase/supabase-client";
 import { config } from "~/config";
-import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import BackButton from "~/shared/components/ui/back-button/back-button";
 
 const participantDefaultValue: Participant = {
@@ -114,7 +113,7 @@ export default component$(() => {
   }
 
   return (
-    <MainLayout>
+    <>
       <h1>Edit</h1>
       <BackButton url={config.urls.admin} />
       <h3>
@@ -163,7 +162,7 @@ export default component$(() => {
 
         <button type="submit">Save</button>
       </Form>
-    </MainLayout>
+    </>
   );
 });
 

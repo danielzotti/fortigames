@@ -1,15 +1,14 @@
-import { component$ } from "@builder.io/qwik";
-import MainLayout from "~/shared/layouts/main-layout/main-layout";
+import { component$, useContext } from "@builder.io/qwik";
 import { Logout } from "~/components/auth/logout/logout";
-import { useAuthUser } from "~/hooks/useAuthUser";
+import { AuthContext } from "~/contexts/auth.context";
 
 export default component$(() => {
-  const auth = useAuthUser();
+  const auth = useContext(AuthContext);
 
   return (
-    <MainLayout>
+    <>
       <h1>Profile</h1>
-      <h2>{auth.value?.email}</h2>
+      <h2>{auth.value?.user?.email}</h2>
       <Logout />
       <h3>ToDo</h3>
       <ul>
@@ -38,6 +37,6 @@ export default component$(() => {
           <li>Link to admin section</li>
         </ul>
       </ul>
-    </MainLayout>
+    </>
   );
 });

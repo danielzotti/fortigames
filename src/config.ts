@@ -34,6 +34,7 @@ export const config = {
     // TODO: set urls here
     home: "/",
     login: "/login",
+    auth: "/auth",
     profile: "/profile",
     admin: "/admin",
     teams: "/teams",
@@ -43,33 +44,33 @@ export const config = {
   },
   teams: {
     tigers: {
-      label: "Tigers"
+      label: "Tigers",
     },
     dragons: {
-      label: "Dragons"
-    }
+      label: "Dragons",
+    },
   },
   games: {
     soccer: {
       db_key: "is_playing_soccer",
       label: "Calcio",
-      team: true
+      team: true,
     },
     table_tennis: {
       db_key: "is_playing_pingpong",
       label: "Tennis Tavolo",
-      team: true
+      team: true,
     },
     volley: {
       db_key: "is_playing_volley",
       label: "Pallavolo",
-      team: true
+      team: true,
     },
     board_games: {
       db_key: "is_playing_boardgames",
       label: "Boardgames",
-      team: false
-    }
+      team: false,
+    },
   },
   // apis: {
   //   baseUrl: `${baseUrl}/api`,

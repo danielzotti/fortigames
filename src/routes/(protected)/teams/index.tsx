@@ -2,7 +2,6 @@ import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { supabaseClient } from "~/supabase/supabase-client";
 import { Participant } from "~/types/participant.types";
 import { useLocation } from "@builder.io/qwik-city";
-import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import { config } from "~/config";
 
 export default component$(() => {
@@ -26,7 +25,8 @@ export default component$(() => {
       client.is(config.games[game].db_key, true);
     }
 
-    const { data: participantList } = await client;
+    const { data: participantList, error } = await client;
+    console.log({ error });
     people.value = participantList;
   });
 
@@ -46,7 +46,7 @@ export default component$(() => {
   }
 
   return (
-    <MainLayout>
+    <>
       <h1>Teams</h1>
       <ul class="teams-list">
         <li>
@@ -109,6 +109,6 @@ export default component$(() => {
             </tr>
           ))}
       </table>
-    </MainLayout>
+    </>
   );
 });

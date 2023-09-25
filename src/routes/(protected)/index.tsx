@@ -3,7 +3,6 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import { supabaseClient } from "~/supabase/supabase-client";
 import { Participant } from "~/types/participant.types";
 
-import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import GameResults from "~/shared/components/games-results/game-results";
 
 export default component$(() => {
@@ -18,7 +17,7 @@ export default component$(() => {
   });
 
   return (
-    <MainLayout>
+    <>
       <h1>Welcome to Fortigames 2023</h1>
       <GameResults />
 
@@ -27,9 +26,7 @@ export default component$(() => {
         <i class="fa-solid fa-user"></i>
         <i class="fa-brands fa-github-square"></i>
       </p>
-
-
-    </MainLayout>
+    </>
   );
 });
 
