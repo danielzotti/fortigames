@@ -43,8 +43,9 @@
   &:global(.active) {
     background-color: var(--accent-color);
 
-    &:hover {
+    &:hover, &:active, &:focus {
       color: var(--bottom-navigation-text-color);
     }
+
   }
 }
