@@ -1,11 +1,8 @@
 .container {
-  display: flex;
-  flex-direction: column;
+  display: block;
   height: 100dvh;
-  //max-width: 800px;
   margin: 0 auto;
   overflow-y: scroll;
-
 }
 
 .blur {
@@ -16,7 +13,6 @@
 }
 
 .title {
-  //font-size: 1.5em;
   font-family: var(--font-family-title);
   background-color: var(--text-color);
   color: var(--text-bg-color);
