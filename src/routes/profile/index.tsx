@@ -1,15 +1,18 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useContext } from "@builder.io/qwik";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import { Logout } from "~/components/auth/logout/logout";
-import { useAuthUser } from "~/hooks/useAuthUser";
+import { AuthContext } from "~/routes/layout";
+import { useCheckSession } from "~/hooks/useCheckSession";
 
 export default component$(() => {
-  const auth = useAuthUser();
+  useCheckSession();
+
+  const auth = useContext(AuthContext);
 
   return (
     <MainLayout>
       <h1>Profile</h1>
-      <h2>{auth.value?.email}</h2>
+      <h2>{auth.value?.user?.email}</h2>
       <Logout />
       <h3>ToDo</h3>
       <ul>

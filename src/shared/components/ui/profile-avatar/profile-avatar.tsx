@@ -1,15 +1,15 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useContext } from "@builder.io/qwik";
 import styles from "./profile-avatar.module.scss";
 import { useNavigate } from "@builder.io/qwik-city";
 import { config } from "~/config";
-import { useAuthUser } from "~/hooks/useAuthUser";
+import { AuthContext } from "~/routes/layout";
 
 export default component$(() => {
-  const auth = useAuthUser();
+  const auth = useContext(AuthContext);
   const navigate = useNavigate();
 
   const getUserInitialLetters = () => {
-    const fullNameList = auth.value?.email?.split("@")?.[0]?.split(".");
+    const fullNameList = auth.value?.user.email?.split("@")?.[0]?.split(".");
     if (!fullNameList?.length) {
       return <i class="fa fa-user"></i>;
     }
