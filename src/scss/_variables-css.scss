@@ -10,29 +10,33 @@
   --cursor-pointer: pointer;
 
   //COLORS
-  --black: #000;
-  --black-light: #0f0f0f;
-  --white: #fff;
+  --black: #222;
+  --black-light: #111;
+  --white: #eee;
   --white-dark: #d0d0d0;
-  --gray-dark: #151515;
-  --gray-light: #c5c4c5;
-  --blue: #2daae1;
-  --red: #d70d1f;
+  --gray-dark: #333;
+  --gray-middle: #666;
+  --gray-light: #888;
+  --blue: #008dc9;
+  --red: #d00;
+  --accent-color: rgba(204, 255, 0);
 
   --link-color: inherit;
 
   //FONTS
-  --font-family-title: Exo, Georgia, serif;
-  --font-family-text: 'Roboto Condensed', Verdana, Helvetica, Arial, sans-serif;
+  --font-family-title: 'Bungee Shade', Georgia, serif;
+  --font-family-button: 'Bungee', Georgia, serif;
+  --font-family-text: 'Gochi Hand', 'Roboto', Verdana, Helvetica, Arial, sans-serif;
+  --font-family-board: 'Special Elite', 'Roboto', Verdana, Helvetica, Arial, sans-serif;
 
   //MARGINS
-  --spacing-small: 5px;
-  --spacing-default: 15px;
-  --spacing-medium: 30px;
-  --spacing-big: 60px;
+  --spacing-small: 0.5rem;
+  --spacing-default: 1rem;
+  --spacing-medium: 2rem;
+  --spacing-big: 4rem;
 
   //BORDERS
-  --border-radius: 10px;
+  --border-radius: 0.5rem;
 
   //TRANSITIONS
   --transition-duration: .2s;

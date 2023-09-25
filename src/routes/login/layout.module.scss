@@ -2,8 +2,7 @@
   display: flex;
   height: 100dvh;
   overflow: hidden;
-  background: rgb(0,0,0);
-  background: linear-gradient(-45deg,var(--black-light) 50%, var(--white) 50%);
+  background: var(--black) url('../../img/cover_tiger.png') no-repeat;
 }
 
 .content {
