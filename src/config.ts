@@ -41,6 +41,36 @@ export const config = {
     boardGames: "/board-games",
     info: "/info",
   },
+  teams: {
+    tigers: {
+      label: "Tigers"
+    },
+    dragons: {
+      label: "Dragons"
+    }
+  },
+  games: {
+    soccer: {
+      db_key: "is_playing_soccer",
+      label: "Calcio",
+      team: true
+    },
+    table_tennis: {
+      db_key: "is_playing_pingpong",
+      label: "Tennis Tavolo",
+      team: true
+    },
+    volley: {
+      db_key: "is_playing_volley",
+      label: "Pallavolo",
+      team: true
+    },
+    board_games: {
+      db_key: "is_playing_boardgames",
+      label: "Boardgames",
+      team: false
+    }
+  },
   // apis: {
   //   baseUrl: `${baseUrl}/api`,
   // },

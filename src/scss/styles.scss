@@ -6,3 +6,21 @@
 @import "common";
 
 @import "layout";
+
+// TODO TEMP
+
+.teams-list,
+.teams-games {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8em;
+
+  li.is-active a {
+    color: #008dc9;
+  }
+}
+
+.teams-member-list {
+  font-size: 1.5em;
+  font-family: Verdana, sans-serif;
+}
