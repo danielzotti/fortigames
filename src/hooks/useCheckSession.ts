@@ -1,15 +1,14 @@
-import { $, useContext, useVisibleTask$ } from "@builder.io/qwik";
-import { useLocation, useNavigate } from "@builder.io/qwik-city";
+import { $, useVisibleTask$ } from "@builder.io/qwik";
+import { useNavigate } from "@builder.io/qwik-city";
 import { config } from "~/config";
-import { Session } from "supabase-auth-helpers-qwik";
-import { AuthContext } from "~/contexts/auth.context";
+import { AuthSession } from "~/types/auth.types";
+import { useAuth } from "~/hooks/useAuth";
 
 export function useCheckSession() {
-  const location = useLocation();
   const navigate = useNavigate();
-  const auth = useContext(AuthContext);
+  const { auth } = useAuth();
 
-  const isTokenExpired = $(({ expires_at }: Session) => {
+  const isTokenExpired = $(({ expires_at }: AuthSession) => {
     if (!expires_at) {
       return false;
     }
@@ -23,7 +22,7 @@ export function useCheckSession() {
       if (!tokenString) {
         return null;
       }
-      const token: Session = JSON.parse(tokenString);
+      const token: AuthSession = JSON.parse(tokenString);
       if (await isTokenExpired(token)) {
         return null;
       }
@@ -34,14 +33,6 @@ export function useCheckSession() {
   });
 
   useVisibleTask$(async () => {
-    console.log("check session...");
-    if (
-      location.url.pathname.startsWith(config.urls.auth) ||
-      location.url.pathname.startsWith(config.urls.login)
-    ) {
-      return;
-    }
-
     if (auth.value) {
       return;
     }
@@ -51,7 +42,6 @@ export function useCheckSession() {
       return;
     }
     auth.value = token;
-    // await navigate(config.urls.home);
   });
 
   return auth;

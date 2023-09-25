@@ -26,7 +26,6 @@ export default component$(() => {
     }
 
     const { data: participantList, error } = await client;
-    console.log({ error });
     people.value = participantList;
   });
 

@@ -1,11 +1,23 @@
 import { component$, Slot } from "@builder.io/qwik";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
-import GameResults from "~/shared/components/games-results/game-results";
+import { useCheckSession } from "~/hooks/useCheckSession";
+import NoFortitude from "~/shared/components/ui/no-fortitude/no-fortitude";
+import Loader from "~/shared/components/ui/loader/loader";
 
 export default component$(() => {
-  return (
-    <MainLayout>
-      <Slot />
-    </MainLayout>
-  );
+    const session = useCheckSession();
+
+    if (!session.value) {
+        return <Loader />;
+    }
+
+    if (!session.value?.is_fortitude) {
+        return <NoFortitude />;
+    }
+
+    return (
+        <MainLayout>
+            <Slot />
+        </MainLayout>
+    );
 });
