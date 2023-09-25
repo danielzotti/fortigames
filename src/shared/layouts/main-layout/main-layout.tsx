@@ -4,9 +4,16 @@ import BottomNavigation from "~/shared/components/ui/bottom-navigation/bottom-na
 
 import styles from "./main-layout.module.scss";
 
-export default component$(() => {
+interface Props {
+  fullWidth?: boolean;
+}
+
+export default component$(({ fullWidth = false }: Props) => {
   return (
-    <div class={styles.container}>
+    <div
+      class={styles.container}
+      style={{ maxWidth: fullWidth ? "100%" : "800px" }}
+    >
       <div class={styles.profileAvatar}>
         <ProfileAvatar />
       </div>

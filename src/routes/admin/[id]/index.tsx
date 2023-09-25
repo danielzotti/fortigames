@@ -1,5 +1,10 @@
 import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
-import { routeLoader$, useLocation, z } from "@builder.io/qwik-city";
+import {
+  routeLoader$,
+  useLocation,
+  useNavigate,
+  z,
+} from "@builder.io/qwik-city";
 import type {
   FieldElementProps,
   FieldStore,
@@ -9,6 +14,9 @@ import type {
 import { setValues, useForm, zodForm$ } from "@modular-forms/qwik";
 import { Participant } from "~/types/participant.types";
 import { supabaseClient } from "~/supabase/supabase-client";
+import { config } from "~/config";
+import MainLayout from "~/shared/layouts/main-layout/main-layout";
+import BackButton from "~/shared/components/ui/back-button/back-button";
 
 const participantDefaultValue: Participant = {
   company: "",
@@ -60,8 +68,9 @@ export const useFormLoader = routeLoader$<InitialValues<ParticipantForm>>(
 
 export default component$(() => {
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const oldParticipant = useSignal<Participant>();
+  const participant = useSignal<Participant>();
 
   const [participantForm, { Form, Field }] = useForm<ParticipantForm>({
     loader: useFormLoader(),
@@ -71,15 +80,16 @@ export default component$(() => {
 
   const handleSubmit = $<SubmitHandler<ParticipantForm>>(async (values) => {
     // Runs on client
-    console.log("Values to update", values);
-
     const { error } = await supabaseClient
       .from("users")
       .update(values)
       .eq("id", location.params.id);
     if (error) {
       alert(error.message);
+      return;
     }
+
+    navigate(config.urls.admin);
   });
 
   useVisibleTask$(async () => {
@@ -94,55 +104,66 @@ export default component$(() => {
       return;
     }
 
-    oldParticipant.value = data?.[0];
+    participant.value = data?.[0];
 
     setValues(participantForm, data?.[0] ?? null);
   });
 
-  return (
-    <Form onSubmit$={handleSubmit}>
-      <Field name="email" type="string">
-        {(field, props) => InputString(field, props)}
-      </Field>
-      <Field name="firstname" type="string">
-        {(field, props) => InputString(field, props)}
-      </Field>
-      <Field name="lastname" type="string">
-        {(field, props) => InputString(field, props)}
-      </Field>
-      <Field name="team" type="string">
-        {(field, props) => InputString(field, props)}
-      </Field>
-      <Field name="company" type="string">
-        {(field, props) => InputString(field, props)}
-      </Field>
-      <Field name="number" type="number">
-        {(field, props) => InputNumber(field, props)}
-      </Field>
-      <Field name="is_playing_soccer" type="boolean">
-        {(field, props) => InputCheckbox(field, props)}
-      </Field>
-      <Field name="is_playing_volley" type="boolean">
-        {(field, props) => InputCheckbox(field, props)}
-      </Field>
-      <Field name="is_playing_pingpong" type="boolean">
-        {(field, props) => InputCheckbox(field, props)}
-      </Field>
-      <Field name="is_playing_boardgames" type="boolean">
-        {(field, props) => InputCheckbox(field, props)}
-      </Field>
-      <Field name="is_referee" type="boolean">
-        {(field, props) => InputCheckbox(field, props)}
-      </Field>
-      <Field name="is_facilitator" type="boolean">
-        {(field, props) => InputCheckbox(field, props)}
-      </Field>
-      <Field name="has_filled_form" type="boolean">
-        {(field, props) => InputCheckbox(field, props)}
-      </Field>
+  if (!participant.value) {
+    return <p>Loading...</p>;
+  }
 
-      <button type="submit">Save</button>
-    </Form>
+  return (
+    <MainLayout>
+      <h1>Edit</h1>
+      <BackButton url={config.urls.admin} />
+      <h3>
+        {participant.value.firstname} {participant.value.lastname}
+      </h3>
+      <Form onSubmit$={handleSubmit}>
+        <Field name="email" type="string">
+          {(field, props) => InputString(field, props)}
+        </Field>
+        <Field name="firstname" type="string">
+          {(field, props) => InputString(field, props)}
+        </Field>
+        <Field name="lastname" type="string">
+          {(field, props) => InputString(field, props)}
+        </Field>
+        <Field name="team" type="string">
+          {(field, props) => InputString(field, props)}
+        </Field>
+        <Field name="company" type="string">
+          {(field, props) => InputString(field, props)}
+        </Field>
+        <Field name="number" type="number">
+          {(field, props) => InputNumber(field, props)}
+        </Field>
+        <Field name="is_playing_soccer" type="boolean">
+          {(field, props) => InputCheckbox(field, props)}
+        </Field>
+        <Field name="is_playing_volley" type="boolean">
+          {(field, props) => InputCheckbox(field, props)}
+        </Field>
+        <Field name="is_playing_pingpong" type="boolean">
+          {(field, props) => InputCheckbox(field, props)}
+        </Field>
+        <Field name="is_playing_boardgames" type="boolean">
+          {(field, props) => InputCheckbox(field, props)}
+        </Field>
+        <Field name="is_referee" type="boolean">
+          {(field, props) => InputCheckbox(field, props)}
+        </Field>
+        <Field name="is_facilitator" type="boolean">
+          {(field, props) => InputCheckbox(field, props)}
+        </Field>
+        <Field name="has_filled_form" type="boolean">
+          {(field, props) => InputCheckbox(field, props)}
+        </Field>
+
+        <button type="submit">Save</button>
+      </Form>
+    </MainLayout>
   );
 });
 

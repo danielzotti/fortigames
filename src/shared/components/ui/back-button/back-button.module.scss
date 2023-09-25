@@ -1,0 +1,6 @@
+@use "@scss/mixins/button";
+
+.backButton {
+  //@include button.reset();
+  font-size: 2em;
+}

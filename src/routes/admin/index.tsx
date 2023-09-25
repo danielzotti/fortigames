@@ -7,6 +7,7 @@ import { supabaseClient } from "~/supabase/supabase-client";
 import type { User } from "@supabase/supabase-js";
 import { Participant } from "~/types/participant.types";
 import { Link } from "@builder.io/qwik-city";
+import MainLayout from "~/shared/layouts/main-layout/main-layout";
 
 export default component$(() => {
   const user = useSignal<User | null>(null);
@@ -25,14 +26,6 @@ export default component$(() => {
       .order("email", { ascending: true });
 
     people.value = participantList;
-
-    /*if (userInfo?.email) {
-                  const { data: otherInfo } = await supabaseClient
-                    .from("users")
-                    .select("*")
-                    .eq("email", userInfo.email);
-                  console.log({ otherInfo });
-                }*/
   });
 
   if (!user.value) {
@@ -40,10 +33,8 @@ export default component$(() => {
   }
 
   return (
-    <>
-      <h1>Welcome to Fortigames 2023</h1>
-
-      <Logout />
+    <MainLayout fullWidth={true}>
+      <h1>Admin</h1>
 
       <pre>Current user: {user.value.email}</pre>
 
@@ -91,16 +82,6 @@ export default component$(() => {
           </tbody>
         </table>
       )}
-    </>
+    </MainLayout>
   );
 });
-
-export const head: DocumentHead = {
-  title: "Fortigames 2023 Admin",
-  meta: [
-    {
-      name: "description",
-      content: "Fortigames 2023 description",
-    },
-  ],
-};
