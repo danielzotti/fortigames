@@ -42,7 +42,7 @@ export function useAuthUser() {
         return;
       }
       user.value = token.user;
-    }, 100);
+    }, 500);
   });
 
   return user;
