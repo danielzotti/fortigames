@@ -3,7 +3,7 @@ import { supabaseClient } from "~/supabase/supabase-client";
 import { Participant } from "~/types/participant.types";
 import { useLocation } from "@builder.io/qwik-city";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
-import { config } from "~/config";
+import {config, Games} from "~/config";
 
 export default component$(() => {
   const people = useSignal<Array<Participant> | null>();
@@ -23,7 +23,7 @@ export default component$(() => {
     }
 
     if (game && Object.keys(config.games).includes(game)) {
-      client.is(config.games[game].db_key, true);
+      client.is(config.games[game as keyof Games].db_key, true);
     }
 
     const { data: participantList } = await client;
@@ -64,7 +64,7 @@ export default component$(() => {
           <a href={createFilterUrl("game", null)}>All</a>
         </li>
         {Object.keys(config.games).map((k) => {
-          const game = config.games[k];
+          const game = config.games[k as keyof Games];
           if (game.team) {
             return (
               <li class={isFilterActive("game", k) && "is-active"} key={k}>
