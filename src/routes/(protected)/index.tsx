@@ -4,6 +4,7 @@ import { supabaseClient } from "~/supabase/supabase-client";
 import { Participant } from "~/types/participant.types";
 
 import GameResults from "~/shared/components/games-results/game-results";
+import MainLayout from "~/shared/layouts/main-layout/main-layout";
 
 export default component$(() => {
   const people = useSignal<Array<Participant> | null>();
@@ -17,8 +18,8 @@ export default component$(() => {
   });
 
   return (
-    <>
-      <h1>Welcome to Fortigames 2023</h1>
+    <MainLayout title="Home">
+      {/*<div q:slot="title">Welcome to Fortigames 2023</div>*/}
       <GameResults />
 
       <p>
@@ -26,7 +27,7 @@ export default component$(() => {
         <i class="fa-solid fa-user"></i>
         <i class="fa-brands fa-github-square"></i>
       </p>
-    </>
+    </MainLayout>
   );
 });
 

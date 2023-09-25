@@ -84,14 +84,14 @@ a {
 }
 
 button {
-	padding: var(--spacing-small) var(--spacing-default);
+  padding: var(--spacing-small) var(--spacing-default);
   font-family: var(--font-family-button);
-	font-size: 1.2rem;
+  font-size: 1.2rem;
   color: inherit;
   border-bottom: 2px solid var(--gray-middle);
   border-left: 2px solid var(--gray-middle);
-	border-radius: var(--border-radius);
-	background-color: var(--white);
+  border-radius: var(--border-radius);
+  background-color: var(--white);
 
   &:hover, &:focus, &:active {
     cursor: var(--cursor-pointer);
@@ -114,6 +114,11 @@ ul, ol {
   li {
     @extend p;
   }
+}
+
+pre {
+  word-wrap: break-word;
+  white-space: break-spaces;
 }
 
 // TODO: remove it or improve it!

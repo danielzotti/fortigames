@@ -17,6 +17,7 @@ import { supabaseClient } from "~/supabase/supabase-client";
 import { config } from "~/config";
 import BackButton from "~/shared/components/ui/back-button/back-button";
 import Loader from "~/shared/components/ui/loader/loader";
+import MainLayout from "~/shared/layouts/main-layout/main-layout";
 
 const participantDefaultValue: Participant = {
   company: "",
@@ -115,8 +116,7 @@ export default component$(() => {
   }
 
   return (
-    <>
-      <h1>Edit</h1>
+    <MainLayout title={"Modifica"}>
       <BackButton url={config.urls.admin} />
       <h3>
         {participant.value.firstname} {participant.value.lastname}
@@ -167,7 +167,7 @@ export default component$(() => {
 
         <button type="submit">Save</button>
       </Form>
-    </>
+    </MainLayout>
   );
 });
 

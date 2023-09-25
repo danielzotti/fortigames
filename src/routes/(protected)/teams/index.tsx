@@ -3,6 +3,7 @@ import { supabaseClient } from "~/supabase/supabase-client";
 import { Participant } from "~/types/participant.types";
 import { useLocation } from "@builder.io/qwik-city";
 import { config } from "~/config";
+import MainLayout from "~/shared/layouts/main-layout/main-layout";
 
 export default component$(() => {
   const people = useSignal<Array<Participant> | null>();
@@ -45,8 +46,7 @@ export default component$(() => {
   }
 
   return (
-    <>
-      <h1>Teams</h1>
+    <MainLayout title="I Team">
       <ul class="teams-list">
         <li>
           <a href={createFilterUrl("team", null)}>All</a>
@@ -108,6 +108,6 @@ export default component$(() => {
             </tr>
           ))}
       </table>
-    </>
+    </MainLayout>
   );
 });

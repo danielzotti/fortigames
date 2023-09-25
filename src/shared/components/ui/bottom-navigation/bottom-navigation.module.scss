@@ -3,11 +3,12 @@
 
 .container {
   padding: var(--spacing-small);
-  max-width: 800px;
+  max-width: 500px;
   margin: auto;
 }
 
 .menu {
+  backdrop-filter: blur(5px);
   background-color: var(--bottom-navigation-bg-color);
   border-radius: var(--border-radius);
   display: flex;
@@ -22,7 +23,7 @@
   color: var(--bottom-navigation-text-color);
   aspect-ratio: 1;
   border-radius: 50%;
-  width: 10%;
+  width: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,12 +33,6 @@
   i {
     display: inline-block;
     font-size: 0.85em;
-    @media(min-width: variables.$container-xs-min) {
-      font-size: 1.2em;
-    }
-    @media(min-width: variables.$container-sm-min) {
-      font-size: 1.5em;
-    }
   }
 
   &:global(.active) {
