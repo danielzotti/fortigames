@@ -56,11 +56,11 @@ export interface Database {
       }
       games_results: {
         Row: {
-          dragons: number | null
+          dragons: number
           id: number
           last_update: string | null
           name: string | null
-          tigers: number | null
+          tigers: number
         }
         Insert: {
           dragons?: number | null
