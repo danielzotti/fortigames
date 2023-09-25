@@ -48,6 +48,7 @@ export const config = {
     // TODO: set urls here
     home: "/",
     login: "/login",
+    auth: "/auth",
     profile: "/profile",
     admin: "/admin",
     teams: "/teams",
@@ -57,11 +58,11 @@ export const config = {
   },
   teams: {
     tigers: {
-      label: "Tigers"
+      label: "Tigers",
     },
     dragons: {
-      label: "Dragons"
-    }
+      label: "Dragons",
+    },
   },
   games: {
     soccer: {
@@ -87,8 +88,8 @@ export const config = {
       label: "Boardgames",
       team: false,
       icon: 'fa fa-chess-rook'
-    }
-  } as Games,
+    },
+  },
   // apis: {
   //   baseUrl: `${baseUrl}/api`,
   // },

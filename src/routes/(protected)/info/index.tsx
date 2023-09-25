@@ -1,10 +1,9 @@
 import { component$ } from "@builder.io/qwik";
-import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import { Link } from "@builder.io/qwik-city";
 
 export default component$(() => {
   return (
-    <MainLayout>
+    <>
       <h2>Location</h2>
       <p>
         Lorem ipsum dolor sit amet, <Link href={"/test"}>consectetur</Link>{" "}
@@ -49,6 +48,6 @@ export default component$(() => {
         pallavolo (2) <i class="fa-solid fa-arrow-right"></i> Il torneo lo
         vincono i Dragons
       </p>
-    </MainLayout>
+    </>
   );
 });
