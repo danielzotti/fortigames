@@ -4,6 +4,7 @@ import { supabaseClient } from "~/supabase/supabase-client";
 import type { User } from "@supabase/supabase-js";
 import { Participant } from "~/types/participant.types";
 import { Link } from "@builder.io/qwik-city";
+import Loader from "~/shared/components/ui/loader/loader";
 
 export default component$(() => {
   const user = useSignal<User | null>(null);
@@ -25,15 +26,15 @@ export default component$(() => {
     people.value = participantList;
   });
 
-  if (!user.value) {
-    return <Login />;
+  if (!people.value && !user.value) {
+    return <Loader />;
   }
 
   return (
     <>
       <h1>Admin</h1>
 
-      <pre>Current user: {user.value.email}</pre>
+      <pre>Current user: {user.value?.email}</pre>
 
       {people.value && (
         <table>

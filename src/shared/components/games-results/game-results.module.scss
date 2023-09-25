@@ -1,3 +1,27 @@
-.result {
+.resultContainer {
+  display: flex;
+  justify-content: space-between;
 
+  .result {
+    aspect-ratio: 1;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    text-align: center;
+    min-width: 120px;
+
+    .resultLabel {
+      font-size: 1.1em;
+    }
+
+    .resultInfo {
+      font-size: 1.6em;
+    }
+
+    i, span {
+      display: block;
+    }
+
+    .manage {
+    }
+  }
 }
