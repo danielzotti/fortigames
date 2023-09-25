@@ -6,7 +6,6 @@ import { config } from "~/config";
 export const Login = component$(() => {
   const location = useLocation();
 
-  console.warn(location.url.origin + "/auth");
   const handleGoogleLogin = $(async () => {
     supabaseClient.auth
       .signInWithOAuth({

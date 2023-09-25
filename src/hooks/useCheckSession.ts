@@ -1,10 +1,11 @@
 import { $, useContext, useVisibleTask$ } from "@builder.io/qwik";
-import { useNavigate } from "@builder.io/qwik-city";
+import { useLocation, useNavigate } from "@builder.io/qwik-city";
 import { config } from "~/config";
-import { AuthContext } from "~/routes/layout";
 import { Session } from "supabase-auth-helpers-qwik";
+import { AuthContext } from "~/contexts/auth.context";
 
 export function useCheckSession() {
+  const location = useLocation();
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
 
@@ -33,6 +34,14 @@ export function useCheckSession() {
   });
 
   useVisibleTask$(async () => {
+    console.log("check session...");
+    if (
+      location.url.pathname.startsWith(config.urls.auth) ||
+      location.url.pathname.startsWith(config.urls.login)
+    ) {
+      return;
+    }
+
     if (auth.value) {
       return;
     }
@@ -44,4 +53,6 @@ export function useCheckSession() {
     auth.value = token;
     // await navigate(config.urls.home);
   });
+
+  return auth;
 }

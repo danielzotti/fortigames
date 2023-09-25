@@ -1,13 +1,12 @@
 import { component$, useContext } from "@builder.io/qwik";
-import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import { Logout } from "~/components/auth/logout/logout";
-import { AuthContext } from "~/routes/layout";
+import { AuthContext } from "~/contexts/auth.context";
 
 export default component$(() => {
   const auth = useContext(AuthContext);
 
   return (
-    <MainLayout>
+    <>
       <h1>Profile</h1>
       <h2>{auth.value?.user?.email}</h2>
       <Logout />
@@ -38,6 +37,6 @@ export default component$(() => {
           <li>Link to admin section</li>
         </ul>
       </ul>
-    </MainLayout>
+    </>
   );
 });

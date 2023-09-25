@@ -17,7 +17,9 @@ import fontawesomeBrands from "@fortawesome/fontawesome-free/css/brands.min.css?
 import fontawesomeSolid from "@fortawesome/fontawesome-free/css/solid.min.css?inline";
 
 import { config } from "~/config";
+import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import { Session } from "supabase-auth-helpers-qwik";
+import { AuthContext } from "~/contexts/auth.context";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -44,9 +46,6 @@ export const head: DocumentHead = {
     })),
   ],
 };
-
-export const AuthContext =
-  createContextId<Signal<Session | undefined>>("auth-contenxt");
 
 export default component$(() => {
   useStyles$(variablesCss);

@@ -2,7 +2,7 @@ import { component$, useContext, useVisibleTask$ } from "@builder.io/qwik";
 import { getSessionFromHash } from "~/shared/utils/auth";
 import { config } from "~/config";
 import { useNavigate } from "@builder.io/qwik-city";
-import { AuthContext } from "~/routes/layout";
+import { AuthContext } from "~/contexts/auth.context";
 
 export default component$(() => {
   const navigate = useNavigate();

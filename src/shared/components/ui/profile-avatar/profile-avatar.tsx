@@ -2,11 +2,9 @@ import { component$, useContext } from "@builder.io/qwik";
 import styles from "./profile-avatar.module.scss";
 import { useNavigate } from "@builder.io/qwik-city";
 import { config } from "~/config";
-import { AuthContext } from "~/routes/layout";
-import { useCheckSession } from "~/hooks/useCheckSession";
+import { AuthContext } from "~/contexts/auth.context";
 
 export default component$(() => {
-  useCheckSession();
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
 

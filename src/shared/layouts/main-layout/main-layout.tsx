@@ -3,12 +3,19 @@ import ProfileAvatar from "~/shared/components/ui/profile-avatar/profile-avatar"
 import BottomNavigation from "~/shared/components/ui/bottom-navigation/bottom-navigation";
 
 import styles from "./main-layout.module.scss";
+import { useCheckSession } from "~/hooks/useCheckSession";
 
 interface Props {
   fullWidth?: boolean;
 }
 
 export default component$(({ fullWidth = false }: Props) => {
+  const session = useCheckSession();
+
+  if (!session.value) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div
       class={styles.container}
