@@ -7,6 +7,9 @@
 
 @import "layout";
 
+// COMPONENTS
+@import "components/button";
+
 // TODO TEMP
 .tabs-container {
   display: flex;
@@ -38,9 +41,4 @@
       background-color: var(--accent-color);
     }
   }
-}
-
-.teams-member-list {
-  font-size: 1.5em;
-  font-family: Verdana, sans-serif;
 }

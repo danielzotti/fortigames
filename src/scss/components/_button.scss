@@ -1,0 +1,30 @@
+._btn {
+  border: var(--btn-border-radius);
+  box-shadow: var(--btn-border-color);
+  font-size: var(--btn-font-size);
+  font-family: var(--btn-font-family);
+  text-transform: uppercase;
+  margin: 0 10px;
+}
+
+.btn-default {
+  @extend ._btn;
+  background-color: var(--btn-default-bg-color);
+  color: var(--btn-default-text-color);
+}
+
+.btn-selected {
+  @extend ._btn;
+  background-color: var(--btn-selected-bg-color);
+  color: var(--btn-selected-text-color);
+}
+
+.btn-medium {
+  @extend ._btn;
+  padding: 12px;
+}
+
+.btn-large {
+  @extend ._btn;
+  padding: 13px 20px;
+}

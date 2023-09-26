@@ -13,7 +13,7 @@
   --button-border-color: var(--black);
   --button-bg-color: var(--black-light);
   --button-shadow: var(--black);
-  
+
 
   --accent-color: var(--yellow);
 
@@ -24,17 +24,23 @@
   --footer-bg-color: var(--black);
   --footer-text-color: var(--white-dark);
 
-  --btn-border-radius: var(--border-radius);
-  --btn-primary-text-color: var(--white);
-  --btn-primary-bg-color: var(--accent-color);
-  --btn-secondary-text-color: var(--accent-color);
-  --btn-secondary-bg-color: var(--gray-dark);
-  --btn-outline-text-color: var(--accent-color);
-  --btn-outline-border-color: var(--accent-color);
-  --btn-clean-text-color: var(--accent-color);
+  // Button
+  --btn-font-size: 14px; // TODO: manca la variabile in variables-css (se è riutilizzabile, ES: font-size-default, font-size-small o roba simile)
+  --btn-font-family: Bungee, sans-serif; // TODO: variabile in variables-css?
+  --btn-border-radius: var(--border-radius); // 8px
+  --btn-border-color: var(--gray-lighter); // #CCCCCC
+
+  --btn-default-text-color: var(--white); // #EEEEEE
+  --btn-default-bg-color: var(--black-light); // #333333
+  --btn-default-border-color: var(--gray-lighter); // #CCCCCC
+  --btn-default-box-shadow: 1px 2px 0px #E3E3E3; // TODO: manca il colore in variables-css
+
+  --btn-selected-text-color: var(--black-light); // #333333
+  --btn-selected-bg-color: var(--accent-color); // #FFF500
 
 
-  --bottom-navigation-bg-color: rgba(35, 35, 35, 0.7); // var(--white)
+
+  --bottom-navigation-bg-color: rgba(35, 35, 35, 0.7); // var(--white--transparent) ?
   --bottom-navigation-text-color: var(--white);
   --bottom-navigation-border-color: var(--black-pure);
   --bottom-navigation-border-color-light: var(--black-light);
@@ -73,14 +79,11 @@
   --footer-bg-color: var(--black-light);
   --footer-text-color: var(--white);
 
-  --btn-border-radius: var(--border-radius);
-  --btn-primary-text-color: var(--white);
-  --btn-primary-bg-color: var(--accent-color);
-  --btn-secondary-text-color: var(--accent-color);
-  --btn-secondary-bg-color: var(--white);
-  --btn-outline-text-color: var(--accent-color);
-  --btn-outline-border-color: var(--accent-color);
-  --btn-clean-text-color: var(--accent-color);
+  --btn-border-radius: var(--border-radius); // 8px
+  --btn-default-text-color: var(--white); // #EEEEEE
+  --btn-default-bg-color: var(--black-light); // #333333
+  --btn-selected-text-color: var(--black-light); // #333333
+  --btn-selected-bg-color: var(--accent-color); // #FFF500
 
   --bottom-navigation-bg-color: rgba(224, 224, 224, 0.7); // var(--black-light)
   --bottom-navigation-text-color: var(--black-light);
