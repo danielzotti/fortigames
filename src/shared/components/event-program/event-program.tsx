@@ -26,8 +26,8 @@ export default component$(() => {
 
     const parsed: AgendaParsed[] | undefined = data?.map(e => {
       return {...e, ...{
-        startTime: e.start ? new Date(e.start).getHours() + ":" + new Date(e.start).getMinutes()  : "",
-        endTime: e.end ? new Date(e.end).getHours() + ":" + new Date(e.end).getMinutes() : ""
+        startTime: e.start ? new Date(e.start).getHours() + ":" + String(new Date(e.start).getMinutes()).padStart(2,"0")  : "",
+        endTime: e.end ? new Date(e.end).getHours() + ":" + String(new Date(e.end).getMinutes()).padStart(2,"0") : ""
       }}
     })
 

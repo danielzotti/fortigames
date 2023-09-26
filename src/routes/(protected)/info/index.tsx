@@ -1,22 +1,46 @@
-import { component$ } from "@builder.io/qwik";
+import {component$, useSignal, useVisibleTask$} from "@builder.io/qwik";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
+import {supabaseClient} from "~/supabase/supabase-client";
+import {Database} from "~/types/database.types";
 
 export default component$(() => {
+    const agenda = useSignal<Database["public"]["Tables"]["agenda"]["Row"][] | null>();
+
+     useVisibleTask$(async () => {
+         const {data} = await supabaseClient
+             .from("agenda")
+             .select()
+             .order('start', {ascending: true})
+         agenda.value = data;
+     });
+
   return (
     <MainLayout title="Info">
-      <h2>Location</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
-        aliquam, dicta et exercitationem facere ipsum officia officiis provident
-        qui, quo quos reiciendis rerum tenetur. Cumque magni nihil quae
-        voluptate voluptatem.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
-        aliquam, dicta et exercitationem facere ipsum officia officiis provident
-        qui, quo quos reiciendis rerum tenetur. Cumque magni nihil quae
-        voluptate voluptatem.
-      </p>
+        <h2>Location</h2>
+        <p>
+            Padenghe sul Garda - West Garda Hotel
+        </p>
+        <a href="https://maps.app.goo.gl/T23BwGW6LLdEnC5Y8" target="_blank">Clicca qui per la mappa</a>
+
+        <h2 id="agenda">Agenda</h2>
+            <h3>Venerdì 29</h3>
+        {agenda.value?.map(e => (
+            <div class="agenda-item">
+                <div class="agenda-item-time">
+                    {e.start ? new Date(e.start).getHours() + ":" +  String(new Date(e.start).getMinutes()).padStart(2,"0")  : ""}
+                    {e.end ? "- "  + new Date(e.end).getHours() + ":" +  String(new Date(e.end).getMinutes()).padStart(2,"0") : ""}</div>
+                <div class="agenda-item-text">{e.activity}</div>
+            </div>
+        ))}
+
+            <h3>Sabato 30</h3>
+                <div class="agenda-item">
+                <div class="agenda-item-time">Entro le 11</div>
+                <div class="agenda-item-text">Check-out</div>
+            </div>
+        <div>
+
+        </div>
       <h2>Comportamento</h2>
       <p>testo</p>
 

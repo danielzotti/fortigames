@@ -26,12 +26,10 @@ export default component$(() => {
       <GameResults />
       <GamesTimeManager />
       <GamesTeam />
-        <EventProgram />
-      <p>
-        FontAwesome Test:
-        <i class="fa-solid fa-user"></i>
-        <i class="fa-brands fa-github-square"></i>
-      </p>
+      <EventProgram />
+        <a href="https://maps.app.goo.gl/T23BwGW6LLdEnC5Y8" target="_blank">
+            Location
+        </a>
     </MainLayout>
   );
 });
