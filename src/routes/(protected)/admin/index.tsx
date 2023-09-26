@@ -5,6 +5,7 @@ import { Participant } from "~/types/participant.types";
 import { Link } from "@builder.io/qwik-city";
 import Loader from "~/shared/components/ui/loader/loader";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
+import { LOADIPHLPAPI } from "dns";
 
 export default component$(() => {
   const user = useSignal<User | null>(null);
@@ -26,13 +27,11 @@ export default component$(() => {
     people.value = participantList;
   });
 
-  if (!people.value && !user.value) {
-    return <Loader />;
-  }
-
   return (
     <MainLayout title="Gestione">
-      <pre>Current user: {user.value?.email}</pre>
+      {!people.value && !user.value && <Loader />}
+
+      {user.value && <pre>Current user: {user.value?.email}</pre>}
 
       {people.value && (
         <div class="table-container">
