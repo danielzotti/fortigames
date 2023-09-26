@@ -98,32 +98,35 @@ export default component$(() => {
           }
         })}
       </ul>
-      <table class="teams-member-list">
+      <table class={styles.playersList}>
         {people.value &&
           people.value.map((p) => (
             <tr key={p.id}>
-              <td>{p.number || "ND"}</td>
+              {/*<td>{p.number || "ND"}</td>*/}
               <td>
                 {p.firstname} {p.lastname} ({p.company})
               </td>
               <td>
+                {p.team ? <span class={[styles[p.team], styles.team]}></span> : <span class={[styles.noTeam, styles.team]}></span>}
+              </td>
+              <td class={styles.iconContainer}>
                 {p.is_playing_soccer ? <i class="fa fa-soccer-ball"></i> : ""}
               </td>
-              <td>
+              <td class={styles.iconContainer}>
                 {p.is_playing_volley ? (
                   <i class="fa fa-volleyball-ball"></i>
                 ) : (
                   ""
                 )}
               </td>
-              <td>
+              <td class={styles.iconContainer}>
                 {p.is_playing_pingpong ? (
                   <i class="fa fa-table-tennis-paddle-ball"></i>
                 ) : (
                   ""
                 )}
               </td>
-              <td>
+              <td class={styles.iconContainer}>
                 {p.is_playing_boardgames ? (
                   <i class="fa fa-chess-rook"></i>
                 ) : (
