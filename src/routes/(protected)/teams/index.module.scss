@@ -1,0 +1,54 @@
+.teamsContainer {
+  display: flex;
+  height: 40%;
+
+  .teamContainer {
+    flex-grow: 1;
+
+    .teamCover {
+      min-height: 300px;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+    .teamInfoContainer {
+      text-align: center;
+      padding: 16px 1.2em;
+      .teamTitle {
+        display: inline-block;
+        box-shadow: 1px 2px 0 #111111;
+        border-width: 1px 2px 2px 1px;
+        padding: 4px 8px;
+      }
+    }
+
+    &.tigers {
+      color: #fff;
+      background-color: #000;
+      .teamCover {
+        background-image: url('/public/static/backgorunds/cover_tiger_big.png');
+      }
+
+      .teamInfoContainer {
+        background: linear-gradient(180deg, #1D1D1D 4.64%, #6A6A6A 197.21%);
+        .teamTitle {
+          background-color: #333333;
+          border-color: #222;
+        }
+      }
+    }
+    &.dragons {
+      color: #000;
+      background-color: #fff;
+
+      .teamCover {
+        background-image: url('/public/static/backgorunds/cover_dragon_big.png');
+      }
+
+      .teamTitle {
+        border-color: #DBDBDB;
+      }
+    }
+  }
+
+}
