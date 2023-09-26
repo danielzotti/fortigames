@@ -88,8 +88,9 @@ a {
 }
 
 button {
-	padding: var(--spacing-small) var(--spacing-default);
+  padding: var(--spacing-small) var(--spacing-default);
   font-family: var(--font-family-button);
+
 	font-size: 1.2rem;
   color: var(--text-color);
   border-top: 1px solid var(--button-border-color);
@@ -99,6 +100,7 @@ button {
 	background-color: var(--button-bg-color);
   box-shadow: 0px px 4px 0px var(--button-shadow);
 	border-radius: var(--border-radius);
+
 
   &:hover, &:focus, &:active {
     cursor: var(--cursor-pointer);
@@ -124,11 +126,17 @@ ul, ol {
   }
 }
 
+pre {
+  word-wrap: break-word;
+  white-space: break-spaces;
+}
+
 // TODO: remove it or improve it!
 table {
   padding: 0.5em;
   border: 1px solid var(--border-color);
   border-collapse: collapse;
+  width: 100%;
 
   td {
     padding: 0.5em;
@@ -152,5 +160,10 @@ table {
     &:hover {
       background-color: var(--text-bg-color-secondary);
     }
+    text-align: center;
+    border-width: 1px 0 1px 0;
+    border-color: #444444;
+    border-style: solid;
+    padding: 8px;
   }
 }

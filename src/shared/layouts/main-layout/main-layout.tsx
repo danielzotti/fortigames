@@ -5,19 +5,23 @@ import BottomNavigation from "~/shared/components/ui/bottom-navigation/bottom-na
 import styles from "./main-layout.module.scss";
 
 interface Props {
-  fullWidth?: boolean;
+  title?: string;
+  hasContentPaddingTop?: boolean;
 }
 
-export default component$(({ fullWidth = false }: Props) => {
+export default component$(({ title, hasContentPaddingTop = true }: Props) => {
   return (
-    <div
-      class={styles.container}
-      style={{ maxWidth: fullWidth ? "100%" : "800px" }}
-    >
-      <div class={styles.profileAvatar}>
+    <div class={styles.container}>
+      <div class={styles.top}>
+        <div></div>
+        {title && <h1 class={styles.title}>{title}</h1>}
         <ProfileAvatar />
       </div>
-      <div class={styles.content}>
+      <div
+        class={`${styles.content} ${
+          hasContentPaddingTop ? styles.contentWithPadding : ""
+        }`}
+      >
         <Slot />
       </div>
       <div class={styles.bottomNavigation}>

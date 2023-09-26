@@ -1,5 +1,19 @@
 const baseUrl = "https://fortigames.danielzotti.it";
 
+interface SingleGame{
+  db_key: string,
+  label: string,
+  team: boolean,
+  icon: string
+}
+
+export interface Games {
+  soccer: SingleGame,
+  table_tennis: SingleGame,
+  volley: SingleGame,
+  board_games: SingleGame
+}
+
 export const config = {
   baseUrl,
   title: "Fortigames",
@@ -34,42 +48,47 @@ export const config = {
     // TODO: set urls here
     home: "/",
     login: "/login",
+    auth: "/auth",
     profile: "/profile",
     admin: "/admin",
     teams: "/teams",
-    games: "/games",
+    games: "/games/",
     boardGames: "/board-games",
     info: "/info",
   },
   teams: {
     tigers: {
-      label: "Tigers"
+      label: "Tigers",
     },
     dragons: {
-      label: "Dragons"
-    }
+      label: "Dragons",
+    },
   },
   games: {
     soccer: {
       db_key: "is_playing_soccer",
       label: "Calcio",
-      team: true
+      team: true,
+      icon: 'fa fa-soccer-ball'
     },
     table_tennis: {
       db_key: "is_playing_pingpong",
       label: "Tennis Tavolo",
-      team: true
+      team: true,
+      icon: 'fa fa-table-tennis-paddle-ball'
     },
     volley: {
       db_key: "is_playing_volley",
       label: "Pallavolo",
-      team: true
+      team: true,
+      icon: 'fa fa-volleyball-ball'
     },
     board_games: {
       db_key: "is_playing_boardgames",
       label: "Boardgames",
-      team: false
-    }
+      team: false,
+      icon: 'fa fa-chess-rook'
+    },
   },
   // apis: {
   //   baseUrl: `${baseUrl}/api`,

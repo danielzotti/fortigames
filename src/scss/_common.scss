@@ -8,3 +8,8 @@
     cursor: var(--cursor-pointer);
   }
 }
+
+.table-container {
+  max-width: 100%;
+  overflow-y: auto;
+}
