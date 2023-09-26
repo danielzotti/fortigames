@@ -43,7 +43,6 @@
 .content {
   position: relative;
   padding-inline: var(--spacing-default);
-  // padding-top: 80px; // TODO: check this height!
   padding-bottom: 120px; // TODO: check this height!
   max-width: 800px;
   margin: 0 auto;
@@ -56,6 +55,11 @@
     }
   }
 }
+
+.contentWithPadding {
+  padding-top: 80px; // TODO: check this height!
+}
+
 
 .bottomNavigation {
   position: fixed;

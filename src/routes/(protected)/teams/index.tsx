@@ -47,7 +47,7 @@ export default component$(() => {
   }
 
   return (
-    <MainLayout title="I Team">
+    <MainLayout title="I Team" hasContentPaddingTop={false}>
       <div class={styles.teamsContainer}>
         <div class={[styles.teamContainer, styles.tigers]}>
           <div class={styles.teamCover}></div>

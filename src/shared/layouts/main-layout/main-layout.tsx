@@ -6,9 +6,10 @@ import styles from "./main-layout.module.scss";
 
 interface Props {
   title?: string;
+  hasContentPaddingTop?: boolean;
 }
 
-export default component$(({ title }: Props) => {
+export default component$(({ title, hasContentPaddingTop = true }: Props) => {
   return (
     <div class={styles.container}>
       <div class={styles.top}>
@@ -16,7 +17,11 @@ export default component$(({ title }: Props) => {
         {title && <h1 class={styles.title}>{title}</h1>}
         <ProfileAvatar />
       </div>
-      <div class={styles.content}>
+      <div
+        class={`${styles.content} ${
+          hasContentPaddingTop ? styles.contentWithPadding : ""
+        }`}
+      >
         <Slot />
       </div>
       <div class={styles.bottomNavigation}>
