@@ -1,4 +1,5 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { $ } from "@builder.io/qwik";
 import styles from "./games-time-manager.module.scss";
 import { supabaseClient } from "~/supabase/supabase-client";
 import { DateTime } from "luxon";
@@ -13,7 +14,21 @@ interface Config {
 
 export default component$(() => {
   const config = useSignal<Config | null>();
-  const remainingTime = useSignal<number | null>(null);
+  const remainingTime = useSignal<string | null>(null);
+
+  const updateRemainingTime = $(() => {
+    if (config.value?.planned_end) {
+      const now = DateTime.now();
+      const later = DateTime.fromISO(config.value.planned_end);
+
+      const diff = later.diff(now, ["hours", "minutes", "seconds"]).toObject();
+      remainingTime.value = `- ${diff.hours} ${Math.round(
+        Number(diff.minutes)
+      )} ${Math.round(Number(diff.seconds))}'`;
+    }
+
+    return "";
+  });
 
   useVisibleTask$(async () => {
     const { data } = await supabaseClient
@@ -23,23 +38,9 @@ export default component$(() => {
 
     if (data) {
       config.value = data[0];
-      //   updateRemainingTime();
-      //   setInterval(updateRemainingTime, 1000); // Update every second
+      setInterval(updateRemainingTime, 1000);
     }
   });
-
-  const updateRemainingTime = () => {
-    if (config.value?.planned_end) {
-      const now = DateTime.now();
-      const later = DateTime.fromISO(config.value.planned_end);
-
-      const diff = later.diff(now, ["hours", "minutes", "seconds"]).toObject();
-      //   return `- ${diff.hours} ${Math.round(Number(diff.minutes))}'`;
-      return Math.round(Number(diff.seconds));
-    }
-
-    return "";
-  };
 
   return (
     <div class={styles.endGameContainer}>
@@ -49,7 +50,7 @@ export default component$(() => {
             <div class={styles.title}>Fine gioco</div>
             <div class={styles.plannedEnd}>h 19:00</div>
           </div>
-          <div class={styles.remainingTime}>{updateRemainingTime()}</div>
+          <div class={styles.remainingTime}>{remainingTime.value}</div>
         </>
       ) : (
         <>
