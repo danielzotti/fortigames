@@ -1,8 +1,8 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { supabaseClient } from "~/supabase/supabase-client";
-import { Participant } from "~/types/participant.types";
+import { type Participant } from "~/types/participant.types";
 import { useLocation } from "@builder.io/qwik-city";
-import { config } from "~/config";
+import { config, type Games } from "~/config";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
 
 export default component$(() => {
@@ -26,7 +26,7 @@ export default component$(() => {
       client.is(config.games[game as keyof Games].db_key, true);
     }
 
-    const { data: participantList, error } = await client;
+    const { data: participantList } = await client;
     people.value = participantList;
   });
 
@@ -53,7 +53,9 @@ export default component$(() => {
         </li>
         {Object.keys(config.teams).map((k) => (
           <li class={isFilterActive("team", k) && "is-active"} key={k}>
-            <a href={createFilterUrl("team", k)}>{config.teams[k].label}</a>
+            <a href={createFilterUrl("team", k)}>
+              {config.teams[k as keyof typeof config.teams].label}
+            </a>
           </li>
         ))}
       </ul>
@@ -63,7 +65,7 @@ export default component$(() => {
           <a href={createFilterUrl("game", null)}>All</a>
         </li>
         {Object.keys(config.games).map((k) => {
-          const game = config.games[k as keyof Games];
+          const game = config.games[k as keyof typeof config.games];
           if (game.team) {
             return (
               <li class={isFilterActive("game", k) && "is-active"} key={k}>
@@ -77,7 +79,7 @@ export default component$(() => {
         {people.value &&
           people.value.map((p) => (
             <tr key={p.id}>
-              <td>{p.number || "ND"}</td>
+              <td>{p.number ?? "ND"}</td>
               <td>
                 {p.firstname} {p.lastname} ({p.company})
               </td>
