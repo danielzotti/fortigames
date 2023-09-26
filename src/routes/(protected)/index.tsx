@@ -27,6 +27,7 @@ export default component$(() => {
       <GamesTimeManager />
       <GamesTeam />
       <EventProgram />
+        <div><a href="/info/#agenda">Programma</a></div>
         <a href="https://maps.app.goo.gl/T23BwGW6LLdEnC5Y8" target="_blank">
             Location
         </a>
