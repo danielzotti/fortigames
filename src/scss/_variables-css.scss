@@ -10,22 +10,32 @@
   --cursor-pointer: pointer;
 
   //COLORS
+  --black-pure: #000;
+  --black-dark: #111;
   --black: #222;
-  --black-light: #111;
-  --white: #eee;
-  --white-dark: #d0d0d0;
-  --gray-dark: #333;
-  --gray-middle: #666;
+  --black-light: #333;
+
+  --white-pure: #FFF;
+  --white: #EEE;
+  --white-dark: #DDD;
+  --white-darker: #D0D0D0;
+
+  --gray-dark: #444;
+  --gray: #666;
   --gray-light: #888;
+  --gray-lighter: #CCC;
+
   --blue: #008dc9;
+  --yellow: rgb(255, 245, 0);
   --red: #d00;
-  --accent-color: rgba(204, 255, 0);
+  --accent-color: var(--yellow);
 
   --link-color: inherit;
 
   //FONTS
-  --font-family-title: 'Bungee Shade', Georgia, serif;
+  --font-family-title: 'Bungee', Georgia, serif;
   --font-family-button: 'Bungee', Georgia, serif;
+  --font-family-label: 'Bungee', Georgia, serif;
   --font-family-text: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-fun: 'Gochi Hand', 'Roboto', Verdana, Helvetica, Arial, sans-serif;
   --font-family-board: 'Special Elite', 'Roboto', Verdana, Helvetica, Arial, sans-serif;

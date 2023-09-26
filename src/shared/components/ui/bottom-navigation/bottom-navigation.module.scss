@@ -8,7 +8,6 @@
 }
 
 .menu {
-  background-color: var(--bottom-navigation-bg-color);
   border-radius: var(--border-radius);
   display: flex;
   flex-direction: row;
@@ -16,6 +15,14 @@
   width: 100%;
   font-size: 1.5em;
   padding: var(--spacing-default);
+  border-top: 1px solid var(--bottom-navigation-border-color-light);
+  border-right: 1px solid var(--bottom-navigation-border-color-dark);
+  border-bottom: 1px solid var(--bottom-navigation-border-color-dark);
+  border-left: 1px solid var(--bottom-navigation-border-color-light);
+  background-color: var(--bottom-navigation-bg-color);
+
+  box-shadow: 0px px 4px 0px var(--bottom-navigation-box-shadow);
+	backdrop-filter: blur(4.7px);
 }
 
 .menuItem {
@@ -41,10 +48,10 @@
   }
 
   &:global(.active) {
-    background-color: var(--accent-color);
+    background-color: var(--bottom-navigation-accent-color);
 
     &:hover {
-      color: var(--bottom-navigation-text-color);
+      background-color: var(--bottom-navigation-accent-color);
     }
   }
 }
