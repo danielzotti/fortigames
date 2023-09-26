@@ -15,9 +15,9 @@ export default component$(() => {
     const game = loc.url.searchParams.get("game");
 
     const client = supabaseClient
-      .from("users")
-      .select("*")
-      .is("has_filled_form", true);
+        .from("users")
+        .select("*")
+        .is("has_filled_form", true);
 
     if (team && Object.keys(config.teams).includes(team)) {
       client.eq("team", team);
@@ -27,7 +27,7 @@ export default component$(() => {
       client.is(config.games[game as keyof Games].db_key, true);
     }
 
-    const { data: participantList, error } = await client;
+    const { data: participantList } = await client;
     people.value = participantList;
   });
 

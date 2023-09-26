@@ -5,6 +5,8 @@ import { Participant } from "~/types/participant.types";
 
 import GameResults from "~/shared/components/games-results/game-results";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
+import GamesTimeManager from "~/shared/components/games-time-manager/games-time-manager";
+import GamesTeam from "~/shared/components/games-team/games-team";
 
 export default component$(() => {
   const people = useSignal<Array<Participant> | null>();
@@ -21,7 +23,8 @@ export default component$(() => {
     <MainLayout title="Home">
       {/*<div q:slot="title">Welcome to Fortigames 2023</div>*/}
       <GameResults />
-
+      <GamesTimeManager />
+      <GamesTeam />
       <p>
         FontAwesome Test:
         <i class="fa-solid fa-user"></i>
