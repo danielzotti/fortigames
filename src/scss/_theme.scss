@@ -3,7 +3,18 @@
   // THEME (dark)
   --text-color: var(--white-dark);
   --text-color-secondary: var(--white);
-  --text-bg-color: var(--gray-dark);
+  --text-bg-color: var(--black);
+  --text-bg-color-secondary: var(--black-light);
+  --gradient-bg-color:  linear-gradient(155deg, var(--gray-dark) 28.44%, var(--black-pure) 84.76%);
+
+  --text-color-inverse: var(--black-light);
+  --text-bg-color-inverse: var(--white);
+  --border-color: var(--gray-dark);
+  --button-border-color: var(--black);
+  --button-bg-color: var(--black-light);
+  --button-shadow: var(--black);
+  
+
   --accent-color: var(--yellow);
 
   --navbar-bg-color: var(--black);
@@ -22,8 +33,15 @@
   --btn-outline-border-color: var(--accent-color);
   --btn-clean-text-color: var(--accent-color);
 
-  --bottom-navigation-bg-color: rgba(255, 255, 255, 0.7); // var(--white)
-  --bottom-navigation-text-color: var(--black-light);
+
+  --bottom-navigation-bg-color: rgba(35, 35, 35, 0.7); // var(--white)
+  --bottom-navigation-text-color: var(--white);
+  --bottom-navigation-border-color: var(--black-pure);
+  --bottom-navigation-border-color-light: var(--black-light);
+  --bottom-navigation-border-color-dark: var(--black);
+  --bottom-navigation-box-shadow: var(--gray-dark);
+  --bottom-navigation-accent-color:rgba(255, 245, 0, 0.7);
+
 
   --profile-avatar-bg-color: var(--white);
   --profile-avatar-text-color: var(--black-light);
@@ -35,7 +53,18 @@
   --text-color: var(--black-light);
   --text-color-secondary: var(--gray-dark);
   --text-bg-color: var(--white);
-  --accent-color: var(--blue);
+  --text-bg-color-secondary: var(--white-dark);
+
+  --text-color-inverse: var(--white);
+  --text-bg-color-inverse: var(--black-light);
+  --gradient-bg-color:  linear-gradient(155deg, var(--white-pure) 28.44%, var(--white-dark) 84.76%);
+
+  --border-color: var(--gray-light);
+  --button-border-color: var(--gray-lighter);
+  --button-bg-color: var(--white);
+  --button-shadow: var(--white-darker);
+
+  --accent-color: var(--yellow);
 
   --navbar-bg-color: var(--black-light);
   --navbar-text-color: var(--white);
@@ -53,8 +82,13 @@
   --btn-outline-border-color: var(--accent-color);
   --btn-clean-text-color: var(--accent-color);
 
-  --bottom-navigation-bg-color: rgba(0, 0, 0, 0.7); // var(--black-light)
-  --bottom-navigation-text-color: var(--white);
+  --bottom-navigation-bg-color: rgba(224, 224, 224, 0.7); // var(--black-light)
+  --bottom-navigation-text-color: var(--black-light);
+  --bottom-navigation-border-color: var(--white);
+  --bottom-navigation-border-color-light: var(--white-pure);
+  --bottom-navigation-border-color-dark: var(--white-dark);
+  --bottom-navigation-box-shadow: var(--gray-light);
+  --bottom-navigation-accent-color:rgba(255, 245, 0, 0.7);
 
   --profile-avatar-bg-color: var(--black-light);
   --profile-avatar-text-color: var(--white);
