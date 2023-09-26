@@ -34,8 +34,8 @@ export default component$(() => {
       const later = DateTime.fromISO(config.value.planned_end);
 
       const diff = later.diff(now, ["hours", "minutes", "seconds"]).toObject();
-      return `- ${diff.hours} ${Math.round(Number(diff.minutes))}'`;
-      // return Math.round(Number(diff.seconds));
+      //   return `- ${diff.hours} ${Math.round(Number(diff.minutes))}'`;
+      return Math.round(Number(diff.seconds));
     }
 
     return "";
