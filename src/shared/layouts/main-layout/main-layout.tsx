@@ -12,8 +12,8 @@ export default component$(({ title }: Props) => {
   return (
     <div class={styles.container}>
       <div class={styles.top}>
-        <div class={styles.blur}></div>
-        <h1 class={styles.title}>{title}</h1>
+        <div></div>
+        {title && <h1 class={styles.title}>{title}</h1>}
         <ProfileAvatar />
       </div>
       <div class={styles.content}>
