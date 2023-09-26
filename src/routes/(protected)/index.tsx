@@ -7,6 +7,7 @@ import GameResults from "~/shared/components/games-results/game-results";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import GamesTimeManager from "~/shared/components/games-time-manager/games-time-manager";
 import GamesTeam from "~/shared/components/games-team/games-team";
+import EventProgram from "~/shared/components/event-program/event-program";
 
 export default component$(() => {
   const people = useSignal<Array<Participant> | null>();
@@ -25,6 +26,7 @@ export default component$(() => {
       <GameResults />
       <GamesTimeManager />
       <GamesTeam />
+        <EventProgram />
       <p>
         FontAwesome Test:
         <i class="fa-solid fa-user"></i>
