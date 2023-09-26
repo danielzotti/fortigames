@@ -123,45 +123,59 @@ export default component$(() => {
       </h3>
       <Form onSubmit$={handleSubmit}>
         <Field name="email" type="string">
+          {/*@ts-ignore-*/}
           {(field, props) => InputString(field, props)}
         </Field>
         <Field name="firstname" type="string">
+          {/*@ts-ignore-*/}
           {(field, props) => InputString(field, props)}
         </Field>
         <Field name="lastname" type="string">
+          {/*@ts-ignore-*/}
           {(field, props) => InputString(field, props)}
         </Field>
         <Field name="team" type="string">
+          {/*@ts-ignore-*/}
           {(field, props) => InputString(field, props)}
         </Field>
         <Field name="company" type="string">
+          {/*@ts-ignore-*/}
           {(field, props) => InputString(field, props)}
         </Field>
         <Field name="number" type="number">
+          {/*@ts-ignore-*/}
           {(field, props) => InputNumber(field, props)}
         </Field>
         <Field name="is_admin" type="boolean">
+          {/*@ts-ignore-*/}
           {(field, props) => InputCheckbox(field, props)}
         </Field>
         <Field name="is_playing_soccer" type="boolean">
+          {/*@ts-ignore-*/}
           {(field, props) => InputCheckbox(field, props)}
         </Field>
         <Field name="is_playing_volley" type="boolean">
+          {/*@ts-ignore-*/}
           {(field, props) => InputCheckbox(field, props)}
         </Field>
         <Field name="is_playing_pingpong" type="boolean">
+          {/*@ts-ignore-*/}
           {(field, props) => InputCheckbox(field, props)}
         </Field>
         <Field name="is_playing_boardgames" type="boolean">
+          {/*@ts-ignore-*/}
           {(field, props) => InputCheckbox(field, props)}
         </Field>
         <Field name="is_referee" type="boolean">
+          {/*@ts-ignore-*/}
           {(field, props) => InputCheckbox(field, props)}
         </Field>
         <Field name="is_facilitator" type="boolean">
+          {/*@ts-ignore-*/}
           {(field, props) => InputCheckbox(field, props)}
         </Field>
         <Field name="has_filled_form" type="boolean">
+          {/*@ts-ignore-*/}
           {(field, props) => InputCheckbox(field, props)}
         </Field>
 
