@@ -6,10 +6,16 @@ export default component$(() => {
   return (
     <MainLayout title="Ben fatta!">
       <p>Hai trovato un easter egg! Non hai vinto nulla se non la gloria</p>
-      <Button>Default Medium</Button>{" "}
+      <Button>Default Medium</Button>
+      <br />
+      <br />
       <Button size="large">Default Large</Button>
-      <Button type="selected">Selected Medium</Button>
-      <Button type="selected" size="large">
+      <br />
+      <br />
+      <Button variant="selected">Selected Medium</Button>
+      <br />
+      <br />
+      <Button variant="selected" size="large">
         Selected Large
       </Button>
     </MainLayout>

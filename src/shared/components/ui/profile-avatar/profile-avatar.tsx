@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import styles from "./profile-avatar.module.scss";
-import { useNavigate } from "@builder.io/qwik-city";
+import { Link, useNavigate } from "@builder.io/qwik-city";
 import { config } from "~/config";
 import { useAuth } from "~/hooks/useAuth";
 
@@ -20,11 +20,8 @@ export default component$(() => {
   };
 
   return (
-    <button
-      onClick$={() => navigate(config.urls.profile)}
-      class={styles.profile}
-    >
+    <Link onClick$={() => navigate(config.urls.profile)} class={styles.profile}>
       {getUserInitialLetters()}
-    </button>
+    </Link>
   );
 });

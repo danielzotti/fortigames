@@ -1,10 +1,22 @@
 ._btn {
-  border: var(--btn-border-radius);
-  box-shadow: var(--btn-border-color);
+  cursor: var(--cursor-pointer);
+  border-radius: var(--btn-border-radius);
+  border: 1px solid var(--btn-border-color);
+
+  box-shadow: var(--btn-default-box-shadow);
   font-size: var(--btn-font-size);
   font-family: var(--btn-font-family);
   text-transform: uppercase;
-  margin: 0 10px;
+  display: inline-block;
+
+  &:active {
+    transform: scale(0.97)
+  }
+
+  &:hover {
+    background: var(--btn-default-hover-bg-color);
+    color: var(--btn-default-hover-text-color);
+  }
 }
 
 .btn-default {

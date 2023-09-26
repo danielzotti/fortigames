@@ -18,6 +18,7 @@ import { config } from "~/config";
 import BackButton from "~/shared/components/ui/back-button/back-button";
 import Loader from "~/shared/components/ui/loader/loader";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
+import Button from "~/shared/components/ui/button/button";
 
 const participantDefaultValue: Participant = {
   company: "",
@@ -180,7 +181,7 @@ export default component$(() => {
               {(field, props) => InputCheckbox(field, props)}
             </Field>
 
-            <button type="submit">Save</button>
+            <Button type="submit">Save</Button>
           </Form>
         </>
       )}

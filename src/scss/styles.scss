@@ -9,36 +9,3 @@
 
 // COMPONENTS
 @import "components/button";
-
-// TODO TEMP
-.tabs-container {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.7em;
-  padding: 8px 0;
-
-  li {
-    list-style-type: none;
-    padding: 4px 12px;
-    border-radius: 8px;
-    border: 1px solid #222222;
-    background: #333333;
-    box-shadow: 1px 2px 0px #111111;
-    flex-grow: 1;
-    margin-right: 8px;
-    text-align: center;
-
-    a {
-      border-bottom: 0;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
-
-    &.is-active {
-      color: #333333;
-      background-color: var(--accent-color);
-    }
-  }
-}

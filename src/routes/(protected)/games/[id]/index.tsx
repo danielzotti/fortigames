@@ -10,6 +10,7 @@ import { useLocation } from "@builder.io/qwik-city";
 import { supabaseClient } from "~/supabase/supabase-client";
 import GameResults from "~/shared/components/games-results/game-results";
 import styles from "./index.module.scss";
+import Button from "~/shared/components/ui/button/button";
 
 interface GameResults {
   dragons: number;
@@ -65,7 +66,7 @@ export default component$(() => {
         <div class={styles.singleTeam}>
           Dragons
           <div class={styles.singleTeamResult}>{results.dragons}</div>
-          <button
+          <Button
             onClick$={[
               $(() => {
                 results.dragons--;
@@ -74,8 +75,8 @@ export default component$(() => {
             ]}
           >
             -
-          </button>
-          <button
+          </Button>
+          <Button
             onClick$={[
               $(() => {
                 results.dragons++;
@@ -84,13 +85,13 @@ export default component$(() => {
             ]}
           >
             +
-          </button>
+          </Button>
         </div>
 
         <div class={styles.singleTeam}>
           Tigers
           <div class={styles.singleTeamResult}>{results.tigers}</div>
-          <button
+          <Button
             onClick$={[
               $(() => {
                 results.tigers--;
@@ -99,8 +100,8 @@ export default component$(() => {
             ]}
           >
             -
-          </button>
-          <button
+          </Button>
+          <Button
             onClick$={[
               $(() => {
                 results.tigers++;
@@ -109,7 +110,7 @@ export default component$(() => {
             ]}
           >
             +
-          </button>
+          </Button>
         </div>
       </div>
     </MainLayout>

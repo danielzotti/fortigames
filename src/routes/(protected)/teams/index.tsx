@@ -1,14 +1,16 @@
-import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { supabaseClient } from "~/supabase/supabase-client";
 import { Participant } from "~/types/participant.types";
-import { useLocation } from "@builder.io/qwik-city";
+import { useLocation, useNavigate } from "@builder.io/qwik-city";
 import { config, Games } from "~/config";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import styles from "./index.module.scss";
+import Button from "~/shared/components/ui/button/button";
 
 export default component$(() => {
   const people = useSignal<Array<Participant> | null>();
   const loc = useLocation();
+  const navigate = useNavigate();
 
   useVisibleTask$(async () => {
     const team = loc.url.searchParams.get("team");
@@ -31,7 +33,7 @@ export default component$(() => {
     people.value = participantList;
   });
 
-  function createFilterUrl(key: string, value: string | null) {
+  const navigateFilterUrl = $((key: string, value: string | null) => {
     const urlParams = new URLSearchParams(loc.url.search);
     if (value) {
       urlParams.set(key, value);
@@ -39,8 +41,9 @@ export default component$(() => {
       urlParams.delete(key);
     }
 
-    return "/teams/?" + urlParams.toString();
-  }
+    const url = `${config.urls.teams}?${urlParams.toString()}`;
+    navigate(url);
+  });
 
   function isFilterActive(key: string, value: string) {
     return loc.url.searchParams.get(key) === value;
@@ -72,27 +75,29 @@ export default component$(() => {
       </div>
       <ul class="teams-list tabs-container">
         <li class={!loc.url.searchParams.get("team") && "is-active"}>
-          <a href={createFilterUrl("team", null)}>All</a>
+          <Button onClick$={() => navigateFilterUrl("team", null)}>All</Button>
         </li>
         {Object.keys(config.teams).map((k) => (
           <li class={isFilterActive("team", k) && "is-active"} key={k}>
-            <a href={createFilterUrl("team", k)}>
+            <Button onClick$={() => navigateFilterUrl("team", k)}>
               {config.teams[k as keyof typeof config.teams].label}
-            </a>
+            </Button>
           </li>
         ))}
       </ul>
       Persone
       <ul class="teams-games tabs-container">
         <li class={!loc.url.searchParams.get("game") && "is-active"}>
-          <a href={createFilterUrl("game", null)}>All</a>
+          <Button onClick$={() => navigateFilterUrl("game", null)}>All</Button>
         </li>
         {Object.keys(config.games).map((k) => {
           const game = config.games[k as keyof Games];
           if (game.team) {
             return (
               <li class={isFilterActive("game", k) && "is-active"} key={k}>
-                <a href={createFilterUrl("game", k)}>{game.label}</a>
+                <Button onClick$={() => navigateFilterUrl("game", k)}>
+                  {game.label}
+                </Button>
               </li>
             );
           }
