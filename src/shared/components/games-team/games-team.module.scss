@@ -8,19 +8,17 @@
     border-right: 2px solid #222;
     border-bottom: 2px solid #222;
     border-left: 1px solid #222;
-    background: #ff5a5a;
+    background: var(--error-bg-color);
 
     /* button dark */
     box-shadow: 1px 2px 0px 0px #111;
 
-    color: #eee;
+    color: var(--text-color);
     text-align: center;
-    font-family: Bungee;
+    font-family: var(--font-family-title);
     font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    padding: 0.5rem;
+    line-height: 1;
+    padding: var(--spacing-small);
   }
 
   .header {
@@ -30,21 +28,17 @@
   }
 
   .plannedEnd {
-    color: #fff500;
-    font-family: Itim;
+    color: var(--accent-color);
+    font-family: var(--font-family-title);
     font-size: 1.125rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+    line-height: 1;
   }
 
   .remainingTime {
-    color: #eee;
+    color: var(--text-color);
     text-align: center;
-    font-family: Pixolletta8px;
+    font-family: var(--font-family-mono);
     font-size: 2.25rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+    line-height: 1;
   }
 }

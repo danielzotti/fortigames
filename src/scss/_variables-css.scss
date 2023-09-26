@@ -28,6 +28,7 @@
   --blue: #008dc9;
   --yellow: rgb(255, 245, 0);
   --red: #d00;
+  --orange: #FF8A00;
   --accent-color: var(--yellow);
 
 
@@ -39,12 +40,13 @@
   --font-family-label: 'JejuHallasan', Georgia, serif;
   --font-family-text: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   //-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-fun: 'Gochi Hand', 'Roboto', Verdana, Helvetica, Arial, sans-serif;
+  --font-family-fun: 'Itim', 'Roboto', Verdana, Helvetica, Arial, sans-serif;
   --font-family-board: 'Special Elite', 'Roboto', Verdana, Helvetica, Arial, sans-serif;
   --font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
 
   //MARGINS
+  --spacing-xsmall: 0.3rem;
   --spacing-small: 0.5rem;
   --spacing-default: 1rem;
   --spacing-medium: 2rem;
