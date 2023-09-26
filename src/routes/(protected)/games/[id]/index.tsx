@@ -3,6 +3,7 @@ import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import {useLocation} from "@builder.io/qwik-city";
 import {supabaseClient} from "~/supabase/supabase-client";
 import GameResults from "~/shared/components/games-results/game-results";
+import styles from "./index.module.scss"
 
 interface GameResults {
     dragons: number
@@ -54,30 +55,30 @@ export default component$(() => {
     return (
     <MainLayout>
         <h1>Games {game}</h1>
-        <div class="teams-container">
-            <div class="single-team">
+        <div class={styles.teamContainer}>
+            <div class={styles.singleTeam}>
                 Dragons
-                <div>
+                <div class={styles.singleTeamResult}>
                     {results.dragons}
                 </div>
                 <button onClick$={[$(() => {results.dragons--}), updateScore]}>
-                    Decrement
+                    -
                 </button>
                 <button onClick$={[$(() => {results.dragons++}), updateScore]}>
-                    Increment
+                    +
                 </button>
             </div>
 
-            <div class="single-team">
+            <div class={styles.singleTeam}>
                 Tigers
-                <div>
+                <div class={styles.singleTeamResult}>
                     {results.tigers}
                 </div>
                 <button onClick$={[$(() => {results.tigers--}), updateScore]}>
-                    Decrement
+                    -
                 </button>
                 <button onClick$={[$(() => {results.tigers++}), updateScore]}>
-                    Increment
+                    +
                 </button>
             </div>
         </div>

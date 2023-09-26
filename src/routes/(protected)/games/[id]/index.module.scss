@@ -1,0 +1,18 @@
+.teamContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.singleTeam {
+  text-align: center;
+
+  .singleTeamResult {
+    font-size: 2em;
+    text-align: center;
+    margin: 10px 0;
+  }
+  button {
+    color: #000;
+
+  }
+}
