@@ -6,6 +6,13 @@
   overflow: hidden;
 }
 
+.profileAvatar {
+  position: fixed;
+  z-index: 2;
+  top: var(--spacing-small);
+  right: var(--spacing-small);
+}
+
 .title {
   font-family: var(--font-family-title);
   background-color: var(--text-color);
@@ -19,26 +26,23 @@
   text-overflow: ellipsis;
   overflow-x: hidden;
   white-space: nowrap;
+
 }
 
 .top {
   position: fixed;
   z-index: 1;
-  //top: var(--spacing-small);
-  //left: var(--spacing-small);
-  //right: var(--spacing-small);
   top: 0;
   left: 0;
   right: 0;
   display: flex;
-  //width: 100%;
   max-width: 800px;
   margin: auto;
+  height: var(--layout-top-height);
   flex-direction: row;
   justify-content: space-between;
   justify-items: center;
   align-items: center;
-  padding: var(--spacing-small);
 }
 
 .content {
@@ -49,8 +53,9 @@
   word-wrap: break-word;
   white-space: break-spaces;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
   max-height: 100%;
+  scrollbar-gutter: stable both-edges;
 
 
   h1, h2, h3, h4, h5, h6 {

@@ -1,0 +1,22 @@
+.icon {
+  border-radius: 50%;
+  border: 1px solid #555555;
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.icon-dragons {
+  @extend .icon;
+  background-color: var(--dragons-color);
+}
+
+.icon-tigers {
+  @extend .icon;
+  background-color: var(--tigers-color);
+}
+
+.icon-no-team {
+  @extend .icon;
+  background: linear-gradient(315deg, #222223 45%, #EEEEEE 55%);
+}

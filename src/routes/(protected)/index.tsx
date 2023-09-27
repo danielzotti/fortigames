@@ -24,7 +24,6 @@ export default component$(() => {
 
   return (
     <MainLayout title="Home">
-      {/*<div q:slot="title">Welcome to Fortigames 2023</div>*/}
       <GameResults />
       <GamesTimeManager />
       <GamesTeam />

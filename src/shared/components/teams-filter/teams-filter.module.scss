@@ -1,0 +1,23 @@
+.filterItem {
+  display: flex;
+  gap: var(--spacing-xsmall);
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
+.category {
+
+}
+
+.buttons {
+  display: flex;
+  gap: var(--spacing-xsmall);
+
+  i {
+    font-size: 20px;
+    line-height: 1;
+  }
+}
+
+

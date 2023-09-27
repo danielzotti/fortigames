@@ -57,7 +57,8 @@
   --spacing-big: 4rem;
 
   // LAYOUT
-  --layout-padding-top: 80px;
+  --layout-top-height: 65px;
+  --layout-padding-top: 80px; //calc(var(--layout-top-height) + var(--spacing-default)); // It doesn't work with JS
   --layout-padding-bottom: 120px;
   --layout-padding-inline: var(--spacing-default);
 

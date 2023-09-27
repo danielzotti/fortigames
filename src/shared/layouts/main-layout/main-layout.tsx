@@ -27,24 +27,29 @@ export default component$(
     ref,
   }: Props) => {
     return (
-      <div class={styles.container}>
-        <div class={styles.top}>
-          <div></div>
-          {title && <h1 class={styles.title}>{title}</h1>}
+      <>
+        <div class={styles.profileAvatar}>
           <ProfileAvatar />
         </div>
-        <div
-          ref={ref}
-          class={`${styles.content} ${
-            hasContentPaddingTop ? styles.contentWithPaddingTop : ""
-          } ${hasContentPaddingInline ? styles.contentWithPaddingInline : ""}`}
-        >
-          <Slot />
+        <div class={styles.container}>
+          <div class={styles.top}>
+            {title && <h1 class={styles.title}>{title}</h1>}
+          </div>
+          <div
+            ref={ref}
+            class={`${styles.content} ${
+              hasContentPaddingTop ? styles.contentWithPaddingTop : ""
+            } ${
+              hasContentPaddingInline ? styles.contentWithPaddingInline : ""
+            }`}
+          >
+            <Slot />
+          </div>
+          <div class={styles.bottomNavigation}>
+            <BottomNavigation />
+          </div>
         </div>
-        <div class={styles.bottomNavigation}>
-          <BottomNavigation />
-        </div>
-      </div>
+      </>
     );
   },
 );

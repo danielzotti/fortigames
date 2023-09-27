@@ -12,6 +12,7 @@ import { config, Games } from "~/config";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import styles from "./index.module.scss";
 import Button from "~/shared/components/ui/button/button";
+import TeamsFilter from "~/shared/components/teams-filter/teams-filter";
 
 export default component$(() => {
   const people = useSignal<Array<Participant> | null>();
@@ -116,98 +117,14 @@ export default component$(() => {
         </div>
       </div>
       {/*Filters*/}
+
       <div class={styles.filtersContainer} ref={filtersRef}>
-        <div class={styles.filtersItem}>
-          <Button
-            variant={
-              !location.url.searchParams.get("team") ? "selected" : "default"
-            }
-            onClick$={() => navigateFilterUrl("team", null)}
-          >
-            Tutti
-          </Button>
-          {Object.keys(config.teams).map((k) => (
-            <Button
-              key={k}
-              variant={isFilterActive("team", k) ? "selected" : "default"}
-              onClick$={() => navigateFilterUrl("team", k)}
-            >
-              {config.teams[k as keyof typeof config.teams].label}
-              <i class={`fa fa-`}></i>
-            </Button>
-          ))}
-        </div>
-        <div class={styles.filtersItem}>
-          <Button
-            variant={
-              !location.url.searchParams.get("game") ? "selected" : "default"
-            }
-            onClick$={() => navigateFilterUrl("game", null)}
-          >
-            Tutto
-          </Button>
-          {Object.keys(config.games).map((k) => {
-            const game = config.games[k as keyof Games];
-            if (game.team) {
-              return (
-                <Button
-                  key={k}
-                  variant={isFilterActive("game", k) ? "selected" : "default"}
-                  onClick$={() => navigateFilterUrl("game", k)}
-                >
-                  {game.label}
-                </Button>
-              );
-            }
-          })}
-        </div>
+        <TeamsFilter onItemClick={navigateFilterUrl} />
       </div>
       <div class={styles.filtersSticky} ref={filtersStickyRef}>
-        <div class={styles.filtersItem}>
-          <Button
-            variant={
-              !location.url.searchParams.get("team") ? "selected" : "default"
-            }
-            onClick$={() => navigateFilterUrl("team", null)}
-          >
-            Tutti
-          </Button>
-          {Object.keys(config.teams).map((k) => (
-            <Button
-              key={k}
-              variant={isFilterActive("team", k) ? "selected" : "default"}
-              onClick$={() => navigateFilterUrl("team", k)}
-            >
-              {config.teams[k as keyof typeof config.teams].label}
-              <i class={`fa fa-`}></i>
-            </Button>
-          ))}
-        </div>
-        <div class={styles.filtersItem}>
-          <Button
-            variant={
-              !location.url.searchParams.get("game") ? "selected" : "default"
-            }
-            onClick$={() => navigateFilterUrl("game", null)}
-          >
-            Tutto
-          </Button>
-          {Object.keys(config.games).map((k) => {
-            const game = config.games[k as keyof Games];
-            if (game.team) {
-              return (
-                <Button
-                  key={k}
-                  variant={isFilterActive("game", k) ? "selected" : "default"}
-                  onClick$={() => navigateFilterUrl("game", k)}
-                >
-                  {game.label}
-                </Button>
-              );
-            }
-          })}
-        </div>
+        <TeamsFilter onItemClick={navigateFilterUrl} />
       </div>
+
       <div class={styles.playersListContainer}>
         <table class={styles.playersList}>
           {people.value &&
@@ -219,24 +136,28 @@ export default component$(() => {
                 </td>
                 <td>
                   {p.team ? (
-                    <span class={[styles[p.team], styles.team]}></span>
+                    <i class={`icon-${p.team}`}></i>
                   ) : (
-                    <span class={[styles.noTeam, styles.team]}></span>
+                    <i class={`icon-no-team`}></i>
                   )}
                 </td>
                 <td class={styles.iconContainer}>
-                  {p.is_playing_soccer ? <i class="fa fa-soccer-ball"></i> : ""}
+                  {p.is_playing_soccer ? (
+                    <i class={config.games.soccer.icon}></i>
+                  ) : (
+                    ""
+                  )}
                 </td>
                 <td class={styles.iconContainer}>
                   {p.is_playing_volley ? (
-                    <i class="fa fa-volleyball-ball"></i>
+                    <i class={config.games.volley.icon}></i>
                   ) : (
                     ""
                   )}
                 </td>
                 <td class={styles.iconContainer}>
                   {p.is_playing_pingpong ? (
-                    <i class="fa fa-table-tennis-paddle-ball"></i>
+                    <i class={config.games.table_tennis.icon}></i>
                   ) : (
                     ""
                   )}
