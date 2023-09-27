@@ -1,12 +1,23 @@
 import { component$, PropFunction, QRL, Slot } from "@builder.io/qwik";
 import styles from "./button.module.scss";
+import { Link } from "@builder.io/qwik-city";
 
-interface Props {
+type BasicProps = {
   size?: "medium" | "large";
   variant?: "default" | "selected";
-  onClick$?: PropFunction<() => void> | PropFunction<() => void>[];
   type?: "submit" | "reset" | "button";
-}
+  class?: string;
+};
+type LinkProps = {
+  isLink?: boolean;
+  href?: string;
+  target?: "_blank" | "_self";
+};
+type ButtonProps = {
+  onClick$?: PropFunction<() => void> | PropFunction<() => void>[];
+};
+
+type Props = BasicProps & LinkProps & ButtonProps; // TODO: check types!
 
 export default component$(
   ({
@@ -14,11 +25,27 @@ export default component$(
     variant = "default",
     type = "button",
     onClick$,
+    isLink = false,
+    href,
+    target = "_self",
+    class: _class,
   }: Props) => {
+    if (isLink) {
+      return (
+        <Link
+          type={type}
+          class={[styles.link, `btn-${size}`, `btn-${variant}`, _class]}
+          href={href}
+          target={target}
+        >
+          <Slot />
+        </Link>
+      );
+    }
     return (
       <button
         type={type}
-        class={`btn-${size} btn-${variant}`}
+        class={[_class, `btn-${size}`, `btn-${variant}`]}
         onClick$={[onClick$]}
       >
         <Slot />

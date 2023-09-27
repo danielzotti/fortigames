@@ -1,0 +1,16 @@
+.container {
+  h2 {
+    padding-top: var(--layout-top-height);
+    margin-top: 0;
+  }
+}
+
+.localNavigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-small);
+  //position: sticky;
+  //top: 0;
+  //z-index: 1;
+  //backdrop-filter: blur(4.7px);
+}

@@ -8,11 +8,12 @@ import {
 import { supabaseClient } from "~/supabase/supabase-client";
 import { Participant } from "~/types/participant.types";
 import { useLocation, useNavigate } from "@builder.io/qwik-city";
-import { config, Games } from "~/config";
+import { config } from "~/config";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import styles from "./index.module.scss";
 import Button from "~/shared/components/ui/button/button";
 import TeamsFilter from "~/shared/components/teams-filter/teams-filter";
+import { Games } from "~/types/games.types";
 
 export default component$(() => {
   const people = useSignal<Array<Participant> | null>();
@@ -54,7 +55,6 @@ export default component$(() => {
           "--layout-padding-top",
         ),
       );
-      console.log(paddingTop);
       const container$ = containerRef.value;
       const filter$ = filtersRef.value;
       const filterSticky$ = filtersStickyRef.value;

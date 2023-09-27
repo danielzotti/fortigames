@@ -14,7 +14,6 @@ interface AgendaParsed {
 }
 
 export default component$(() => {
-  const { auth } = useAuth();
   const currentEvent = useSignal<AgendaParsed>();
   const nextEvents = useSignal<AgendaParsed[]>();
 
@@ -54,6 +53,7 @@ export default component$(() => {
     });
   });
 
+  // <Link href={`${config.urls.info}#agenda`}>Programma</Link>
   return (
     <div class={[styles.programContainer]}>
       <div class={[styles.eventContainer]}>

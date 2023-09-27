@@ -1,13 +1,16 @@
 ._btn {
-  cursor: var(--cursor-pointer);
-  border-radius: var(--btn-border-radius);
-  border: 1px solid var(--btn-border-color);
+  &,&:visited {
+    cursor: var(--cursor-pointer);
+    border-radius: var(--btn-border-radius);
+    border: 1px solid var(--btn-border-color);
 
-  box-shadow: var(--btn-default-box-shadow);
-  font-size: var(--btn-font-size);
-  font-family: var(--btn-font-family);
-  text-transform: uppercase;
-  display: inline-block;
+    box-shadow: var(--btn-default-box-shadow);
+    font-size: var(--btn-font-size);
+    font-family: var(--btn-font-family);
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+  }
 
   &:active {
     transform: scale(0.97);
@@ -21,14 +24,18 @@
 
 .btn-default {
   @extend ._btn;
-  background-color: var(--btn-default-bg-color);
-  color: var(--btn-default-text-color);
+  &,&:active,&:focus {
+    background-color: var(--btn-default-bg-color);
+    color: var(--btn-default-text-color);
+  }
 }
 
 .btn-selected {
   @extend ._btn;
-  background-color: var(--btn-selected-bg-color);
-  color: var(--btn-selected-text-color);
+  &,&:active,&:focus {
+    background-color: var(--btn-selected-bg-color);
+    color: var(--btn-selected-text-color);
+  }
 }
 
 .btn-medium {

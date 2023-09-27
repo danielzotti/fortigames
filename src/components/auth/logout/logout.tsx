@@ -18,7 +18,9 @@ export const Logout = component$(() => {
 
   return (
     <>
-      <Button onClick$={handleGoogleLogout}>Logout</Button>
+      <Button variant="selected" size="large" onClick$={handleGoogleLogout}>
+        Logout
+      </Button>
     </>
   );
 });

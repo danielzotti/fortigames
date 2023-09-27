@@ -1,19 +1,5 @@
 const baseUrl = "https://fortigames.danielzotti.it";
 
-interface SingleGame {
-  db_key: string;
-  label: string;
-  team: boolean;
-  icon: string;
-}
-
-export interface Games {
-  soccer: SingleGame;
-  table_tennis: SingleGame;
-  volley: SingleGame;
-  board_games: SingleGame;
-}
-
 export const config = {
   baseUrl,
   title: "Fortigames",
@@ -62,6 +48,14 @@ export const config = {
     },
     dragons: {
       label: "Dragons",
+    },
+  },
+  slack: {
+    urls: {
+      dragons: "https://databiz-group.slack.com/archives/C05U1BX87V1",
+      tigers: "https://databiz-group.slack.com/archives/C05TLU6UU3Z",
+      admins: "https://databiz-group.slack.com/archives/C05TYH9RABF",
+      boardGames: "https://databiz-group.slack.com/archives/C05U78SG2KC",
     },
   },
   games: {

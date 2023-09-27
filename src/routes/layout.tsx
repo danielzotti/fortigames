@@ -5,6 +5,7 @@ import {
   Slot,
   useContextProvider,
   useSignal,
+  useStore,
   useStyles$,
 } from "@builder.io/qwik";
 import { routeLoader$, DocumentHead } from "@builder.io/qwik-city";
@@ -17,9 +18,12 @@ import fontawesomeBrands from "@fortawesome/fontawesome-free/css/brands.min.css?
 import fontawesomeSolid from "@fortawesome/fontawesome-free/css/solid.min.css?inline";
 
 import { config } from "~/config";
-import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import { Session } from "supabase-auth-helpers-qwik";
 import { AuthContext } from "~/contexts/auth.context";
+import { GamesResults } from "~/types/games.types";
+import { GamesResultsContext } from "~/contexts/games-results.context";
+import { gamesResultsDefault } from "~/hooks/useGameResults";
+import { ThemeContext } from "~/contexts/theme.context";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -54,7 +58,12 @@ export default component$(() => {
   useStyles$(fontawesomeSolid);
 
   const auth = useSignal<Session | undefined>();
+  const theme = useSignal("light");
   useContextProvider(AuthContext, auth);
+  useContextProvider(ThemeContext, theme);
+
+  const gamesResults = useStore<GamesResults>(gamesResultsDefault);
+  useContextProvider(GamesResultsContext, gamesResults);
 
   return (
     <>

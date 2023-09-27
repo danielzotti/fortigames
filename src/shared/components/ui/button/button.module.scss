@@ -1,0 +1,5 @@
+@use "@scss/mixins/link";
+
+.link {
+  @include link.reset();
+}
