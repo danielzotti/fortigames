@@ -1,7 +1,6 @@
-import { $, useContext, useVisibleTask$ } from "@builder.io/qwik";
-import { AuthContext } from "~/contexts/auth.context";
+import { $, useContext } from "@builder.io/qwik";
 import { GamesResultsContext } from "~/contexts/games-results.context";
-import { GamesResults } from "~/types/games.types";
+import { Games, GamesResults, SportGames } from "~/types/games.types";
 import { supabaseClient } from "~/supabase/supabase-client";
 
 export const gamesResultsDefault: GamesResults = {
@@ -21,6 +20,8 @@ export const gamesResultsDefault: GamesResults = {
 
 export const useGamesResults = () => {
   const results = useContext(GamesResultsContext);
+
+  const resultsByGame = $((game: SportGames) => results[game]);
 
   const initializeContext = $(async () => {
     const { data } = await supabaseClient.from("games_results").select("*");
@@ -44,5 +45,5 @@ export const useGamesResults = () => {
       .subscribe();
   });
 
-  return { initializeContext, results };
+  return { initializeContext, results, resultsByGame };
 };

@@ -1,9 +1,10 @@
 import { $, component$, PropFunction } from "@builder.io/qwik";
 
 import Button from "~/shared/components/ui/button/button";
-import { config, Games } from "~/config";
+import { config } from "~/config";
 import { useLocation } from "@builder.io/qwik-city";
 import styles from "./teams-filter.module.scss";
+import { Games } from "~/types/games.types";
 
 interface Props {
   onItemClick: PropFunction<

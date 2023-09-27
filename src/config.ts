@@ -1,19 +1,5 @@
 const baseUrl = "https://fortigames.danielzotti.it";
 
-interface SingleGame {
-  db_key: string;
-  label: string;
-  team: boolean;
-  icon: string;
-}
-
-export interface Games {
-  soccer: SingleGame;
-  table_tennis: SingleGame;
-  volley: SingleGame;
-  board_games: SingleGame;
-}
-
 export const config = {
   baseUrl,
   title: "Fortigames",

@@ -1,6 +1,9 @@
 import {
   $,
   component$,
+  PropFunction,
+  QRL,
+  Signal,
   useSignal,
   useStore,
   useVisibleTask$,
@@ -13,110 +16,108 @@ import styles from "./index.module.scss";
 import Button from "~/shared/components/ui/button/button";
 import { config } from "~/config";
 import BackButton from "~/shared/components/ui/back-button/back-button";
+import { useGamesResults } from "~/hooks/useGameResults";
+import { GameResult, GamesResults, SportGames } from "~/types/games.types";
+import Loader from "~/shared/components/ui/loader/loader";
+import { TeamsValues } from "~/types/teams.types";
 
-interface GameResults {
-  dragons: number;
-  id: number;
-  last_update: string | null;
-  name: string | null;
-  tigers: number;
+interface SingleItemProps {
+  team: TeamsValues;
+  updateScore: PropFunction<
+    (result: { team: TeamsValues; score: number }) => void
+  >; // QRL<(result: { team: TeamsValues; score: number }) => Promise<void>>; //
+  result: Signal<GameResult | undefined>;
 }
+
+const SingleItem = component$(
+  ({ team, updateScore, result }: SingleItemProps) => {
+    if (!result.value) {
+      return <Loader />;
+    }
+
+    return (
+      <div class={styles.singleTeam}>
+        Dragons
+        <div class={styles.singleTeamResult}>{result.value[team]}</div>
+        <Button
+          onClick$={() =>
+            updateScore({
+              team,
+              score: result.value![team] - 1,
+            })
+          }
+        >
+          -
+        </Button>
+        <Button
+          onClick$={() =>
+            updateScore({
+              team,
+              score: result.value![team] + 1,
+            })
+          }
+        >
+          +
+        </Button>
+      </div>
+    );
+  },
+);
 
 export default component$(() => {
   const location = useLocation();
   const game = useSignal(location.params.id);
-  const results = useStore<GameResults>({
-    dragons: 0,
-    id: 0,
-    last_update: null,
-    name: "",
-    tigers: 0,
-  });
+  const { results, resultsByGame } = useGamesResults();
+  const result = useSignal<GameResult>();
 
   useVisibleTask$(async () => {
-    const { data } = await supabaseClient
-      .from("games_results")
-      .select("*")
-      .eq("name", game.value);
+    result.value = await resultsByGame(game.value as SportGames);
+  });
 
-    const newValue = data?.[0];
-    for (const key in newValue) {
-      if (key in newValue) {
-        // @ts-ignore
-        results[key] = newValue[key];
+  const updateScore = $(
+    async ({ team, score }: { team: TeamsValues; score: number }) => {
+      if (!result.value) {
+        return;
       }
-    }
-  });
+      if (score < 0) {
+        return;
+      }
 
-  const updateScore = $(async () => {
-    results.last_update = new Date().toISOString();
-    const { data, error } = await supabaseClient
-      .from("games_results")
-      .update({
-        dragons: results.dragons,
-        tigers: results.tigers,
-        last_update: results.last_update,
-      })
-      .eq("name", game.value);
-  });
+      const row = {
+        ...result.value,
+        last_update: new Date().toISOString(),
+        [team]: score,
+      };
+      const { data, error } = await supabaseClient
+        .from("games_results")
+        .update(row)
+        .eq("name", game.value);
+    },
+  );
 
   return (
     <MainLayout
       title={config.games[game.value as keyof typeof config.games].label}
     >
-      <BackButton url={config.urls.games} />
-      <h2 class={styles.title}>Arbitraggio</h2>
-      <div class={styles.teamContainer}>
-        <div class={styles.singleTeam}>
-          Tigers
-          <div class={styles.singleTeamResult}>{results.tigers}</div>
-          <Button
-            onClick$={[
-              $(() => {
-                results.tigers--;
-              }),
-              updateScore,
-            ]}
-          >
-            -
-          </Button>
-          <Button
-            onClick$={[
-              $(() => {
-                results.tigers++;
-              }),
-              updateScore,
-            ]}
-          >
-            +
-          </Button>
-        </div>
-
-        <div class={styles.singleTeam}>
-          Dragons
-          <div class={styles.singleTeamResult}>{results.dragons}</div>
-          <Button
-            onClick$={[
-              $(() => {
-                results.dragons--;
-              }),
-              updateScore,
-            ]}
-          >
-            -
-          </Button>
-          <Button
-            onClick$={[
-              $(() => {
-                results.dragons++;
-              }),
-              updateScore,
-            ]}
-          >
-            +
-          </Button>
-        </div>
-      </div>
+      {(!game.value || !result.value) && <Loader />}
+      {game.value && result.value && (
+        <>
+          <BackButton url={config.urls.games} />
+          <h2 class={styles.title}>Arbitraggio</h2>
+          <div class={styles.teamContainer}>
+            <SingleItem
+              team={"tigers"}
+              result={result}
+              updateScore={updateScore}
+            />
+            <SingleItem
+              team={"dragons"}
+              result={result}
+              updateScore={updateScore}
+            />
+          </div>
+        </>
+      )}
     </MainLayout>
   );
 });

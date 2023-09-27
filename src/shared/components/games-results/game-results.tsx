@@ -8,9 +8,9 @@ import {
 } from "@builder.io/qwik";
 import styles from "./game-results.module.scss";
 import { supabaseClient } from "~/supabase/supabase-client";
-import { config, Games } from "~/config";
+import { config } from "~/config";
 import { Link } from "@builder.io/qwik-city";
-import { GamesResults } from "~/types/games.types";
+import { Games, GamesResults } from "~/types/games.types";
 import { gamesResultsDefault, useGamesResults } from "~/hooks/useGameResults";
 import Loader from "~/shared/components/ui/loader/loader";
 import { GamesResultsContext } from "~/contexts/games-results.context";
