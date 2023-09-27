@@ -19,7 +19,6 @@ export default component$(() => {
         <strong>{auth.value?.user?.email}</strong>
       </p>
       <Logout />
-      <pre>{JSON.stringify(auth.value, null, 2)}</pre>
     </MainLayout>
   );
 });

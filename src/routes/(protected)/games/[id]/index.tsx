@@ -11,6 +11,8 @@ import { supabaseClient } from "~/supabase/supabase-client";
 import GameResults from "~/shared/components/games-results/game-results";
 import styles from "./index.module.scss";
 import Button from "~/shared/components/ui/button/button";
+import { config } from "~/config";
+import BackButton from "~/shared/components/ui/back-button/back-button";
 
 interface GameResults {
   dragons: number;
@@ -37,12 +39,11 @@ export default component$(() => {
       .select("*")
       .eq("name", game.value);
 
-    console.log(data);
-
-    for (const key in data) {
-      if (key in data) {
+    const newValue = data?.[0];
+    for (const key in newValue) {
+      if (key in newValue) {
         // @ts-ignore
-        results[key] = data[key];
+        results[key] = newValue[key];
       }
     }
   });
@@ -60,34 +61,12 @@ export default component$(() => {
   });
 
   return (
-    <MainLayout>
-      <h1>Games {game}</h1>
+    <MainLayout
+      title={config.games[game.value as keyof typeof config.games].label}
+    >
+      <BackButton url={config.urls.games} />
+      <h2 class={styles.title}>Arbitraggio</h2>
       <div class={styles.teamContainer}>
-        <div class={styles.singleTeam}>
-          Dragons
-          <div class={styles.singleTeamResult}>{results.dragons}</div>
-          <Button
-            onClick$={[
-              $(() => {
-                results.dragons--;
-              }),
-              updateScore,
-            ]}
-          >
-            -
-          </Button>
-          <Button
-            onClick$={[
-              $(() => {
-                results.dragons++;
-              }),
-              updateScore,
-            ]}
-          >
-            +
-          </Button>
-        </div>
-
         <div class={styles.singleTeam}>
           Tigers
           <div class={styles.singleTeamResult}>{results.tigers}</div>
@@ -105,6 +84,31 @@ export default component$(() => {
             onClick$={[
               $(() => {
                 results.tigers++;
+              }),
+              updateScore,
+            ]}
+          >
+            +
+          </Button>
+        </div>
+
+        <div class={styles.singleTeam}>
+          Dragons
+          <div class={styles.singleTeamResult}>{results.dragons}</div>
+          <Button
+            onClick$={[
+              $(() => {
+                results.dragons--;
+              }),
+              updateScore,
+            ]}
+          >
+            -
+          </Button>
+          <Button
+            onClick$={[
+              $(() => {
+                results.dragons++;
               }),
               updateScore,
             ]}

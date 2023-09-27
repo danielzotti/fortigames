@@ -102,7 +102,7 @@ export default component$(() => {
           }
           onClick$={() => navigateFilterUrl("team", null)}
         >
-          Tutte
+          Tutti
         </Button>
         {Object.keys(config.teams).map((k) => (
           <Button
@@ -114,7 +114,7 @@ export default component$(() => {
           </Button>
         ))}
       </div>
-      <h6 class={styles.filtersTitle}>Partecipanti</h6>
+      <h3 class={styles.filtersTitle}>Partecipanti</h3>
 
       <div class={styles.filtersContainer}>
         <Button
