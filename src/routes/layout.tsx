@@ -23,6 +23,8 @@ import { AuthContext } from "~/contexts/auth.context";
 import { GamesResults } from "~/types/games.types";
 import { GamesResultsContext } from "~/contexts/games-results.context";
 import { gamesResultsDefault } from "~/hooks/useGameResults";
+import { ColorModeContext } from "~/contexts/color-mode.context";
+import { ThemeContext } from "~/contexts/theme.context";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -57,7 +59,9 @@ export default component$(() => {
   useStyles$(fontawesomeSolid);
 
   const auth = useSignal<Session | undefined>();
+  const theme = useSignal("light");
   useContextProvider(AuthContext, auth);
+  useContextProvider(ThemeContext, theme);
 
   const gamesResults = useStore<GamesResults>(gamesResultsDefault);
   useContextProvider(GamesResultsContext, gamesResults);

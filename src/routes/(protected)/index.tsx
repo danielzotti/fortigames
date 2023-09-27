@@ -6,6 +6,7 @@ import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import GamesTimeManager from "~/shared/components/games-time-manager/games-time-manager";
 import GamesTeam from "~/shared/components/games-team/games-team";
 import EventProgram from "~/shared/components/event-program/event-program";
+import Map from "~/shared/components/ui/Map/map";
 
 export default component$(() => {
   return (
@@ -17,6 +18,7 @@ export default component$(() => {
       <a href="https://maps.app.goo.gl/T23BwGW6LLdEnC5Y8" target="_blank">
         Location
       </a>
+      <Map />
     </MainLayout>
   );
 });
