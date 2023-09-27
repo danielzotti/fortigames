@@ -114,6 +114,9 @@ table {
   width: 100%;
 
   td {
+    &:first-child {
+      text-align: left;
+    }
     padding: 0.5em;
     border: 1px solid var(--border-color);
     text-align: center;
@@ -138,7 +141,7 @@ table {
 
     text-align: center;
     border-width: 1px 0 1px 0;
-    border-color: #444444;
+    border-color: var(--border-color-hover);
     border-style: solid;
     padding: 8px;
   }

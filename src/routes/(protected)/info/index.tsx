@@ -16,7 +16,11 @@ export default component$(() => {
 
     return (
         <MainLayout title="Info">
-            
+
+
+            <div class="local_navigation">
+                <a href="#agenda">Agenda Convention</a> <a href="#location">Come Arrivate</a> <a href="#torneo">Regolamento Torneo</a>
+            </div>
             <h2 id="agenda">Agenda Convention</h2>
             <h3>Venerdì 29</h3>
             {agenda.value?.map(e => (
@@ -35,7 +39,7 @@ export default component$(() => {
                     <div class="agenda-item-text">Check-out</div>
             </div>
 
-            <h2 id="Location">Location</h2>
+            <h2 id="location">Location</h2>
             <p>
                 <strong>West Garda Hotel</strong><br/>
                 Via Prais 32, 25080 Padenghe sul Garda (BS) Italy<br/>
@@ -62,36 +66,59 @@ export default component$(() => {
             
             <h2 id="torneo">Il torneo</h2>
 
-            <h3>Condizioni di Vincita</h3>
+            <h3>Il trofeo</h3>
             <p>
-                I Dragons hanno vinto calcio (1), i Tigers hanno vinto ping pong e
-                pallavolo (2) <i class="fa-solid fa-arrow-right"></i> Il torneo lo
-                vincono i Dragons
+            Questo torneo comprende tre diverse discipline: calcio, pallavolo e ping pong.
+            Ognuna di queste discipline è parte integrante del torneo e determinerà il vincitore generale.
             </p>
+
+            <h3>Condizioni di Vincita</h3>
+            <p>Per vincere il torneo, una squadra deve avere la migliore performance complessiva nelle tre discipline. Ecco come funzionano le condizioni di vittoria:
+
+            </p>
+            <p>
+                esempio:
+            </p>
+            <ul>
+            <li>La squadra dei Dragons ha vinto la disciplina del calcio (1 punto).</li>
+            <li>La squadra dei Tigers ha vinto le discipline del ping pong e della pallavolo (2 punti).</li>
+            <li>Di conseguenza, il torneo è stato vinto dai Dragons grazie alla loro vittoria nel calcio.</li>
+            </ul>
 
             <h3>Calcolo Punteggi</h3>
+            <p>Vediamo di seguito come vengono calcolati i punteggi in ciascuna disciplina.</p>
             <h4>Calcio</h4>
             <p>
-                La partita dura 2 ore e vince la partita chi segna più gol L’arbitro
-                segna “+1” a ogni gol Il risultato finale sarà in base ai gol: Dragons 8
-                gol - Tigers 4 gol: vincono i Dragons
+            la partita dura 2 ore e il vincitore è determinato dal numero di gol segnati. L'arbitro assegna "+1" per ogni gol segnato. Il risultato finale è basato sul numero di gol segnati:
             </p>
+            <p>
+                esempio:
+            </p>
+            <ul>
+            <li>Dragons 8 gol - Tigers 4 gol: I Dragons vincono la partita di calcio.</li>
+            </ul>
             <h4>Pallavolo</h4>
             <p>
-                La partita dura 2 ore e vince la partita chi vince più set (a 25 punti)
-                L’arbitro segna “+1" a ogni SET vinto Il risultato finale sarà in base
-                ai set: Dragons 2 set - Tigers 4 set: vincono i Tigers
+            La partita di pallavolo dura 2 ore e il vincitore è chi vince più set, ciascuno a 25 punti. L'arbitro assegna "+1" per ogni set vinto. Il risultato finale è basato sul numero di set vinti:
             </p>
+            <p>
+                esempio:
+            </p>
+            <ul>
+            <li>Dragons 2 set - Tigers 4 set: I Tigers vincono la partita di pallavolo.</li>
+            </ul>
             <h4>Ping pong</h4>
             <p>
-                La partita dura 2 ore e vince la partita chi vince più set (a 21 punti)
-                L’arbitro segna “+1” a ogni SET vinto (ES: Bruno 21 - Chiarello 18,
-                vince il set Bruno ed è “+1" per i Dragons) Il risultato finale sarà in
-                base ai set vinto: Dragons 3 set - Tigers 7 set: vincono i Tigers (Il
-                set nel ping pong è la partita tra Bruno e Chiarello)
-            </p>
+            Nel ping pong, la partita dura 2 ore e il vincitore è chi vince più set, ciascuno a 21 punti. L'arbitro assegna "+1" per ogni set vinto. Il risultato finale è basato sul numero di set vinti:
 
-            <h3>Il trofeo</h3>
+            </p>
+            <p>
+                esempio:
+            </p>
+            <ul>
+            <li>Dragons 3 set - Tigers 7 set: I Tigers vincono la partita di ping pong.</li>
+            <li>(Un set nel ping pong è la partita tra Bruno e Chiarello)</li>
+            </ul>
         </MainLayout>
     );
 });
