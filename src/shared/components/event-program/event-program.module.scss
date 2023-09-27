@@ -1,16 +1,34 @@
+@use "@scss/components/label";
+
 .programContainer {
-  display: flex;
-
-  .eventContainer {
-    border-right: 1px solid #444444;
-    width: 33.3333%;
-    padding: 8px;
-    &.currentEvent {
-
+  .eventLabelContainer {
+    display: flex;
+    div {
+      width: 33.3333%;
+      padding: var(--spacing-small) var(--spacing-small);
     }
 
-    &:last-child {
-      border-right: 0;
+    .label {
+      @extend.label-medium;
     }
+  }
+  .eventsContainer{
+    display: flex;
+
+    .event {
+      width: 33.3333%;
+      border-right: 1px solid #444444;
+      padding: 0 var(--spacing-small);
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+
+    .time {
+      color: var(--accent-color);
+    }
+
+    margin-bottom: var(--spacing-medium);
   }
 }

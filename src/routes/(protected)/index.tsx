@@ -21,16 +21,16 @@ export default component$(() => {
     <MainLayout title="Home" hasContentPaddingInline={false}>
       <GameResults />
       <GamesTimeManager />
-      <GamesTeam />
+      {/*<GamesTeam />*/}
       <EventProgram />
 
-      <button
+      {/*<button
         onClick$={() =>
           (theme.value = theme.value == "dark" ? "light" : "dark")
         }
       >
         Toggle theme
-      </button>
+      </button>*/}
 
       <LocationMap />
     </MainLayout>

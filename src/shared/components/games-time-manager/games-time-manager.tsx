@@ -3,6 +3,8 @@ import { $ } from "@builder.io/qwik";
 import styles from "./games-time-manager.module.scss";
 import { supabaseClient } from "~/supabase/supabase-client";
 import { DateTime } from "luxon";
+import Trophy from "~/shared/components/ui/Trophy/trophy";
+import LabelLive from "~/shared/components/ui/label-live/label-live";
 
 interface Config {
   id: number;
@@ -15,17 +17,15 @@ interface Config {
 export default component$(() => {
   const config = useSignal<Config | null>();
   const remainingTime = useSignal<string | null>(null);
+  const time = useSignal("17:30")
 
   const updateRemainingTime = $(() => {
-    if (config.value?.planned_end) {
-      const now = DateTime.now();
-      const later = DateTime.fromISO(config.value.planned_end);
+    const now = DateTime.now();
+    const later = DateTime.fromISO((config.value?.games_started_at ? config.value?.planned_end : config.value?.planned_start) || "");
+    time.value = later.hour + ":" + later.minute;
 
-      const diff = later.diff(now, ["hours", "minutes", "seconds"]).toObject();
-      remainingTime.value = `- ${diff.hours} ${Math.round(
-        Number(diff.minutes)
-      )} ${Math.round(Number(diff.seconds))}'`;
-    }
+    const diff = later.diff(now, ["hours", "minutes", "seconds"]).toObject();
+    remainingTime.value = `-${diff.hours}h ${String(diff.minutes).padStart(2, "0")}´`; // ${Math.round(Number(diff.seconds)
 
     return "";
   });
@@ -44,20 +44,14 @@ export default component$(() => {
 
   return (
     <div class={styles.endGameContainer}>
-      {config.value?.games_started_at ? (
-        <>
-          <div class={styles.header}>
-            <div class={styles.labelLive}>Fine gioco</div>
-            <div class={styles.plannedEnd}>h 19:00</div>
-          </div>
-          <div class={styles.remainingTime}>{remainingTime.value}</div>
-        </>
-      ) : (
-        <>
-          <div class={styles.label}>Inizio giochi</div>
-          <div class={styles.plannedStart}>17:00</div>
-        </>
-      )}
+      <Trophy />
+      <div class={styles.timerContainer}>
+        <div class={styles.header}>
+          <LabelLive text={config.value?.games_started_at ? "Fine giochi" : "Inizio giochi"} />
+          <div class={config.value?.games_started_at ? styles.plannedEnd : styles.plannedStart}>h {time.value}</div>
+        </div>
+        <div class={styles.remainingTime}>{remainingTime.value || "..."}</div>
+      </div>
     </div>
   );
 });
