@@ -22,8 +22,8 @@ export default component$(() => {
       <p>porta giochi che conosci e che sei in grado di spiegare agli altri nel giro di 10 minuti</p>
       <p>se vuoi portare un gioco che non conosci, assicurati che qualcuno lo conosca o che il tempo di apprendimento sia veloce
       </p>
-      <p><a>chat</a></p>
-      <p><a>giocoteca</a></p>
+      <p><a href="#">chat</a></p>
+      <p><a href="#">giocoteca</a></p>
       </div>
     </MainLayout>
   );
