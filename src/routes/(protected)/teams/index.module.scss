@@ -1,6 +1,7 @@
 .teamsContainer {
   display: flex;
   height: 40%;
+  margin-top: 2.2rem;
 
   .teamContainer {
     flex-grow: 1;
@@ -10,44 +11,107 @@
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
+      clip-path: polygon(
+        0 10%,
+        10% 0,
+        90% 0,
+        100% 10%,
+        100% 90%,
+        90% 100%,
+        10% 100%,
+        0% 90%,
+        0% 10%
+      );
     }
     .teamInfoContainer {
       text-align: center;
       padding: 16px 1.2em;
+      font-family: var(--font-family-fun);
+      font-size: 1.2rem;
+      padding-bottom: var(--spacing-medium);
+      clip-path: polygon(
+        0 10%,
+        10% 0,
+        90% 0,
+        100% 10%,
+        100% 90%,
+        90% 100%,
+        10% 100%,
+        0% 90%,
+        0% 10%
+      );
       .teamTitle {
         display: inline-block;
-        box-shadow: 1px 2px 0 #111111;
-        border-width: 1px 2px 2px 1px;
-        padding: 4px 8px;
+        font-size: 1.1em;
+        margin-bottom: var(--spacing-small);
+        padding: var(--spacing-xxsmall) var(--spacing-small);
+        font-family: var(--font-family-label);
+        font-size: 1.3rem;
+      }
+      .teamBadge{
+        border-radius: 50%;
+        padding: var(--spacing-small);
+        width: 1.5em;
+        font-size: 2em;
       }
     }
 
     &.tigers {
-      color: #fff;
-      background-color: #000;
+      color: var(--white);
       .teamCover {
-        background-image: url('/public/static/backgorunds/cover_tiger_big.png');
+        background-image: url('/static/backgrounds/tiger2.jpg');
+        background-size: 170%;
+        background-position-y: bottom; 
+        background-color: var(--white);
+      }
+      .teamBadge{
+        color: var(--white);
+        background-color: var(--black);
+        border: 1px solid var(--black-pure);
+        box-shadow: 0px 4px 0px 0px var(--black-dark);
       }
 
       .teamInfoContainer {
-        background: linear-gradient(180deg, #1D1D1D 4.64%, #6A6A6A 197.21%);
+        background: linear-gradient(180deg, var(--black-dark) 4.64%, var(--gray-light) 197.21%);
         .teamTitle {
-          background-color: #333333;
-          border-color: #222;
+          color: var(--white);
+          background-color: var(--black-light);
+          border-top: 1px solid var(--black);
+          border-right: 1px solid var(--black);
+          border-bottom: 2px solid var(--black);
+          border-left: 2px solid var(--black);
+          box-shadow: 2px 3px 0px 0px var(--black-dark);
         }
       }
     }
     &.dragons {
-      color: #000;
-      background-color: #fff;
-
+      color: var(--black);
       .teamCover {
-        background-image: url('/public/static/backgorunds/cover_dragon_big.png');
+        background-image: url('/static/backgrounds/cover_dragon_big.png');
+        background-size: 150%;
+        background-position-y: top; 
+        background-position-x: left; 
+        background-color: var(--black-light);
+      }
+      .teamBadge{
+        color: var(--black);
+        background-color: var(--white);
+        border: 1px solid var(--white-dark);
+        box-shadow: 0px 4px 0px 0px var(--gray-light);
       }
 
-      .teamTitle {
-        border-color: #DBDBDB;
+      .teamInfoContainer {
+        background: linear-gradient(180deg, var(--white) 4.64%, var(--gray-lighter) 197.21%);
+        .teamTitle {
+          color: var(--black);
+          border-top: 1px solid var(--white-darker);
+          border-right: 1px solid var(--white-darker);
+          border-bottom: 2px solid var(--white-darker);
+          border-left: 2px solid var(--white-darker);
+          box-shadow: 2px 3px 0px 0px var(--gray-light);
+        }
       }
+
     }
   }
 
@@ -56,19 +120,19 @@
 .playersList {
   .team {
     border-radius: 50%;
-    border: 1px solid #555555;
+    border: 1px solid var(--border-color);
     width: 25px;
     height: 25px;
     display: block;
   }
-  .dragons {
-    background-color: #222222;
-  }
   .tigers {
-    background-color: #EEEEEE;
+    background-color: var(--black);
+  }
+  .dragons {
+    background-color: var(--white);
   }
   .noTeam {
-    background: linear-gradient(315deg, #222223 45%, #EEEEEE 55%);
+    background: var(--gradient-bg-color-bw);
   }
 }
 

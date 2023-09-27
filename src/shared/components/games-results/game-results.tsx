@@ -69,7 +69,7 @@ export default component$(({ editMode }: Props) => {
                 <div class={styles.result}>
                     <span class={styles.resultIcon}><i class={[config.games[k as keyof Games].icon, styles.resultIcon]}></i></span>
                     <span class={styles.resultInfo}>
-                        {results[k as keyof Results].tigers} &nbsp; {results[k as keyof Results].dragons}
+                        {results[k as keyof Results].tigers} {results[k as keyof Results].dragons}
                     </span>
                     <span class={styles.resultLabel}>{config.games[k as keyof Games].label}</span>
                 </div>

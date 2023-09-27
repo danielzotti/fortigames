@@ -119,9 +119,9 @@ export default component$(() => {
 
       {participant.value && (
         <>
-          <h3>
+          <h2>
             {participant.value.firstname} {participant.value.lastname}
-          </h3>
+          </h2>
           <Form onSubmit$={handleSubmit}>
             <Field name="email" type="string">
               {/*@ts-ignore-*/}

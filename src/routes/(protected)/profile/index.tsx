@@ -10,14 +10,14 @@ export default component$(() => {
 
   return (
     <MainLayout title="Profilo">
+      <p>
+        <strong>{auth.value?.user?.email}</strong>
+      </p>
       {auth.value?.is_admin === true && (
         <p>
           <Link href={config.urls.admin}>Admin</Link>
         </p>
       )}
-      <p>
-        <strong>{auth.value?.user?.email}</strong>
-      </p>
       <Logout />
       <pre>{JSON.stringify(auth.value, null, 2)}</pre>
     </MainLayout>

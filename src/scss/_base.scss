@@ -9,7 +9,6 @@
 
 html, body {
   font-family: var(--font-family-text);
-  font-weight: 100;
   font-size: 1em;
   min-width: var(--html-min-width);
   min-height: 100dvh;
@@ -29,7 +28,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  padding: 0 1em;
+  padding: 0 1.5rem;
   font-size: clamp(1.2em, 2.6vw, 1.5em);
   text-align: center;
   color: var(--text-color-inverse);
@@ -44,16 +43,17 @@ h2 {
 
 h3 {
   font-family: var(--font-family-label);
+  color: var(--accent-color);
   font-size: clamp(1.3em, 1.5vw, 1.6em);
 }
 
 h4 {
-  font-family: var(--font-family-text);
+  font-family: var(--font-family-fun);
   font-size: clamp(1.2em, 1.3vw, 1.4em);
 }
 
 h5 {
-  font-family: var(--font-family-text);
+  font-family: var(--font-family-fun);
   font-size: clamp(1.1em, 1.2vw, 1.3em);
 }
 
@@ -63,7 +63,7 @@ h6 {
 }
 
 p {
-  font-size: clamp(1em, 1.4vw, 1.5em);
+  font-size: clamp(1em, 1.1vw, 1.2em);
   line-height: 1.5;
   margin: 0 0 clamp(10px, 1vw, 25px) 0;
 }
@@ -79,8 +79,8 @@ img {
 }
 
 a {
-  padding: 0 0.5em;
-  color: inherit;
+  padding: 0;
+  color: var(--accent-color);
   text-decoration: none;
 
   &:hover, &:focus, &:active {
@@ -110,7 +110,7 @@ button {
 
     border-color: var(--button-border-color);
     background: var(--accent-color);
-    color: var(--text-color-inverse);
+    color: var(--accent-text-color);
     //transform: rotate(-1deg);
   }
 }
@@ -167,4 +167,21 @@ table {
     border-style: solid;
     padding: 8px;
   }
+}
+
+label{
+  padding: var(--spacing-default) 0 var(--spacing-xsmall) var(--spacing-xsmall);
+  display: block;
+  color: var(--text-color);
+  width: 100%;
+}
+
+input{
+  padding: var(--spacing-default);
+  width: 100%;
+  color: var(--text-color);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  background: var(--text-bg-color);
+  text-align: center;
 }

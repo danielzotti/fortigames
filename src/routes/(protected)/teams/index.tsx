@@ -54,9 +54,10 @@ export default component$(() => {
           <div class={styles.teamInfoContainer}>
             <div class={styles.teamTitle}>Tigers</div>
             <div class={styles.teamDescription}>
-              La tigre è la regina di tutte le fiere, l’imperatore che regna con
+              Tora! Tora! Tora! La tigre è il re tra tutte le fiere, l’imperatore che regna con
               virtù assoluta
             </div>
+            <div class={styles.teamBadge}>虎</div>
           </div>
         </div>
         <div class={[styles.teamContainer, styles.dragons]}>
@@ -64,15 +65,18 @@ export default component$(() => {
           <div class={styles.teamInfoContainer}>
             <div class={styles.teamTitle}>Dragons</div>
             <div class={styles.teamDescription}>
-              Simbolo di forza e potere e buona fortuna, il drago controlla i
+              Simbolo di forza, potere e di buona fortuna, il drago controlla i
               poteri della forza e dell’auspicio
             </div>
+            <div class={styles.teamBadge}>竜</div>
           </div>
         </div>
       </div>
+
+      <h2>Filtra Squadre</h2>
       <ul class="teams-list tabs-container">
         <li class={!loc.url.searchParams.get("team") && "is-active"}>
-          <a href={createFilterUrl("team", null)}>All</a>
+          <a href={createFilterUrl("team", null)}>Entrambe</a>
         </li>
         {Object.keys(config.teams).map((k) => (
           <li class={isFilterActive("team", k) && "is-active"} key={k}>
@@ -82,10 +86,10 @@ export default component$(() => {
           </li>
         ))}
       </ul>
-      Persone
+      <h2>Filtra attività</h2>
       <ul class="teams-games tabs-container">
         <li class={!loc.url.searchParams.get("game") && "is-active"}>
-          <a href={createFilterUrl("game", null)}>All</a>
+          <a href={createFilterUrl("game", null)}>Qualsiasi</a>
         </li>
         {Object.keys(config.games).map((k) => {
           const game = config.games[k as keyof Games];
@@ -103,8 +107,8 @@ export default component$(() => {
           people.value.map((p) => (
             <tr key={p.id}>
               {/*<td>{p.number || "ND"}</td>*/}
-              <td>
-                {p.firstname} {p.lastname} ({p.company})
+              <td class="left">
+                <strong>{p.firstname} {p.lastname}</strong> {p.company}
               </td>
               <td>
                 {p.team ? (

@@ -2,7 +2,7 @@
 @use "@scss/variables";
 
 .container {
-  padding: var(--spacing-small);
+  padding: var(--spacing-medium);
   max-width: 500px;
   margin: auto;
 }
@@ -14,7 +14,7 @@
   justify-content: space-evenly;
   width: 100%;
   font-size: 1.5em;
-  padding: var(--spacing-default);
+  padding: var(--spacing-small);
   border-top: 1px solid var(--bottom-navigation-border-color-light);
   border-right: 1px solid var(--bottom-navigation-border-color-dark);
   border-bottom: 1px solid var(--bottom-navigation-border-color-dark);
@@ -29,7 +29,7 @@
   color: var(--bottom-navigation-text-color);
   aspect-ratio: 1;
   border-radius: 50%;
-  width: 15%;
+  width: 18%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,14 +38,15 @@
 
   i {
     display: inline-block;
-    font-size: 0.85em;
+    font-size: 2rem;
   }
 
   &:global(.active) {
-    background-color: var(--bottom-navigation-accent-color);
+    color: var(--accent-color);
 
 
     &:hover, &:active, &:focus {
+      color: var(--accent-color);
       background-color: var(--bottom-navigation-accent-color);
     }
 
