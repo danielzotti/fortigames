@@ -61,6 +61,7 @@ h6 {
 }
 
 p {
+  font-family: var(--font-family-text);
   font-size: clamp(1em, 1.4vw, 1.5em);
   line-height: 1.5;
   margin: 0 0 clamp(10px, 1vw, 25px) 0;
@@ -113,6 +114,9 @@ table {
   width: 100%;
 
   td {
+    &:first-child {
+      text-align: left;
+    }
     padding: 0.5em;
     border: 1px solid var(--border-color);
     text-align: center;
@@ -137,7 +141,7 @@ table {
 
     text-align: center;
     border-width: 1px 0 1px 0;
-    border-color: #444444;
+    border-color: var(--border-color-hover);
     border-style: solid;
     padding: 8px;
   }
