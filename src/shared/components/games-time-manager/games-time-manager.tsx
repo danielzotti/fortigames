@@ -3,7 +3,6 @@ import { $ } from "@builder.io/qwik";
 import styles from "./games-time-manager.module.scss";
 import { supabaseClient } from "~/supabase/supabase-client";
 import { DateTime } from "luxon";
-import Trophy from "~/shared/components/ui/Trophy/trophy";
 import LabelLive from "~/shared/components/ui/label-live/label-live";
 
 interface Config {
@@ -44,7 +43,7 @@ export default component$(() => {
 
   return (
     <div class={styles.endGameContainer}>
-      <Trophy />
+      <img src="/static/backgrounds/Trophy.png" alt=""/>
       <div class={styles.timerContainer}>
         <div class={styles.header}>
           <LabelLive text={config.value?.games_started_at ? "Fine giochi" : "Inizio giochi"} />
