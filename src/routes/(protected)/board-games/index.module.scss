@@ -1,0 +1,22 @@
+
+.playersList {
+  .team {
+    border-radius: 50%;
+    border: 1px solid #555555;
+    width: 25px;
+    height: 25px;
+    display: block;
+  }
+
+  .dragons {
+    background-color: #222222;
+  }
+
+  .tigers {
+    background-color: #EEEEEE;
+  }
+
+  .noTeam {
+    background: linear-gradient(315deg, #222223 45%, #EEEEEE 55%);
+  }
+}

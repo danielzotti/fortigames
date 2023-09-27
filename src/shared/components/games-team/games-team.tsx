@@ -2,6 +2,7 @@ import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import styles from "./games-team.module.scss";
 import { useAuth } from "~/hooks/useAuth";
 import { supabaseClient } from "~/supabase/supabase-client";
+import {Link} from "@builder.io/qwik-city";
 
 export default component$(() => {
   const { auth } = useAuth();
@@ -20,5 +21,5 @@ export default component$(() => {
     }
   });
 
-  return <div class={styles.endGameContainer}>{team}</div>;
+  return <div class={styles.endGameContainer}><a href={"/teams/?team=" + team.value}>{team.value}</a></div>;
 });
