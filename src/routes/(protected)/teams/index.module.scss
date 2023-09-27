@@ -1,107 +1,21 @@
 @use "@scss/components/label";
 
-
-.teamsContainer {
-  --hexagon-height: 50px;
-  margin: calc(var(--layout-padding-inline) * -1);
-
+.teamDescriptions {
   display: flex;
-  flex-direction: row;
-  margin-bottom: calc(var(--hexagon-height) + var(--spacing-default))
 }
 
-.teamContainer {
-  width: 50%;
-
-  &.dragons {
-
-    .teamTitle {
-      color: var(--dragons-color-inverse);
-      background-color: var(--dragons-color);
-    }
-
-    .teamCover {
-      background-image: url('/public/static/backgrounds/cover_dragon_big.png');
-      background-position: left;
-    }
-
-    .teamInfoContainer {
-      background-color: var(--dragons-color);
-      color: var(--dragons-color-inverse);
-
-      &:before, &:after {
-        background-color: var(--dragons-color);
-        color: var(--dragons-color-inverse);
-      }
-    }
-  }
-
-  &.tigers {
-
-    .teamTitle {
-      color: var(--tigers-color-inverse);
-      background-color: var(--tigers-color);
-    }
-
-    .teamCover {
-      background-image: url('/public/static/backgrounds/tiger2.jpg');
-      background-size: 200%;
-      background-position: bottom right;
-    }
-
-    .teamInfoContainer {
-      background-color: var(--tigers-color);
-      color: var(--tigers-color-inverse);
-
-      &:before, &:after {
-        background-color: var(--tigers-color);
-        color: var(--tigers-color-inverse);
-      }
-    }
-  }
-}
-
-.teamCover {
-  min-height: 300px;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-
-.teamTitle {
-  @extend .label-large;
-  margin-bottom: var(--spacing-default);
-}
-
-.teamDescription {
-  padding-bottom: var(--spacing-default);
-}
-
-.teamInfoContainer {
-  position: relative;
+.tigersDescription, .dragonsDescription {
+  padding: var(--spacing-small);
   text-align: center;
-  padding-inline: var(--spacing-default);
+  width: 50%;
+}
 
-  &:before, &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    height: var(--hexagon-height);
+.tigersDescription {
+  color: var(--white)
+}
 
-    left: 0;
-    right: 0;
-  }
-
-  &:before {
-    clip-path: polygon(0 100%, 100% 100%, 50% 0%);
-    top: calc(var(--hexagon-height) * -1);
-  }
-
-  &:after {
-    clip-path: polygon(0 0, 100% 0%, 50% 100%);
-    bottom: calc(var(--hexagon-height) * -1);
-  }
+.dragonsDescription {
+  color: var(--black)
 }
 
 .filtersSticky {

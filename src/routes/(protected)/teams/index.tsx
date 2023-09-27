@@ -14,6 +14,7 @@ import styles from "./index.module.scss";
 import Button from "~/shared/components/ui/button/button";
 import TeamsFilter from "~/shared/components/teams-filter/teams-filter";
 import { Games } from "~/types/games.types";
+import TeamsSlider from "~/shared/components/teams-slider/teams-slider";
 
 export default component$(() => {
   const people = useSignal<Array<Participant> | null>();
@@ -94,28 +95,19 @@ export default component$(() => {
 
   return (
     <MainLayout title="I Team" hasContentPaddingTop={false} ref={containerRef}>
-      <div class={styles.teamsContainer}>
-        <div class={[styles.teamContainer, styles.tigers]}>
-          <div class={styles.teamCover}></div>
-          <div class={styles.teamInfoContainer}>
-            <div class={styles.teamTitle}>Tigers</div>
-            <div class={styles.teamDescription}>
-              La tigre è la regina di tutte le fiere, l’imperatore che regna con
-              virtù assoluta
-            </div>
+
+      <TeamsSlider>
+        <div class={styles.teamDescriptions}>
+          <div class={styles.tigersDescription}>
+            La tigre è la regina di tutte le fiere, l’imperatore che regna con
+            virtù assoluta
+          </div>
+          <div class={styles.dragonsDescription}>
+            Simbolo di forza e potere e buona fortuna, il drago controlla i
+            poteri della forza e dell’auspicio
           </div>
         </div>
-        <div class={[styles.teamContainer, styles.dragons]}>
-          <div class={styles.teamCover}></div>
-          <div class={styles.teamInfoContainer}>
-            <div class={styles.teamTitle}>Dragons</div>
-            <div class={styles.teamDescription}>
-              Simbolo di forza e potere e buona fortuna, il drago controlla i
-              poteri della forza e dell’auspicio
-            </div>
-          </div>
-        </div>
-      </div>
+      </TeamsSlider>
       {/*Filters*/}
 
       <div class={styles.filtersContainer} ref={filtersRef}>
