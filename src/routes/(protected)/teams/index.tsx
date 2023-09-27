@@ -101,7 +101,7 @@ export default component$(() => {
             <div class={styles.teamTitle}>Tigers</div>
             <div class={styles.teamDescription}>
               La tigre è la regina di tutte le fiere, l’imperatore che regna con
-              virtù assoluta
+              virtù assoluta<br><br>
             </div>
           </div>
         </div>
@@ -132,7 +132,7 @@ export default component$(() => {
               <tr key={p.id}>
                 {/*<td>{p.number || "ND"}</td>*/}
                 <td>
-                <img class={styles.playersListImg} src="/public/static/images/{p.company}.png" alt="{p.company}" />  {p.company} {p.firstname} {p.lastname} 
+                <img class={styles.playersListImg} src="/public/static/images/{p.company}.png" alt="{p.company}" /> {p.firstname} {p.lastname} 
                 </td>
                 <td>
                   {p.team ? (
