@@ -5,7 +5,6 @@ import {
   useSignal,
   useVisibleTask$,
 } from "@builder.io/qwik";
-import { supabaseClient } from "~/supabase/supabase-client";
 import { Participant } from "~/types/participant.types";
 import { useLocation, useNavigate } from "@builder.io/qwik-city";
 import { config } from "~/config";
@@ -50,6 +49,7 @@ export default component$(() => {
   });
 
   useVisibleTask$(async () => {
+    // Observe Scroll for Sticky filters
     if (containerRef.value && filtersRef.value) {
       const paddingTop = parseInt(
         getComputedStyle(document.documentElement).getPropertyValue(

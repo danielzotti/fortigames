@@ -1,24 +1,26 @@
-import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import {
+  component$,
+  useComputed$,
+  useSignal,
+  useVisibleTask$,
+} from "@builder.io/qwik";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import styles from "./index.module.scss";
 import { Participant } from "~/types/participant.types";
-import { supabaseClient } from "~/supabase/supabase-client";
 import BackTopButton from "~/shared/components/ui/back-top-button/back-top-button";
+import { useParticipants } from "~/hooks/useParticipants";
 
 export default component$(() => {
   const containerRef = useSignal<HTMLElement>();
-  const people = useSignal<Array<Participant> | null>();
+  const { participantsList, participants } = useParticipants();
 
-  useVisibleTask$(async () => {
-    const client = supabaseClient
-      .from("users")
-      .select("*")
-      .is("has_filled_form", true)
-      .is("is_playing_boardgames", true);
-
-    const { data: participantList } = await client;
-    people.value = participantList;
+  const people = useComputed$<Participant[]>(() => {
+    const filteredList = participantsList.value.filter(
+      (p) => p.is_playing_boardgames,
+    );
+    return [...filteredList].sort((a, b) => a.email.localeCompare(b.email));
   });
+
   return (
     <MainLayout title="Board games" ref={containerRef}>
       <div class="boardgame">
@@ -71,16 +73,16 @@ export default component$(() => {
                 <td>
                   <strong>
                     {p.firstname} {p.lastname}
-                  </strong>{" "}
-                  {p.company}
+                  </strong>
+                  {/*{p.company}*/}
                 </td>
-                <td>
+                {/*<td>
                   {p.team ? (
                     <span class={[styles[p.team], styles.team]}></span>
                   ) : (
                     <span class={[styles.noTeam, styles.team]}></span>
                   )}
-                </td>
+                </td>*/}
                 <td class={styles.iconContainer}>
                   {p.is_playing_soccer ? <i class="fa fa-soccer-ball"></i> : ""}
                 </td>
@@ -94,13 +96,6 @@ export default component$(() => {
                 <td class={styles.iconContainer}>
                   {p.is_playing_pingpong ? (
                     <i class="fa fa-table-tennis-paddle-ball"></i>
-                  ) : (
-                    ""
-                  )}
-                </td>
-                <td class={styles.iconContainer}>
-                  {p.is_playing_boardgames ? (
-                    <i class="fa fa-chess-rook"></i>
                   ) : (
                     ""
                   )}
