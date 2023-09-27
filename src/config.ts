@@ -50,6 +50,14 @@ export const config = {
       label: "Dragons",
     },
   },
+  slack: {
+    urls: {
+      dragons: "https://databiz-group.slack.com/archives/C05U1BX87V1",
+      tigers: "",
+      admins: "",
+      boardGames: "",
+    },
+  },
   games: {
     soccer: {
       db_key: "is_playing_soccer",

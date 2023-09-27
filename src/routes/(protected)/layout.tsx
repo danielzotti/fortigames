@@ -10,7 +10,6 @@ export default component$(() => {
   const { initializeContext } = useGamesResults();
 
   useVisibleTask$(async () => {
-    console.log("[protected] initializeContext");
     await initializeContext();
   });
 

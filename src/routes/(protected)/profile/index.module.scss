@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-medium);
+
+  & > div {
+    align-self: center;
+  }
+}
+
+.chatList {
+  @extend .container;
+  gap: var(--spacing-small);
+  text-align: center;
+}
+
+.chatTitle {
+  margin: 0;
+}
+
+.logout {
+  margin-top: var(--spacing-big)
+}

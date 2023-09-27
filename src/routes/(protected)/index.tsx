@@ -11,21 +11,19 @@ import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import GamesTimeManager from "~/shared/components/games-time-manager/games-time-manager";
 import GamesTeam from "~/shared/components/games-team/games-team";
 import EventProgram from "~/shared/components/event-program/event-program";
-import Map from "~/shared/components/ui/Map/map";
+import Map from "~/shared/components/ui/map/map";
 import { ThemeContext } from "~/contexts/theme.context";
 
 export default component$(() => {
   const theme = useContext(ThemeContext);
 
   return (
-    <MainLayout title="Home">
+    <MainLayout title="Home" hasContentPaddingInline={false}>
       <GameResults />
       <GamesTimeManager />
       <GamesTeam />
       <EventProgram />
-      <a href="https://maps.app.goo.gl/T23BwGW6LLdEnC5Y8" target="_blank">
-        Location
-      </a>
+
       <button
         onClick$={() =>
           (theme.value = theme.value == "dark" ? "light" : "dark")
@@ -33,6 +31,7 @@ export default component$(() => {
       >
         Toggle theme
       </button>
+
       <Map />
     </MainLayout>
   );
