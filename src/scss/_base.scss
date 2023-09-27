@@ -84,7 +84,7 @@ a {
 
   &:hover, &:focus, &:active {
     text-decoration: underline;
-    color: var(--link-color);
+    color: var(--link-color-hover);
     cursor: var(--cursor-pointer);
   }
 }
