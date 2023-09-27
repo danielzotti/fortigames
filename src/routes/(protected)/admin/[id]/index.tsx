@@ -19,6 +19,7 @@ import BackButton from "~/shared/components/ui/back-button/back-button";
 import Loader from "~/shared/components/ui/loader/loader";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import Button from "~/shared/components/ui/button/button";
+import styles from "./index.module.scss";
 
 const participantDefaultValue: Participant = {
   company: "",
@@ -116,65 +117,72 @@ export default component$(() => {
           <h3>
             {participant.value.firstname} {participant.value.lastname}
           </h3>
-          <Form onSubmit$={handleSubmit}>
-            <Field name="email" type="string">
-              {/*@ts-ignore-*/}
-              {(field, props) => InputString(field, props)}
-            </Field>
-            <Field name="firstname" type="string">
-              {/*@ts-ignore-*/}
-              {(field, props) => InputString(field, props)}
-            </Field>
-            <Field name="lastname" type="string">
-              {/*@ts-ignore-*/}
-              {(field, props) => InputString(field, props)}
-            </Field>
-            <Field name="team" type="string">
-              {/*@ts-ignore-*/}
-              {(field, props) => InputString(field, props)}
-            </Field>
-            <Field name="company" type="string">
-              {/*@ts-ignore-*/}
-              {(field, props) => InputString(field, props)}
-            </Field>
-            <Field name="number" type="number">
-              {/*@ts-ignore-*/}
-              {(field, props) => InputNumber(field, props)}
-            </Field>
-            <Field name="is_admin" type="boolean">
-              {/*@ts-ignore-*/}
-              {(field, props) => InputCheckbox(field, props)}
-            </Field>
-            <Field name="is_playing_soccer" type="boolean">
-              {/*@ts-ignore-*/}
-              {(field, props) => InputCheckbox(field, props)}
-            </Field>
-            <Field name="is_playing_volley" type="boolean">
-              {/*@ts-ignore-*/}
-              {(field, props) => InputCheckbox(field, props)}
-            </Field>
-            <Field name="is_playing_pingpong" type="boolean">
-              {/*@ts-ignore-*/}
-              {(field, props) => InputCheckbox(field, props)}
-            </Field>
-            <Field name="is_playing_boardgames" type="boolean">
-              {/*@ts-ignore-*/}
-              {(field, props) => InputCheckbox(field, props)}
-            </Field>
-            <Field name="is_referee" type="boolean">
-              {/*@ts-ignore-*/}
-              {(field, props) => InputCheckbox(field, props)}
-            </Field>
-            <Field name="is_facilitator" type="boolean">
-              {/*@ts-ignore-*/}
-              {(field, props) => InputCheckbox(field, props)}
-            </Field>
-            <Field name="has_filled_form" type="boolean">
-              {/*@ts-ignore-*/}
-              {(field, props) => InputCheckbox(field, props)}
-            </Field>
 
-            <Button type="submit">Save</Button>
+          <Form onSubmit$={handleSubmit}>
+            <div class={styles.fields}>
+              <Field name="email" type="string">
+                {/*@ts-ignore-*/}
+                {(field, props) => InputString(field, props)}
+              </Field>
+              <Field name="firstname" type="string">
+                {/*@ts-ignore-*/}
+                {(field, props) => InputString(field, props)}
+              </Field>
+              <Field name="lastname" type="string">
+                {/*@ts-ignore-*/}
+                {(field, props) => InputString(field, props)}
+              </Field>
+              <Field name="team" type="string">
+                {/*@ts-ignore-*/}
+                {(field, props) => InputString(field, props)}
+              </Field>
+              <Field name="company" type="string">
+                {/*@ts-ignore-*/}
+                {(field, props) => InputString(field, props)}
+              </Field>
+              <Field name="number" type="number">
+                {/*@ts-ignore-*/}
+                {(field, props) => InputNumber(field, props)}
+              </Field>
+              <div class={styles.checkboxes}>
+                <Field name="is_admin" type="boolean">
+                  {/*@ts-ignore-*/}
+                  {(field, props) => InputCheckbox(field, props)}
+                </Field>
+                <Field name="is_playing_soccer" type="boolean">
+                  {/*@ts-ignore-*/}
+                  {(field, props) => InputCheckbox(field, props)}
+                </Field>
+                <Field name="is_playing_volley" type="boolean">
+                  {/*@ts-ignore-*/}
+                  {(field, props) => InputCheckbox(field, props)}
+                </Field>
+                <Field name="is_playing_pingpong" type="boolean">
+                  {/*@ts-ignore-*/}
+                  {(field, props) => InputCheckbox(field, props)}
+                </Field>
+                <Field name="is_playing_boardgames" type="boolean">
+                  {/*@ts-ignore-*/}
+                  {(field, props) => InputCheckbox(field, props)}
+                </Field>
+                <Field name="is_referee" type="boolean">
+                  {/*@ts-ignore-*/}
+                  {(field, props) => InputCheckbox(field, props)}
+                </Field>
+                <Field name="is_facilitator" type="boolean">
+                  {/*@ts-ignore-*/}
+                  {(field, props) => InputCheckbox(field, props)}
+                </Field>
+                <Field name="has_filled_form" type="boolean">
+                  {/*@ts-ignore-*/}
+                  {(field, props) => InputCheckbox(field, props)}
+                </Field>
+              </div>
+
+              <Button type="submit" variant="selected">
+                Save
+              </Button>
+            </div>
           </Form>
         </>
       )}
@@ -186,16 +194,18 @@ const InputCheckbox = (
   field: FieldStore<Participant, keyof Participant>, // TODO: improve types
   props: FieldElementProps<Participant, keyof Participant>,
 ) => (
-  <div>
-    <label for={field.name}>{field.name}</label>
-    <input
-      id={field.name}
-      type="checkbox"
-      placeholder={field.name}
-      {...props}
-      checked={(field.value as boolean) ?? undefined}
-    />
-    {field.error && <div>{field.error}</div>}
+  <div class={styles.field}>
+    <div class={styles.checkbox}>
+      <input
+        id={field.name}
+        type="checkbox"
+        placeholder={field.name}
+        {...props}
+        checked={(field.value as boolean) ?? undefined}
+      />
+      <label for={field.name}>{field.name}</label>
+    </div>
+    {field.error && <div class={styles.error}>{field.error}</div>}
   </div>
 );
 
@@ -203,7 +213,7 @@ const InputString = (
   field: FieldStore<Participant, keyof Participant>, // TODO: improve types
   props: FieldElementProps<Participant, keyof Participant>,
 ) => (
-  <div>
+  <div class={styles.field}>
     <label for={field.name}>{field.name}</label>
     <input
       id={field.name}
@@ -216,7 +226,7 @@ const InputString = (
         field.value = newValue ? newValue : null;
       }}
     />
-    {field.error && <div>{field.error}</div>}
+    {field.error && <div class={styles.error}>{field.error}</div>}
   </div>
 );
 
@@ -224,7 +234,7 @@ const InputNumber = (
   field: FieldStore<Participant, keyof Participant>, // TODO: improve types
   props: FieldElementProps<Participant, keyof Participant>,
 ) => (
-  <div>
+  <div class={styles.field}>
     <label for={field.name}>{field.name}</label>
     <input
       id={field.name}
@@ -237,6 +247,6 @@ const InputNumber = (
         field.value = newValue ? +newValue : null;
       }}
     />
-    {field.error && <div>{field.error}</div>}
+    {field.error && <div class={styles.error}>{field.error}</div>}
   </div>
 );

@@ -11,12 +11,15 @@ import { RealtimePostgresUpdatePayload } from "@supabase/supabase-js";
 import { Participant, ParticipantsStore } from "~/types/participant.types";
 
 export const useParticipants = () => {
-  const participants = useContext(ParticipantsContext);
+  const store = useContext(ParticipantsContext);
   const participantsList = useComputed$<Participant[]>(() => {
-    return Object.values(participants).filter((p) => !!p.team);
+    return Object.values(store).filter((p) => !!p.team);
+  });
+  const usersList = useComputed$<Participant[]>(() => {
+    return Object.values(store);
   });
 
-  const participantByEmail = $((email: string) => participants[email]);
+  const participantByEmail = $((email: string) => store[email]);
 
   useVisibleTask$(({ track }) => {});
 
@@ -24,7 +27,7 @@ export const useParticipants = () => {
     const { data } = await supabaseClient.from("users").select("*");
     if (data?.length) {
       Object.entries(data).forEach(([key, value]) => {
-        participants[value.email] = value;
+        store[value.email] = value;
       });
     }
 
@@ -34,7 +37,7 @@ export const useParticipants = () => {
         "postgres_changes",
         { event: "UPDATE", schema: "public", table: "users" },
         (payload: RealtimePostgresUpdatePayload<Participant>) => {
-          participants[payload.new.email] = payload.new;
+          store[payload.new.email] = payload.new;
         },
       )
       .subscribe();
@@ -42,8 +45,9 @@ export const useParticipants = () => {
 
   return {
     initializeContext,
-    participants,
+    store,
     participantByEmail,
     participantsList,
+    usersList,
   };
 };

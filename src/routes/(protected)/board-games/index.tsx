@@ -1,9 +1,4 @@
-import {
-  component$,
-  useComputed$,
-  useSignal,
-  useVisibleTask$,
-} from "@builder.io/qwik";
+import { component$, useComputed$, useSignal } from "@builder.io/qwik";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import styles from "./index.module.scss";
 import { Participant } from "~/types/participant.types";
@@ -12,7 +7,7 @@ import { useParticipants } from "~/hooks/useParticipants";
 
 export default component$(() => {
   const containerRef = useSignal<HTMLElement>();
-  const { participantsList, participants } = useParticipants();
+  const { participantsList, store } = useParticipants();
 
   const people = useComputed$<Participant[]>(() => {
     const filteredList = participantsList.value.filter(

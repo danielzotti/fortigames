@@ -1,37 +1,30 @@
-import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
-import { supabaseClient } from "~/supabase/supabase-client";
-import type { User } from "@supabase/supabase-js";
+import { component$, useComputed$ } from "@builder.io/qwik";
 import { Participant } from "~/types/participant.types";
-import { Link } from "@builder.io/qwik-city";
 import Loader from "~/shared/components/ui/loader/loader";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
-import { LOADIPHLPAPI } from "dns";
+import { useParticipants } from "~/hooks/useParticipants";
+import { useAuth } from "~/hooks/useAuth";
+import { useNavigate } from "@builder.io/qwik-city";
+import styles from "./index.module.scss";
 
 export default component$(() => {
-  const user = useSignal<User | null>(null);
-
-  const people = useSignal<Array<Participant> | null>();
-
-  useVisibleTask$(async () => {
-    const {
-      data: { user: userInfo },
-    } = await supabaseClient.auth.getUser();
-    user.value = userInfo;
-
-    const { data: participantList } = await supabaseClient
-      .from("users")
-      .select("*")
-      .order("is_admin", { ascending: false })
-      .order("email", { ascending: true });
-
-    people.value = participantList;
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const { usersList, store } = useParticipants();
+  const people = useComputed$<Participant[]>(() => {
+    return [...usersList.value].sort((a, b) => {
+      if (a.is_admin === b.is_admin) {
+        return a.email.localeCompare(b.email);
+      }
+      return !!a.is_admin < !!b.is_admin ? 1 : -1;
+    });
   });
 
   return (
     <MainLayout title="Gestione">
-      {!people.value && !user.value && <Loader />}
+      {!people.value && !user && <Loader />}
 
-      {user.value && <pre>Current user: {user.value?.email}</pre>}
+      {user && <pre>Current user: {user?.email}</pre>}
 
       {people.value && (
         <div class="table-container">
@@ -57,10 +50,12 @@ export default component$(() => {
             </thead>
             <tbody>
               {people.value.map((p) => (
-                <tr key={p.id}>
-                  <td>
-                    <Link href={"/admin/" + p.id}>{p.id}</Link>
-                  </td>
+                <tr
+                  class={styles.row}
+                  key={p.id}
+                  onClick$={() => navigate(`/admin/${p.id}`)}
+                >
+                  <td>{p.id}</td>
                   <td>{p.number}</td>
                   <td>{p.team}</td>
                   <td>{p.firstname}</td>

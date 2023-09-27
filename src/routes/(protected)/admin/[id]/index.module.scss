@@ -1,0 +1,40 @@
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-medium);
+}
+
+label {
+
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+
+  input {
+    height: 30px;
+  }
+
+  input[type=checkbox] {
+    aspect-ratio: 1;
+  }
+}
+
+.error {
+  color: var(--error-text-color)
+}
+
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-medium);
+
+  .checkbox {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-small);
+    align-items: center;
+  }
+}

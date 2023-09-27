@@ -1,0 +1,8 @@
+.row {
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--accent-color);
+    color: var(--text-color-inverse);
+  }
+}

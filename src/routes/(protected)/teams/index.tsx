@@ -26,7 +26,7 @@ export default component$(() => {
   const containerRef = useSignal<HTMLElement>();
   const filtersRef = useSignal<HTMLElement>();
   const filtersStickyRef = useSignal<HTMLElement>();
-  const { participantsList, participants } = useParticipants();
+  const { participantsList } = useParticipants();
 
   const people = useComputed$<Participant[]>(() => {
     const team = location.url.searchParams.get("team");
