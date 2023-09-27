@@ -26,6 +26,12 @@
       background-image: url('/public/static/backgrounds/cover_dragon_big.png');
 
     }
+    .teamBadge{
+      color: var(--black);
+      background-color: var(--white);
+      border: 1px solid var(--white-dark);
+      box-shadow: 0px 4px 0px 0px var(--gray-light);
+    }
 
     .teamInfoContainer {
       background-color: var(--dragons-color);
@@ -48,8 +54,16 @@
 
     .teamCover {
       background-image: url('/public/static/backgrounds/cover_tiger_big.png');
+      background-size: 120%;
+      background-size: 170%;
+      background-position-y: bottom; 
     }
-
+    .teamBadge {
+      color: var(--white);
+      background-color: var(--black);
+      border: 1px solid var(--black-pure);
+      box-shadow: 0px 4px 0px 0px var(--black-dark);
+    }
     .teamInfoContainer {
       background-color: var(--tigers-color);
       color: var(--tigers-color-inverse);
@@ -65,7 +79,7 @@
 }
 
 .teamCover {
-  min-height: 300px;
+  min-height: 250px;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -79,6 +93,15 @@
 
 .teamDescription {
   padding-bottom: var(--spacing-default);
+  font-family: var(--font-family-fun);
+  font-size: 1.2em;
+}
+
+.teamBadge{
+  border-radius: 50%;
+  padding: var(--spacing-small);
+  font-size: 2em;
+  width: 1.6em;
 }
 
 .teamInfoContainer {
