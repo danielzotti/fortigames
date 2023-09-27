@@ -3,12 +3,13 @@ import {
   component$,
   Signal,
   Slot,
-  useOn,
   useSignal,
   useVisibleTask$,
 } from "@builder.io/qwik";
 import ProfileAvatar from "~/shared/components/ui/profile-avatar/profile-avatar";
 import BottomNavigation from "~/shared/components/ui/bottom-navigation/bottom-navigation";
+import { useAuth } from "~/hooks/useAuth";
+import { supabaseClient } from "~/supabase/supabase-client";
 
 import styles from "./main-layout.module.scss";
 
@@ -26,10 +27,27 @@ export default component$(
     hasContentPaddingInline = true,
     ref,
   }: Props) => {
+    const { auth } = useAuth();
+    const team = useSignal<"tigers" | "dragons" | null>(null);
+
+    useVisibleTask$(async () => {
+      if (auth.value?.user.email) {
+        const { data } = await supabaseClient
+          .from("users")
+          .select("team")
+          .eq("email", auth.value.user.email);
+
+        console.log(data);
+        if (data) {
+          team.value = data[0].team as "tigers" | "dragons";
+        }
+      }
+    });
+
     return (
       <>
         <div class={styles.profileAvatar}>
-          <ProfileAvatar />
+          <ProfileAvatar team={team.value} />
         </div>
         <div class={styles.container}>
           <div class={styles.top}>

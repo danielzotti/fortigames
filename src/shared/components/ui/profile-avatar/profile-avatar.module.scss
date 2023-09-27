@@ -5,9 +5,11 @@
   color: var(--profile-avatar-text-color);
   background-color: var(--profile-avatar-bg-color);
   padding: var(--spacing-small);
+  font-family: var(--profile-avatar-font-family);
+  font-size: var(--profile-avatar-font-size);
   border-radius: 50%;
   aspect-ratio: 1;
-  width: 3em;
+  width: 2em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,4 +23,29 @@
     color: var(--profile-avatar-text-color);
     background-color: var(--profile-avatar-bg-color);
   }
+}
+
+.team {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  position: relative;
+  top: -.5em;
+  right: -.5em;
+}
+
+.tigers {
+  background-color: var(--team-badge-tigers-bg-color);
+  color: var(--team-badge-tigers-text-color);
+}
+
+.dragons {
+  background-color: var(--team-badge-dragons-bg-color);
+  color: var(--team-badge-dragons-text-color);
+}
+
+.badge {
+  position: absolute;
+  bottom: -0.5em;
+  right: -0.5em;
 }

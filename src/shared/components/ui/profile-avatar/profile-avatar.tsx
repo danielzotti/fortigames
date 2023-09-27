@@ -1,10 +1,15 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import styles from "./profile-avatar.module.scss";
 import { Link, useNavigate } from "@builder.io/qwik-city";
 import { config } from "~/config";
 import { useAuth } from "~/hooks/useAuth";
+import TeamBadge from "../team-badge/team-badge";
 
-export default component$(() => {
+interface Props {
+  team?: "dragons" | "tigers" | null;
+}
+
+export default component$(({ team = null }: Props) => {
   const { auth } = useAuth();
   const navigate = useNavigate();
 
@@ -20,8 +25,24 @@ export default component$(() => {
   };
 
   return (
-    <Link onClick$={() => navigate(config.urls.profile)} class={styles.profile}>
-      {getUserInitialLetters()}
-    </Link>
+    <>
+      <Link
+        onClick$={() => navigate(config.urls.profile)}
+        class={`${styles.profile} ${team !== null ? styles.team : ""} ${
+          team !== null
+            ? team === "tigers"
+              ? styles.tigers
+              : styles.dragons
+            : ""
+        }`}
+      >
+        {getUserInitialLetters()}
+      </Link>
+      {team && (
+        <div class={styles.badge}>
+          <TeamBadge team={team} />
+        </div>
+      )}
+    </>
   );
 });

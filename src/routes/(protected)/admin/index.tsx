@@ -58,15 +58,15 @@ export default component$(() => {
             <tbody>
               {people.value.map((p) => (
                 <tr key={p.id}>
-                  <td>{p.id}</td>
+                  <td>
+                    <Link href={"/admin/" + p.id}>{p.id}</Link>
+                  </td>
                   <td>{p.number}</td>
                   <td>{p.team}</td>
                   <td>{p.firstname}</td>
                   <td>{p.lastname}</td>
                   <td>{p.is_admin ? "X" : ""}</td>
-                  <td>
-                    <Link href={"/admin/" + p.id}>{p.email}</Link>
-                  </td>
+                  <td>{p.email}</td>
                   <td>{p.company}</td>
                   <td>{p.has_filled_form ? "X" : ""}</td>
                   <td>{p.is_playing_soccer ? "X" : ""}</td>
