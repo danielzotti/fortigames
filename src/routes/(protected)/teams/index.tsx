@@ -20,8 +20,6 @@ export default component$(() => {
 
   const filterDb = $(
     async ({ team, game }: { team?: string | null; game?: string | null }) => {
-      console.log({ team, game });
-
       const client = supabaseClient
         .from("users")
         .select("*")
@@ -41,7 +39,6 @@ export default component$(() => {
   );
 
   useVisibleTask$(async () => {
-    console.log("useVisibleTask$");
     const team = location.url.searchParams.get("team");
     const game = location.url.searchParams.get("game");
 
@@ -49,7 +46,6 @@ export default component$(() => {
   });
 
   const navigateFilterUrl = $(async (key: string, value: string | null) => {
-    console.log();
     const urlParams = new URLSearchParams(location.url.search);
 
     if (value) {

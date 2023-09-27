@@ -52,8 +52,6 @@ export default component$(() => {
     nextEvents.value = parsed?.filter((e) => {
       return new Date(e.start || "").getTime() > new Date().getTime();
     });
-
-    console.log(currentEvent.value, nextEvents.value);
   });
 
   return (

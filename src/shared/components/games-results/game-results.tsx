@@ -57,7 +57,6 @@ export default component$(({ editMode }: Props) => {
             payload.new.tigers;
           results[payload.new.name as keyof Results].dragons =
             payload.new.dragons;
-          console.log(payload.new);
         },
       )
       .subscribe();

@@ -64,11 +64,6 @@ export const useFormLoader = routeLoader$<InitialValues<ParticipantForm>>(
   () => participantDefaultValue,
 );
 
-// export const useFormAction = formAction$<ParticipantForm>((values) => {
-//   // Runs on server
-//   console.log("SERVER", values);
-// }, zodForm$(participantSchema));
-
 export default component$(() => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -77,7 +72,6 @@ export default component$(() => {
 
   const [participantForm, { Form, Field }] = useForm<ParticipantForm>({
     loader: useFormLoader(),
-    // action: useFormAction(),
     validate: zodForm$(participantSchema),
   });
 
@@ -101,7 +95,6 @@ export default component$(() => {
       .select("*")
       .eq("id", location.params.id);
 
-    console.log({ data });
     if (!data?.length) {
       // No data
       return;
