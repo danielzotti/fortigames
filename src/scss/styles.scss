@@ -11,3 +11,14 @@
 @import "components/button";
 @import "components/icons";
 @import "components/label";
+
+
+.agenda-item-time{
+    display: inline-block;
+    width: 8em;
+    text-align: right;
+    margin-right: 1em;
+}
+.agenda-item-text{
+    display: inline-block;
+}
