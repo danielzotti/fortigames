@@ -59,7 +59,7 @@ export default component$(() => {
       <div class={[styles.eventLabelContainer]}>
         <div><span class={[styles.label]}>Ora</span></div>
         <div><span class={[styles.label]}>Prossimi</span></div>
-        <div><span class={[styles.label]}></span></div>
+        <div><span class={[styles.label]} style="visibility: hidden"></span></div>
       </div>
       <div class={styles.eventsContainer}>
         <div class={[styles.event]}>
