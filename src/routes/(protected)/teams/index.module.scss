@@ -156,6 +156,33 @@
   margin-top: var(--spacing-default);
 }
 
+.playersListImg {
+  width: 1.2em;
+}
+
 .iconContainer {
   font-size: 1.2em;
+}
+
+.breakMobile {
+  display: block;
+  @media(min-width: 450px) {
+    display: none;
+  }
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  @media(min-width: 500px) {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  > span {
+    line-height: 20px;
+  }
 }

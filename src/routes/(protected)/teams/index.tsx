@@ -123,10 +123,18 @@ export default component$(() => {
           {people.value &&
             people.value.map((p) => (
               <tr key={p.id}>
-                {/*<td> ({p.company})</td>*/}
                 <td>
-                  {/*{p.number ? `${p.number}. ` : ""}*/}
-                  {p.firstname} {p.lastname}
+                  <div class={styles.name}>
+                    <img
+                      class={styles.playersListImg}
+                      src={`/public/static/images/${p.company}.png`}
+                      alt={""}
+                      width="20"
+                      height="20"
+                    />
+                    <span>{p.firstname}</span>
+                    <span>{p.lastname}</span>
+                  </div>
                 </td>
                 <td>
                   {p.team ? (

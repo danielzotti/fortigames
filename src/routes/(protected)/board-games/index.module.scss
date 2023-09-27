@@ -30,4 +30,22 @@
     color: var(--accent-color);
   }
 
+.playersListImg {
+  width: 1.2em;
+}
 
+.name {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  @media(min-width: 500px) {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  > span {
+    line-height: 20px;
+  }
+}
