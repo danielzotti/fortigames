@@ -27,7 +27,7 @@
 
   --blue: #008dc9;
   --yellow: rgb(255, 245, 0);
-  --red: #d00;
+  --red: #FF5A5A;
   --orange: #FF8A00;
   --accent-color: var(--yellow);
 
@@ -51,11 +51,12 @@
   --font-family-badge: Xahn Mono, sans-serif;
 
   //MARGINS
-  --spacing-xsmall: 0.3rem;
-  --spacing-small: 0.5rem;
-  --spacing-default: 1rem;
-  --spacing-medium: 2rem;
-  --spacing-big: 4rem;
+  --spacing-xxsmall: 0.3rem;//4,8
+  --spacing-xsmall: 0.5rem;//8
+  --spacing-small: 0.75rem;//12
+  --spacing-default: 1rem;//16
+  --spacing-medium: 2rem;//32
+  --spacing-big: 4rem;//64
 
   // LAYOUT
   --layout-top-height: 65px;

@@ -27,6 +27,7 @@
 
   // Link
   --link-color: var(--accent-color);
+  --link-color-hover: var(-red);
 
   // border
   --border-color: var(--black-light);
@@ -120,7 +121,8 @@
   --error-text-color: var(--white);
 
   // Link
-  --link-color: inherit;
+  --link-color: var(--accent-color);
+  --link-color-hover: var(-red);
 
   // border
   --border-color: var(--gray-light);
