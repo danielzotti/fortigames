@@ -1,13 +1,19 @@
 @use "@scss/mixins/link";
 @use "@scss/components/label";
 
-.labelLive {
+.labelLive, .labelLiveOff {
   @extend.label-medium;
+  padding: var(--spacing-xsmall) var(--spacing-xsmall);
+}
+
+.labelLive {
   color: var(--label-live-text-color);
   background-color: var(--label-live-bg-color);
-  padding: var(--spacing-xsmall) var(--spacing-xsmall);
   //animation: flicker 1.5s infinite alternate;
-  font-style: normal;
+}
+
+.labelLiveOff {
+
 }
 
 /*
@@ -28,4 +34,23 @@
   20%, 24%, 55% {
     text-shadow: none;
   }
-}*/
+}
+
+@keyframes flicker {
+	0%, 18%, 22%, 25%, 53%, 57%, 100% {
+		text-shadow:
+		0 0 0.4rem #fff,
+		0 0 0.9rem #fff,
+		0 0 1.9rem #fff,
+		0 0 4rem #D00,
+		0 0 6rem #D00,
+		0 0 8rem #D00,
+		0 0 9rem #D00,
+		0 0 10rem #D00;
+
+	}
+
+	20%, 24%, 55% {
+		text-shadow: none;
+	}
+  }*/
