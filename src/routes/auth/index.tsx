@@ -28,7 +28,7 @@ export default component$(() => {
       // Get additional info from users table
       const { data } = await supabaseClient
         .from("users")
-        .select("is_admin")
+        .select("is_admin, is_referee")
         .eq("email", session.user.email);
 
       isEmailFromFortitudeDomain.value = !!data?.length;
@@ -36,6 +36,7 @@ export default component$(() => {
       enhancedSession = {
         ...session,
         is_admin: data?.[0]?.is_admin ?? false,
+        is_referee: data?.[0]?.is_referee ?? false,
         is_fortitude: !!data?.length,
       };
     }
