@@ -96,8 +96,6 @@ export default component$(() => {
         </p>
 
         <h2 id="torneo">Il torneo</h2>
-
-        <h3>Il trofeo</h3>
         <p>
           Questo torneo comprende tre diverse discipline: calcio, pallavolo e
           ping pong. Ognuna di queste discipline è parte integrante del torneo e

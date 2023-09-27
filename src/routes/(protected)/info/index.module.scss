@@ -7,7 +7,9 @@
 
 .localNavigation {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap;;
+  align-items: center;
+  justify-content: center;
   gap: var(--spacing-small);
   //position: sticky;
   //top: 0;

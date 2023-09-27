@@ -16,8 +16,7 @@ export default component$(({ ref }: Props) => {
   });
   return (
     <Button onClick$={scrollToTop} variant="selected" class={styles.button}>
-      Top
-      <i class="fa fa-chevron-up"></i>
+      Top <i class="fa fa-chevron-up"></i>
     </Button>
   );
 });

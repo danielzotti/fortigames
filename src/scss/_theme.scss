@@ -81,6 +81,8 @@
   --label-text-color: var(--white);
   --label-box-shadow: var(--box-shadow-width-default) #111111;
   --label-padding: 6px 10px;
+  --label-live-bg-color: #FF5A5A;
+  --label-live-text-color: var(--white);
 
   // BottomNavigation
   --bottom-navigation-bg-color: rgba(35, 35, 35, 0.7); // var(--white--transparent) ?
@@ -124,7 +126,7 @@
 
   // border
   --border-color: var(--gray-light);
-
+// 
   // Button
   --btn-font-size: 14px; // TODO: manca la variabile in variables-css (se è riutilizzabile, ES: font-size-default, font-size-small o roba simile)
   --btn-font-family: Bungee, sans-serif; // TODO: variabile in variables-css?
@@ -175,6 +177,8 @@
   --label-text-color: var(--black-light);
   --label-box-shadow: var(--box-shadow-width-default) #e3e3e3; // TODO: manca il colore in variables-css
   --label-padding: 6px 10px;
+  --label-live-bg-color: #FF5A5A;
+  --label-live-text-color: var(--white);
 
   // BottomNavigation
   --bottom-navigation-bg-color: rgba(224, 224, 224, 0.7); // var(--black-light-transparent) ?

@@ -68,6 +68,7 @@ p {
 }
 
 code {
+  font-family: var(--font-family-mono);
   font-size: clamp(1em, 1.3vw, 1.6em);
   line-height: 1.5;
 }
