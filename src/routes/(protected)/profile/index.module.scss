@@ -17,7 +17,9 @@
 .chatTitle {
   margin: 0;
 }
-
+.admin {
+  margin-top: var(--spacing-medium)
+}
 .logout {
-  margin-top: var(--spacing-big)
+  margin-top: var(--spacing-medium)
 }

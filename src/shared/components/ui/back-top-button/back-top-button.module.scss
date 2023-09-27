@@ -1,5 +1,9 @@
 .button {
   position: sticky;
   bottom: 0;
-  left: 75dvw; // TODO: improve this!
+  left: 72dvw; // TODO: improve this!
+
+  i {
+    margin-left: var(--spacing-small); // TODO: move this in the button component that uses icons!
+  }
 }

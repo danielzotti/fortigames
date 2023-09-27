@@ -22,6 +22,7 @@
 
     .teamCover {
       background-image: url('/public/static/backgrounds/cover_dragon_big.png');
+      background-position: left;
     }
 
     .teamInfoContainer {
@@ -43,7 +44,9 @@
     }
 
     .teamCover {
-      background-image: url('/public/static/backgrounds/cover_tiger_big.png');
+      background-image: url('/public/static/backgrounds/tiger2.jpg');
+      background-size: 200%;
+      background-position: bottom right;
     }
 
     .teamInfoContainer {

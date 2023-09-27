@@ -13,13 +13,7 @@ export default component$(() => {
   return (
     <MainLayout title="Profilo">
       <div class={styles.container}>
-        {auth.value?.is_admin === true && (
-          <div>
-            <Button isLink={true} href={config.urls.admin}>
-              Amministra
-            </Button>
-          </div>
-        )}
+        
         {/*<div>
           <strong>{auth.value?.user?.email}</strong>
         </div>*/}
@@ -50,6 +44,14 @@ export default component$(() => {
               Tutti
             </Link>
           </div>*/}
+
+{auth.value?.is_admin === true && (
+          <div class={styles.admin}>
+            <Button isLink={true} href={config.urls.admin}>
+              Amministra
+            </Button>
+          </div>
+        )}
         </div>
         <div class={styles.logout}>
           <Logout />
