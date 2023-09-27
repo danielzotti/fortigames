@@ -96,12 +96,12 @@
 
     &:before {
       clip-path: polygon(0 100%, 100% 100%, 50% 0%);
-      top: calc(var(--hexagon-height) * -1);
+      top: calc((var(--hexagon-height) - 1px) * -1);
     }
 
     &:after {
       clip-path: polygon(0 0, 100% 0%, 50% 100%);
-      bottom: calc(var(--hexagon-height) * -1);
+      bottom: calc((var(--hexagon-height) - 1px) * -1);
     }
 
     &.dragons {
