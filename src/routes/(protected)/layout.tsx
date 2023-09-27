@@ -3,14 +3,17 @@ import { useCheckSession } from "~/hooks/useCheckSession";
 import NoFortitude from "~/shared/components/ui/no-fortitude/no-fortitude";
 import Loader from "~/shared/components/ui/loader/loader";
 import { useGamesResults } from "~/hooks/useGameResults";
+import { useParticipants } from "~/hooks/useParticipants";
 
 export default component$(() => {
   const session = useCheckSession();
 
-  const { initializeContext } = useGamesResults();
+  const { initializeContext: initGamesResultsContext } = useGamesResults();
+  const { initializeContext: initParticipantsContext } = useParticipants();
 
   useVisibleTask$(async () => {
-    await initializeContext();
+    void initGamesResultsContext();
+    void initParticipantsContext();
   });
 
   if (!session.value) {

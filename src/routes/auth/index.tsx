@@ -7,6 +7,7 @@ import { AuthSession } from "~/types/auth.types";
 import { useAuth } from "~/hooks/useAuth";
 import NoFortitude from "~/shared/components/ui/no-fortitude/no-fortitude";
 import { TeamsValues } from "~/types/teams.types";
+import Loader from "~/shared/components/ui/loader/loader";
 
 export default component$(() => {
   const navigate = useNavigate();
@@ -56,5 +57,6 @@ export default component$(() => {
     return <NoFortitude />;
   }
 
-  return <p>Checking JWT... Do not refresh page!</p>;
+  // return <p>Checking JWT... Do not refresh page!</p>;
+  return <Loader />;
 });

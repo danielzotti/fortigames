@@ -1,8 +1,8 @@
 import {
   $,
   component$,
+  useComputed$,
   useSignal,
-  useTask$,
   useVisibleTask$,
 } from "@builder.io/qwik";
 import { supabaseClient } from "~/supabase/supabase-client";
@@ -11,44 +11,45 @@ import { useLocation, useNavigate } from "@builder.io/qwik-city";
 import { config } from "~/config";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import styles from "./index.module.scss";
-import Button from "~/shared/components/ui/button/button";
 import TeamsFilter from "~/shared/components/teams-filter/teams-filter";
+import { useParticipants } from "~/hooks/useParticipants";
 import { Games } from "~/types/games.types";
 
+type ParticipationFlags =
+  | "is_playing_soccer"
+  | "is_playing_pingpong"
+  | "is_playing_volley"
+  | "is_playing_boardgames";
+
 export default component$(() => {
-  const people = useSignal<Array<Participant> | null>();
   const location = useLocation();
   const navigate = useNavigate();
   const containerRef = useSignal<HTMLElement>();
   const filtersRef = useSignal<HTMLElement>();
   const filtersStickyRef = useSignal<HTMLElement>();
+  const { participantsList, participants } = useParticipants();
 
-  const filterDb = $(
-    async ({ team, game }: { team?: string | null; game?: string | null }) => {
-      const client = supabaseClient
-        .from("users")
-        .select("*")
-        .is("has_filled_form", true);
-
-      if (team && Object.keys(config.teams).includes(team)) {
-        client.eq("team", team);
-      }
-
-      if (game && Object.keys(config.games).includes(game)) {
-        client.is(config.games[game as keyof Games].db_key, true);
-      }
-
-      const { data: participantList } = await client;
-      people.value = participantList;
-    },
-  );
-
-  useVisibleTask$(async () => {
+  const people = useComputed$<Participant[]>(() => {
     const team = location.url.searchParams.get("team");
     const game = location.url.searchParams.get("game");
 
-    filterDb({ team, game });
+    let filteredList = participantsList.value.filter((p) => !!p.team);
 
+    if (team && Object.keys(config.teams).includes(team)) {
+      filteredList = filteredList.filter((p) => p.team === team);
+    }
+
+    if (game && Object.keys(config.games).includes(game)) {
+      filteredList = filteredList.filter(
+        (p) =>
+          p[config.games[game as keyof Games].db_key as ParticipationFlags] ===
+          true,
+      );
+    }
+    return [...filteredList].sort((a, b) => a.email.localeCompare(b.email));
+  });
+
+  useVisibleTask$(async () => {
     if (containerRef.value && filtersRef.value) {
       const paddingTop = parseInt(
         getComputedStyle(document.documentElement).getPropertyValue(
@@ -82,15 +83,7 @@ export default component$(() => {
 
     const url = `${config.urls.teams}?${urlParams.toString()}`;
     await navigate(url);
-
-    const team = location.url.searchParams.get("team");
-    const game = location.url.searchParams.get("game");
-    await filterDb({ team, game });
   });
-
-  function isFilterActive(key: string, value: string) {
-    return location.url.searchParams.get(key) === value;
-  }
 
   return (
     <MainLayout title="I Team" hasContentPaddingTop={false} ref={containerRef}>
@@ -130,9 +123,10 @@ export default component$(() => {
           {people.value &&
             people.value.map((p) => (
               <tr key={p.id}>
-                {/*<td>{p.number || "ND"}</td>*/}
+                {/*<td> ({p.company})</td>*/}
                 <td>
-                  {p.firstname} {p.lastname} ({p.company})
+                  {/*{p.number ? `${p.number}. ` : ""}*/}
+                  {p.firstname} {p.lastname}
                 </td>
                 <td>
                   {p.team ? (
