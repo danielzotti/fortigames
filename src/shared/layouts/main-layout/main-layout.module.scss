@@ -2,7 +2,8 @@
   display: block;
   height: 100dvh;
   margin: 0 auto;
-  overflow-y: scroll;
+  //overflow-y: scroll;
+  overflow: hidden;
 }
 
 .title {
@@ -42,12 +43,15 @@
 
 .content {
   position: relative;
-  padding-inline: var(--spacing-default);
-  padding-bottom: 120px; // TODO: check this height!
+  padding-bottom: var(--layout-padding-bottom);
   max-width: 800px;
   margin: 0 auto;
   word-wrap: break-word;
   white-space: break-spaces;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 100%;
+
 
   h1, h2, h3, h4, h5, h6 {
     &:first-of-type {
@@ -56,8 +60,12 @@
   }
 }
 
-.contentWithPadding {
-  padding-top: 80px; // TODO: check this height!
+.contentWithPaddingTop {
+  padding-top: var(--layout-padding-bottom);
+}
+
+.contentWithPaddingInline {
+  padding-inline: var(--layout-padding-inline);
 }
 
 

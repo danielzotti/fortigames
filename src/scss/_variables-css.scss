@@ -31,12 +31,13 @@
   --orange: #FF8A00;
   --accent-color: var(--yellow);
 
-  --box-shadow-width-default: 1px 2px 0px;
-
   --tigers-color: var(--black);
   --tigers-color-inverse: var(--white);
   --dragons-color: var(--white);
   --dragons-color-inverse: var(--black);
+
+  // BOX-SHADOW
+  --box-shadow-width-default: 1px 2px 0px;
 
   //FONTS
   --font-family-title: 'Bungee', Georgia, serif;
@@ -48,13 +49,17 @@
   --font-family-board: 'Special Elite', 'Roboto', Verdana, Helvetica, Arial, sans-serif;
   --font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
-
   //MARGINS
   --spacing-xsmall: 0.3rem;
   --spacing-small: 0.5rem;
   --spacing-default: 1rem;
   --spacing-medium: 2rem;
   --spacing-big: 4rem;
+
+  // LAYOUT
+  --layout-padding-top: 80px;
+  --layout-padding-bottom: 120px;
+  --layout-padding-inline: var(--spacing-default);
 
   //BORDERS
   --border-radius: 0.5rem;

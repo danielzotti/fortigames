@@ -3,6 +3,7 @@
 
 .teamsContainer {
   --hexagon-height: 50px;
+  margin: calc(var(--layout-padding-inline) * -1);
 
   display: flex;
   flex-direction: row;
@@ -100,21 +101,54 @@
   }
 }
 
+.filtersSticky {
+  position: fixed;
+  top: 0;
+  inset-inline: 0;
+  padding-inline: var(--layout-padding-inline);
+  padding-top: var(--layout-padding-top);
+  backdrop-filter: blur(3px);
+  //background-color: black;
+
+  opacity: 0;
+  pointer-events: none;
+
+  &:global(.sticky) {
+    pointer-events: all;
+    opacity: 1;
+  }
+}
+
 .filtersContainer {
+  opacity: 1;
+  pointer-events: all;
+
+  &:global(.sticky) {
+    pointer-events: none;
+    opacity: 0;
+  }
+}
+
+.filtersItem {
   display: flex;
   flex-direction: row;
   justify-content: center;
+
   gap: var(--spacing-small);
-  margin-top: var(--spacing-default);
   margin-bottom: var(--spacing-default)
 }
 
 .filtersTitle {
   text-align: center;
-  margin:0;
+  margin: 0;
+}
+
+.playersListContainer {
+  min-height: 50dvh;
 }
 
 .playersList {
+
   .team {
     border-radius: 50%;
     border: 1px solid #555555;

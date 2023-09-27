@@ -17,6 +17,9 @@ export default component$(() => {
   const people = useSignal<Array<Participant> | null>();
   const location = useLocation();
   const navigate = useNavigate();
+  const containerRef = useSignal<HTMLElement>();
+  const filtersRef = useSignal<HTMLElement>();
+  const filtersStickyRef = useSignal<HTMLElement>();
 
   const filterDb = $(
     async ({ team, game }: { team?: string | null; game?: string | null }) => {
@@ -43,6 +46,28 @@ export default component$(() => {
     const game = location.url.searchParams.get("game");
 
     filterDb({ team, game });
+
+    if (containerRef.value && filtersRef.value) {
+      const paddingTop = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue(
+          "--layout-padding-top",
+        ),
+      );
+      console.log(paddingTop);
+      const container$ = containerRef.value;
+      const filter$ = filtersRef.value;
+      const filterSticky$ = filtersStickyRef.value;
+      container$.addEventListener("scroll", (e) => {
+        const scrollTop = (e.target as HTMLElement).scrollTop;
+        if (scrollTop >= filter$?.offsetTop - paddingTop) {
+          filterSticky$?.classList.add("sticky");
+          filter$?.classList.add("sticky");
+        } else {
+          filterSticky$?.classList.remove("sticky");
+          filter$?.classList.remove("sticky");
+        }
+      });
+    }
   });
 
   const navigateFilterUrl = $(async (key: string, value: string | null) => {
@@ -59,7 +84,7 @@ export default component$(() => {
 
     const team = location.url.searchParams.get("team");
     const game = location.url.searchParams.get("game");
-    filterDb({ team, game });
+    await filterDb({ team, game });
   });
 
   function isFilterActive(key: string, value: string) {
@@ -67,7 +92,7 @@ export default component$(() => {
   }
 
   return (
-    <MainLayout title="I Team" hasContentPaddingTop={false}>
+    <MainLayout title="I Team" hasContentPaddingTop={false} ref={containerRef}>
       <div class={styles.teamsContainer}>
         <div class={[styles.teamContainer, styles.tigers]}>
           <div class={styles.teamCover}></div>
@@ -91,93 +116,142 @@ export default component$(() => {
         </div>
       </div>
       {/*Filters*/}
-      <div class={styles.filtersContainer}>
-        <Button
-          variant={
-            !location.url.searchParams.get("team") ? "selected" : "default"
-          }
-          onClick$={() => navigateFilterUrl("team", null)}
-        >
-          Tutti
-        </Button>
-        {Object.keys(config.teams).map((k) => (
+      <div class={styles.filtersContainer} ref={filtersRef}>
+        <div class={styles.filtersItem}>
           <Button
-            key={k}
-            variant={isFilterActive("team", k) ? "selected" : "default"}
-            onClick$={() => navigateFilterUrl("team", k)}
+            variant={
+              !location.url.searchParams.get("team") ? "selected" : "default"
+            }
+            onClick$={() => navigateFilterUrl("team", null)}
           >
-            {config.teams[k as keyof typeof config.teams].label}
+            Tutti
           </Button>
-        ))}
-      </div>
-      <h3 class={styles.filtersTitle}>Partecipanti</h3>
-
-      <div class={styles.filtersContainer}>
-        <Button
-          variant={
-            !location.url.searchParams.get("game") ? "selected" : "default"
-          }
-          onClick$={() => navigateFilterUrl("game", null)}
-        >
-          Tutto
-        </Button>
-        {Object.keys(config.games).map((k) => {
-          const game = config.games[k as keyof Games];
-          if (game.team) {
-            return (
-              <Button
-                key={k}
-                variant={isFilterActive("game", k) ? "selected" : "default"}
-                onClick$={() => navigateFilterUrl("game", k)}
-              >
-                {game.label}
-              </Button>
-            );
-          }
-        })}
-      </div>
-      <table class={styles.playersList}>
-        {people.value &&
-          people.value.map((p) => (
-            <tr key={p.id}>
-              {/*<td>{p.number || "ND"}</td>*/}
-              <td>
-                {p.firstname} {p.lastname} ({p.company})
-              </td>
-              <td>
-                {p.team ? (
-                  <span class={[styles[p.team], styles.team]}></span>
-                ) : (
-                  <span class={[styles.noTeam, styles.team]}></span>
-                )}
-              </td>
-              <td class={styles.iconContainer}>
-                {p.is_playing_soccer ? <i class="fa fa-soccer-ball"></i> : ""}
-              </td>
-              <td class={styles.iconContainer}>
-                {p.is_playing_volley ? (
-                  <i class="fa fa-volleyball-ball"></i>
-                ) : (
-                  ""
-                )}
-              </td>
-              <td class={styles.iconContainer}>
-                {p.is_playing_pingpong ? (
-                  <i class="fa fa-table-tennis-paddle-ball"></i>
-                ) : (
-                  ""
-                )}
-              </td>
-              <td class={styles.iconContainer}>
-                {p.is_playing_boardgames ? (
-                  <i class="fa fa-chess-rook"></i>
-                ) : (
-                  ""
-                )}
-              </td>
-            </tr>
+          {Object.keys(config.teams).map((k) => (
+            <Button
+              key={k}
+              variant={isFilterActive("team", k) ? "selected" : "default"}
+              onClick$={() => navigateFilterUrl("team", k)}
+            >
+              {config.teams[k as keyof typeof config.teams].label}
+              <i class={`fa fa-`}></i>
+            </Button>
           ))}
-      </table>
+        </div>
+        <div class={styles.filtersItem}>
+          <Button
+            variant={
+              !location.url.searchParams.get("game") ? "selected" : "default"
+            }
+            onClick$={() => navigateFilterUrl("game", null)}
+          >
+            Tutto
+          </Button>
+          {Object.keys(config.games).map((k) => {
+            const game = config.games[k as keyof Games];
+            if (game.team) {
+              return (
+                <Button
+                  key={k}
+                  variant={isFilterActive("game", k) ? "selected" : "default"}
+                  onClick$={() => navigateFilterUrl("game", k)}
+                >
+                  {game.label}
+                </Button>
+              );
+            }
+          })}
+        </div>
+      </div>
+      <div class={styles.filtersSticky} ref={filtersStickyRef}>
+        <div class={styles.filtersItem}>
+          <Button
+            variant={
+              !location.url.searchParams.get("team") ? "selected" : "default"
+            }
+            onClick$={() => navigateFilterUrl("team", null)}
+          >
+            Tutti
+          </Button>
+          {Object.keys(config.teams).map((k) => (
+            <Button
+              key={k}
+              variant={isFilterActive("team", k) ? "selected" : "default"}
+              onClick$={() => navigateFilterUrl("team", k)}
+            >
+              {config.teams[k as keyof typeof config.teams].label}
+              <i class={`fa fa-`}></i>
+            </Button>
+          ))}
+        </div>
+        <div class={styles.filtersItem}>
+          <Button
+            variant={
+              !location.url.searchParams.get("game") ? "selected" : "default"
+            }
+            onClick$={() => navigateFilterUrl("game", null)}
+          >
+            Tutto
+          </Button>
+          {Object.keys(config.games).map((k) => {
+            const game = config.games[k as keyof Games];
+            if (game.team) {
+              return (
+                <Button
+                  key={k}
+                  variant={isFilterActive("game", k) ? "selected" : "default"}
+                  onClick$={() => navigateFilterUrl("game", k)}
+                >
+                  {game.label}
+                </Button>
+              );
+            }
+          })}
+        </div>
+      </div>
+      <div class={styles.playersListContainer}>
+        <table class={styles.playersList}>
+          {people.value &&
+            people.value.map((p) => (
+              <tr key={p.id}>
+                {/*<td>{p.number || "ND"}</td>*/}
+                <td>
+                  {p.firstname} {p.lastname} ({p.company})
+                </td>
+                <td>
+                  {p.team ? (
+                    <span class={[styles[p.team], styles.team]}></span>
+                  ) : (
+                    <span class={[styles.noTeam, styles.team]}></span>
+                  )}
+                </td>
+                <td class={styles.iconContainer}>
+                  {p.is_playing_soccer ? <i class="fa fa-soccer-ball"></i> : ""}
+                </td>
+                <td class={styles.iconContainer}>
+                  {p.is_playing_volley ? (
+                    <i class="fa fa-volleyball-ball"></i>
+                  ) : (
+                    ""
+                  )}
+                </td>
+                <td class={styles.iconContainer}>
+                  {p.is_playing_pingpong ? (
+                    <i class="fa fa-table-tennis-paddle-ball"></i>
+                  ) : (
+                    ""
+                  )}
+                </td>
+                <td class={styles.iconContainer}>
+                  {p.is_playing_boardgames ? (
+                    <i class="fa fa-chess-rook"></i>
+                  ) : (
+                    ""
+                  )}
+                </td>
+              </tr>
+            ))}
+        </table>
+      </div>
     </MainLayout>
   );
 });
