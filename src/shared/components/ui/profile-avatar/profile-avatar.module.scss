@@ -22,3 +22,21 @@
     background-color: var(--profile-avatar-bg-color);
   }
 }
+
+.team {
+  width: 6.4375rem;
+  height: 6.4375rem;
+  border-radius: 50%;
+  font-family: "Bungee", sans-serif;
+  font-size: 1.25rem;
+}
+
+.tigers {
+  background-color: var(--white-pure);
+  color: #1f1f1f;
+}
+
+.dragons {
+  background-color: white;
+  color: black;
+}

@@ -1,0 +1,23 @@
+@use "@scss/mixins/link";
+
+.teamBadge {
+  font-family: var(--team-badge-font-family);
+  font-size: var(--team-badge-font-size);
+  border-radius: var(--team-badge-border-radius);
+  padding: 0.5rem;
+  transform: rotate(-15deg);
+}
+
+.tigers {
+  color: var(--team-badge-tigers-text-color);
+  background: var(--team-badge-tigers-bg-color);
+  border: 1px solid var(--team-badge-tigers-border-color);
+  box-shadow: var(--team-badge-tigers-box-shadow);
+}
+
+.dragons {
+  color: var(--team-badge-dragons-text-color);
+  background: var(--team-badge-dragons-bg-color);
+  border: 1px solid var(--team-badge-dragons-border-color);
+  box-shadow: var(--team-badge-dragons-box-shadow);
+}
