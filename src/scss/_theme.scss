@@ -5,16 +5,19 @@
   --text-color-secondary: var(--white);
   --text-bg-color: var(--black);
   --text-bg-color-secondary: var(--black-light);
-  --gradient-bg-color: linear-gradient(155deg, var(--gray-dark) 28.44%, var(--black-pure) 84.76%);
-  --accent-color: var(--yellow);
-
   --text-color-inverse: var(--black-light);
   --text-bg-color-inverse: var(--white);
+  --gradient-bg-color: linear-gradient(155deg, var(--gray-dark) 28.44%, var(--black-pure) 84.76%);
+
+  --accent-color: var(--yellow);
+  --error-bg-color: var(--red);
+  --error-text-color: var(--white);
 
   // Link
   --link-color: inherit;
   --link-hover-text-color: var(--black-pure);
   --link-hover-bg-color: var(--accent-color);
+
 
   // Button
   --btn-font-size: 14px; // TODO: manca la variabile in variables-css (se è riutilizzabile, ES: font-size-default, font-size-small o roba simile)
@@ -64,12 +67,13 @@
   --text-color-secondary: var(--gray-dark);
   --text-bg-color: var(--white);
   --text-bg-color-secondary: var(--white-dark);
-
   --text-color-inverse: var(--white);
   --text-bg-color-inverse: var(--black-light);
   --gradient-bg-color: linear-gradient(155deg, var(--white-pure) 28.44%, var(--white-dark) 84.76%);
 
   --accent-color: var(--orange);
+  --error-bg-color: var(--red);
+  --error-text-color: var(--white);
 
   // Link
   --link-color: inherit;

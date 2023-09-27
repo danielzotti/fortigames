@@ -10,32 +10,32 @@ interface Props {
 
 interface Results {
   volley: {
-    dragons: number;
     tigers: number;
+    dragons: number;
   };
   soccer: {
-    dragons: number;
     tigers: number;
+    dragons: number;
   };
   table_tennis: {
-    dragons: number;
     tigers: number;
+    dragons: number;
   };
 }
 
 export default component$(({ editMode }: Props) => {
   const results = useStore<Results>({
     volley: {
-      dragons: 0,
       tigers: 0,
+      dragons: 0,
     },
     soccer: {
-      dragons: 0,
       tigers: 0,
+      dragons: 0,
     },
     table_tennis: {
-      dragons: 0,
       tigers: 0,
+      dragons: 0,
     },
   });
 
@@ -43,8 +43,8 @@ export default component$(({ editMode }: Props) => {
     const { data } = await supabaseClient.from("games_results").select("*");
 
     data?.forEach((row) => {
-      results[row.name as keyof Results].dragons = row.dragons;
       results[row.name as keyof Results].tigers = row.tigers;
+      results[row.name as keyof Results].dragons = row.dragons;
     });
 
     supabaseClient
@@ -53,10 +53,10 @@ export default component$(({ editMode }: Props) => {
         "postgres_changes",
         { event: "UPDATE", schema: "public", table: "games_results" },
         (payload) => {
-          results[payload.new.name as keyof Results].dragons =
-            payload.new.dragons;
           results[payload.new.name as keyof Results].tigers =
             payload.new.tigers;
+          results[payload.new.name as keyof Results].dragons =
+            payload.new.dragons;
           console.log(payload.new);
         },
       )
@@ -68,22 +68,22 @@ export default component$(({ editMode }: Props) => {
       {Object.keys(results).map((k) => (
         <div key={k}>
           <div class={styles.result}>
-            <i
-              class={[config.games[k as keyof Games].icon, styles.resultIcon]}
-            ></i>
-            <span class={styles.resultInfo}>
-              {results[k as keyof Results].dragons} -{" "}
-              {results[k as keyof Results].tigers}
+            <span class={styles.resultIcon}>
+              <i
+                class={[config.games[k as keyof Games].icon, styles.resultIcon]}
+              ></i>
             </span>
-            <span class={`${styles.resultLabel} label-medium`}>
+            <span class={styles.resultInfo}>
+              {results[k as keyof Results].tigers} &nbsp;{" "}
+              {results[k as keyof Results].dragons}
+            </span>
+            <span class={styles.resultLabel}>
               {config.games[k as keyof Games].label}
             </span>
           </div>
           {editMode && (
             <div class={styles.manage}>
-              <Link class="btn-selected btn-medium" href={"/games/" + k}>
-                Arbitra
-              </Link>
+              <Link href={"/games/" + k}>Arbitra</Link>
             </div>
           )}
         </div>

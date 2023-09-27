@@ -47,15 +47,15 @@ export default component$(() => {
       {config.value?.games_started_at ? (
         <>
           <div class={styles.header}>
-            <div class={styles.title}>Fine gioco</div>
+            <div class={styles.labelLive}>Fine gioco</div>
             <div class={styles.plannedEnd}>h 19:00</div>
           </div>
           <div class={styles.remainingTime}>{remainingTime.value}</div>
         </>
       ) : (
         <>
-          <div>Inizio giochi</div>
-          <div>17:00</div>
+          <div class={styles.label}>Inizio giochi</div>
+          <div class={styles.plannedStart}>17:00</div>
         </>
       )}
     </div>
