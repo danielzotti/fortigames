@@ -124,7 +124,7 @@ export default component$(() => {
               <tr key={p.id}>
                 {/*<td>{p.number || "ND"}</td>*/}
                 <td>
-                <img class={styles.playersListImg} src="/public/static/images/{p.company}.png" alt="{p.company}" /> {p.firstname} {p.lastname}
+                <img class={styles.playersListImg} src={`/static/images/${p.company}.png`} alt={p.company || ""} /> {p.firstname} {p.lastname}
                 </td>
                 <td>
                   {p.team ? (
