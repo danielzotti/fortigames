@@ -2,21 +2,32 @@
 .playersList {
   .team {
     border-radius: 50%;
-    border: 1px solid #555555;
-    width: 25px;
-    height: 25px;
+    border: 1px solid var(--border-color);
+    width: 1.2em;
+    height: 1.2em;
     display: block;
   }
 
   .dragons {
-    background-color: #222222;
+    background-color: var(--dragons-color);
   }
 
   .tigers {
-    background-color: #EEEEEE;
+    background-color: var(--tigers-color);
   }
 
   .noTeam {
-    background: linear-gradient(315deg, #222223 45%, #EEEEEE 55%);
+    background: var(--gradient-bg-color-bw);
   }
 }
+
+
+  h2, h3, h4, p{
+    font-family: var(--font-family-board);
+  }
+  h2{
+      font-size: 1.6em;
+    color: var(--accent-color);
+  }
+
+
