@@ -18,6 +18,13 @@ export default component$(() => {
       <Button variant="selected" size="large">
         Selected Large
       </Button>
+
+      <hr />
+
+      <span class="label-medium">Label Medium</span>
+      <br />
+      <br />
+      <span class="label-large">Label Large</span>
     </MainLayout>
   );
 });

@@ -5,19 +5,14 @@
   --text-color-secondary: var(--white);
   --text-bg-color: var(--black);
   --text-bg-color-secondary: var(--black-light);
-  --gradient-bg-color:  linear-gradient(155deg, var(--gray-dark) 28.44%, var(--black-pure) 84.76%);
+  --gradient-bg-color: linear-gradient(155deg, var(--gray-dark) 28.44%, var(--black-pure) 84.76%);
+  --accent-color: var(--yellow);
 
   --text-color-inverse: var(--black-light);
   --text-bg-color-inverse: var(--white);
-  --border-color: var(--gray-dark);
-  --button-border-color: var(--black);
-  --button-bg-color: var(--black-light);
-  --button-shadow: var(--black);
-
-  --accent-color: var(--yellow);
 
   // Link
-  --link-color: var(--text-color);
+  --link-color: inherit;
   --link-hover-text-color: var(--black-pure);
   --link-hover-bg-color: var(--accent-color);
 
@@ -30,7 +25,7 @@
   --btn-default-text-color: var(--white); // #EEEEEE
   --btn-default-bg-color: var(--black-light); // #333333
   --btn-default-border-color: var(--gray-lighter); // #CCCCCC
-  --btn-default-box-shadow: 1px 2px 0px #111111; // TODO: manca il colore in variables-css
+  --btn-default-box-shadow: var(--box-shadow-width-default) #111111; // TODO: manca il colore in variables-css
 
   --btn-default-hover-text-color: var(--black-pure); // #EEEEEE
   --btn-default-hover-bg-color: var(--accent-color); // #333333
@@ -38,16 +33,24 @@
   --btn-selected-text-color: var(--black-light); // #333333
   --btn-selected-bg-color: var(--accent-color); // #FFF500
 
+  // Label
+  --label-border-color: var(--black);
+  --label-font-family: var(--font-family-label);
+  --label-medium-font-size: 16px;
+  --label-large-font-size: 24px;
+  --label-bg-color: var(--black-light);
+  --label-text-color: var(--white);
+  --label-box-shadow: var(--box-shadow-width-default) #111111;
+  --label-padding: 6px 10px;
 
   // BottomNavigation
-
   --bottom-navigation-bg-color: rgba(35, 35, 35, 0.7); // var(--white--transparent) ?
   --bottom-navigation-text-color: var(--white);
   --bottom-navigation-border-color: var(--black-pure);
   --bottom-navigation-border-color-light: var(--black-light);
   --bottom-navigation-border-color-dark: var(--black);
   --bottom-navigation-box-shadow: var(--gray-dark);
-  --bottom-navigation-accent-color:rgba(255, 245, 0, 0.7);
+  --bottom-navigation-accent-color: rgba(255, 245, 0, 0.7);
 
 
   --profile-avatar-bg-color: var(--white);
@@ -64,30 +67,25 @@
 
   --text-color-inverse: var(--white);
   --text-bg-color-inverse: var(--black-light);
-  --gradient-bg-color:  linear-gradient(155deg, var(--white-pure) 28.44%, var(--white-dark) 84.76%);
+  --gradient-bg-color: linear-gradient(155deg, var(--white-pure) 28.44%, var(--white-dark) 84.76%);
 
-  --border-color: var(--gray-light);
-  --button-border-color: var(--gray-lighter);
-  --button-bg-color: var(--white);
-  --button-shadow: var(--white-darker);
-
-  --accent-color: var(--yellow);
+  --accent-color: var(--orange);
 
   // Link
-  --link-color: var(--text-color);
+  --link-color: inherit;
   --link-hover-text-color: var(--black-pure);
   --link-hover-bg-color: var(--accent-color);
 
   // Button
-  --btn-font-size: 1.2rem; // TODO: manca la variabile in variables-css (se è riutilizzabile, ES: font-size-default, font-size-small o roba simile)
+  --btn-font-size: 14px; // TODO: manca la variabile in variables-css (se è riutilizzabile, ES: font-size-default, font-size-small o roba simile)
   --btn-font-family: Bungee, sans-serif; // TODO: variabile in variables-css?
   --btn-border-radius: var(--border-radius); // 8px
-  --btn-border-color: var( --gray-lighter); // #CCCCCC
+  --btn-border-color: var(--gray-lighter); // #CCCCCC
 
   --btn-default-text-color: var(--text-color); // var(--black-pure); // #000000
   --btn-default-bg-color: var(--white-pure); // #FFFFFF
   --btn-default-border-color: var(--gray-lighter); // #CCCCCC
-  --btn-default-box-shadow: 1px 2px 0px #E3E3E3; // TODO: manca il colore in variables-css
+  --btn-default-box-shadow: var(--box-shadow-width-default) #E3E3E3; // TODO: manca il colore in variables-css
 
   --btn-default-hover-text-color: var(--black-light); // #EEEEEE
   --btn-default-hover-bg-color: var(--accent-color); // #333333
@@ -95,15 +93,24 @@
   --btn-selected-text-color: var(--black-pure); // #333333
   --btn-selected-bg-color: var(--accent-color); // #FFF500
 
-  // BottomNavigation
+  // Label
+  --label-border-color: var(--white);
+  --label-font-family: var(--font-family-label);
+  --label-medium-font-size: 16px;
+  --label-large-font-size: 24px;
+  --label-bg-color: var(--white-pure);
+  --label-text-color: var(--black-light);
+  --label-box-shadow: var(--box-shadow-width-default) #E3E3E3; // TODO: manca il colore in variables-css
+  --label-padding: 6px 10px;
 
+  // BottomNavigation
   --bottom-navigation-bg-color: rgba(224, 224, 224, 0.7); // var(--black-light-transparent) ?
   --bottom-navigation-text-color: var(--black-light);
   --bottom-navigation-border-color: var(--white);
   --bottom-navigation-border-color-light: var(--white-pure);
   --bottom-navigation-border-color-dark: var(--white-dark);
   --bottom-navigation-box-shadow: var(--gray-light);
-  --bottom-navigation-accent-color:rgba(255, 245, 0, 0.7);
+  --bottom-navigation-accent-color: rgba(255, 245, 0, 0.7);
 
   --profile-avatar-bg-color: var(--black-light);
   --profile-avatar-text-color: var(--white);

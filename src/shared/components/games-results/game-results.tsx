@@ -75,13 +75,15 @@ export default component$(({ editMode }: Props) => {
               {results[k as keyof Results].dragons} -{" "}
               {results[k as keyof Results].tigers}
             </span>
-            <span class={styles.resultLabel}>
+            <span class={`${styles.resultLabel} label-medium`}>
               {config.games[k as keyof Games].label}
             </span>
           </div>
           {editMode && (
             <div class={styles.manage}>
-              <Link href={"/games/" + k}>Arbitra</Link>
+              <Link class="btn-selected btn-medium" href={"/games/" + k}>
+                Arbitra
+              </Link>
             </div>
           )}
         </div>

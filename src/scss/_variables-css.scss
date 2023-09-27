@@ -26,12 +26,16 @@
   --gray-lighter: #CCC;
 
   --blue: #008dc9;
+  --orange: #FF8A00;
   --yellow: rgb(255, 245, 0);
   --red: #d00;
-  --accent-color: var(--yellow);
 
+  --box-shadow-width-default: 1px 2px 0px;
 
-  --link-color: inherit;
+  --tigers-color: var(--black);
+  --tigers-color-inverse: var(--white);
+  --dragons-color: var(--white);
+  --dragons-color-inverse: var(--black);
 
   //FONTS
   --font-family-title: 'Bungee', Georgia, serif;

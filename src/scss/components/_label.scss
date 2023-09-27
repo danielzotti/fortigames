@@ -1,0 +1,20 @@
+._label {
+  border: 1px solid var(--label-border-color);
+  font-family: var(--label-font-family);
+  display: inline-block;
+  background-color: var(--label-bg-color);
+  color: var(--label-text-color);
+  box-shadow: var(--label-box-shadow);
+  padding:var(--label-padding);
+  white-space: nowrap;
+}
+
+.label-medium {
+  @extend ._label;
+  font-size: var(--label-medium-font-size);
+}
+
+.label-large {
+  @extend ._label;
+  font-size: var(--label-large-font-size);
+}
