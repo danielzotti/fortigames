@@ -5,16 +5,12 @@ import { config } from "~/config";
 import { useAuth } from "~/hooks/useAuth";
 import TeamBadge from "../team-badge/team-badge";
 
-interface Props {
-  team?: "dragons" | "tigers" | null;
-}
-
-export default component$(({ team = null }: Props) => {
-  const { auth } = useAuth();
+export default component$(() => {
+  const { team, user } = useAuth();
   const navigate = useNavigate();
 
   const getUserInitialLetters = () => {
-    const fullNameList = auth.value?.user.email?.split("@")?.[0]?.split(".");
+    const fullNameList = user?.email?.split("@")?.[0]?.split(".");
     if (!fullNameList?.length) {
       return <i class="fa fa-user"></i>;
     }

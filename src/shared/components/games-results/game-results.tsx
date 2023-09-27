@@ -1,66 +1,30 @@
-import { component$, useStore, useVisibleTask$ } from "@builder.io/qwik";
+import {
+  component$,
+  useContext,
+  useSignal,
+  useStore,
+  useTask$,
+  useVisibleTask$,
+} from "@builder.io/qwik";
 import styles from "./game-results.module.scss";
 import { supabaseClient } from "~/supabase/supabase-client";
 import { config, Games } from "~/config";
 import { Link } from "@builder.io/qwik-city";
+import { GamesResults } from "~/types/games.types";
+import { gamesResultsDefault, useGamesResults } from "~/hooks/useGameResults";
+import Loader from "~/shared/components/ui/loader/loader";
+import { GamesResultsContext } from "~/contexts/games-results.context";
 
 interface Props {
   editMode?: boolean;
 }
 
-interface Results {
-  volley: {
-    tigers: number;
-    dragons: number;
-  };
-  soccer: {
-    tigers: number;
-    dragons: number;
-  };
-  table_tennis: {
-    tigers: number;
-    dragons: number;
-  };
-}
-
 export default component$(({ editMode }: Props) => {
-  const results = useStore<Results>({
-    volley: {
-      tigers: 0,
-      dragons: 0,
-    },
-    soccer: {
-      tigers: 0,
-      dragons: 0,
-    },
-    table_tennis: {
-      tigers: 0,
-      dragons: 0,
-    },
-  });
+  const { results } = useGamesResults();
 
-  useVisibleTask$(async () => {
-    const { data } = await supabaseClient.from("games_results").select("*");
-
-    data?.forEach((row) => {
-      results[row.name as keyof Results].tigers = row.tigers;
-      results[row.name as keyof Results].dragons = row.dragons;
-    });
-
-    supabaseClient
-      .channel("custom-update-channel")
-      .on(
-        "postgres_changes",
-        { event: "UPDATE", schema: "public", table: "games_results" },
-        (payload) => {
-          results[payload.new.name as keyof Results].tigers =
-            payload.new.tigers;
-          results[payload.new.name as keyof Results].dragons =
-            payload.new.dragons;
-        },
-      )
-      .subscribe();
-  });
+  if (!results) {
+    return <Loader />;
+  }
 
   return (
     <div class={styles.resultContainer}>
@@ -72,10 +36,10 @@ export default component$(({ editMode }: Props) => {
             </span>
             <span class={styles.resultInfo}>
               <span class={styles.tigers}>
-                {results[k as keyof Results].tigers}
+                {results[k as keyof GamesResults].tigers}
               </span>
               <span class={styles.dragons}>
-                {results[k as keyof Results].dragons}
+                {results[k as keyof GamesResults].dragons}
               </span>
             </span>
             <span class={styles.resultLabel}>

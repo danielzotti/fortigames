@@ -54,7 +54,6 @@ export default component$(() => {
           "--layout-padding-top",
         ),
       );
-      console.log(paddingTop);
       const container$ = containerRef.value;
       const filter$ = filtersRef.value;
       const filterSticky$ = filtersStickyRef.value;

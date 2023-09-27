@@ -59,8 +59,8 @@
   // TeamBadge
   --team-badge-font-size: 24px;
   --team-badge-size: 50px;
-  --team-badge-font-family: Xahn Mono, sans-serif;
-  --team-badge-border-radius: 1.875rem;
+  --team-badge-font-family: var(--font-family-badge);
+  --team-badge-border-radius: 50%;
 
   --team-badge-dragons-text-color: var(--dragons-color-inverse);
   --team-badge-dragons-bg-color: var(--dragons-color);
@@ -155,8 +155,8 @@
   // TeamBadge
   --team-badge-font-size: 24px;
   --team-badge-size: 50px;
-  --team-badge-font-family: Xahn Mono, sans-serif;
-  --team-badge-border-radius: 1.875rem;
+  --team-badge-font-family: var(--font-family-badge);
+  --team-badge-border-radius: 50%;
 
   --team-badge-dragons-text-color: var(--dragons-color-inverse);
   --team-badge-dragons-bg-color: var(--dragons-color);

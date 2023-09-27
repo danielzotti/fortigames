@@ -27,27 +27,10 @@ export default component$(
     hasContentPaddingInline = true,
     ref,
   }: Props) => {
-    const { auth } = useAuth();
-    const team = useSignal<"tigers" | "dragons" | null>(null);
-
-    useVisibleTask$(async () => {
-      if (auth.value?.user.email) {
-        const { data } = await supabaseClient
-          .from("users")
-          .select("team")
-          .eq("email", auth.value.user.email);
-
-        console.log(data);
-        if (data) {
-          team.value = data[0].team as "tigers" | "dragons";
-        }
-      }
-    });
-
     return (
       <>
         <div class={styles.profileAvatar}>
-          <ProfileAvatar team={team.value} />
+          <ProfileAvatar />
         </div>
         <div class={styles.container}>
           <div class={styles.top}>

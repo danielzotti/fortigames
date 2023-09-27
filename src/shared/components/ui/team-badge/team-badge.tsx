@@ -1,16 +1,12 @@
 import { component$ } from "@builder.io/qwik";
 import styles from "./team-badge.module.scss";
-import { useNavigate } from "@builder.io/qwik-city";
-import { useAuth } from "~/hooks/useAuth";
+import { TeamsValues } from "~/types/teams.types";
 
 interface Props {
-  team?: "dragons" | "tigers";
+  team?: TeamsValues;
 }
 
 export default component$(({ team }: Props) => {
-  const { auth } = useAuth();
-  const navigate = useNavigate();
-
   return (
     <div
       class={`${styles.teamBadge} ${

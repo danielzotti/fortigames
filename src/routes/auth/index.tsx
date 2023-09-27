@@ -5,8 +5,8 @@ import { useNavigate } from "@builder.io/qwik-city";
 import { supabaseClient } from "~/supabase/supabase-client";
 import { AuthSession } from "~/types/auth.types";
 import { useAuth } from "~/hooks/useAuth";
-import { Logout } from "~/components/auth/logout/logout";
 import NoFortitude from "~/shared/components/ui/no-fortitude/no-fortitude";
+import { TeamsValues } from "~/types/teams.types";
 
 export default component$(() => {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ export default component$(() => {
       // Get additional info from users table
       const { data } = await supabaseClient
         .from("users")
-        .select("is_admin, is_referee")
+        .select("is_admin, is_referee, is_facilitator, team")
         .eq("email", session.user.email);
 
       isEmailFromFortitudeDomain.value = !!data?.length;
@@ -37,7 +37,9 @@ export default component$(() => {
         ...session,
         is_admin: data?.[0]?.is_admin ?? false,
         is_referee: data?.[0]?.is_referee ?? false,
+        is_facilitator: data?.[0]?.is_facilitator ?? false,
         is_fortitude: !!data?.length,
+        team: data?.[0]?.team as TeamsValues,
       };
     }
 
