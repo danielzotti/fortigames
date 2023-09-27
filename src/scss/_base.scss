@@ -77,13 +77,11 @@ img {
 }
 
 a {
-  font-family: var(--font-family-button);
-  color: inherit;
+  color: var(--link-color);
   text-decoration: underline;
 
   &:hover, &:focus, &:active {
     text-decoration: underline;
-    background-color: var(--link-hover-bg-color);
     color: var(--link-hover-text-color);
     cursor: var(--cursor-pointer);
   }

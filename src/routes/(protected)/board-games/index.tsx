@@ -19,23 +19,44 @@ export default component$(() => {
   });
   return (
     <MainLayout title="Board games">
-      <h1>Lista giochi</h1>
-      Trovi{" "}
+      <div class="boardgame">
+      <h2>Chi può partecipare e quando?</h2>
+      <p>Tutti possono giocare, sia quelli che sono iscritti alle gare, sia quelli che non vi partecipano.</p>
+      
+      <p>Si gioca durante le gare, per chi non partecipa, o chi vuole fare una pausa dalla gara. 
+        Inoltre cercheremo di riunirci per giocare liberamente, nel tempo rimanente dagli impegni.
+        </p>
+
+      <h2>A cosa si gioca?</h2>
+      <p>Qui sotto un elenco di giochi disponibili, puoi richiedere il gioco alle persone di riferimento, o portare il tuo, se preferisci
+    mettiti d'accordo con i partecipanti, che trovi qui sotto, su cosa portare.
+      </p><p>
+
+       {" "}
       <a
         href="https://docs.google.com/spreadsheets/d/1bHBQ89PyXy7j_EPEGyFHJHMcR01Q2Mb4Ur5uPgI5MLo/edit?usp=sharing"
         target="_blank"
       >
-        QUI
+        lista completa
       </a>{" "}
-      l'elenco dei giochi.
-      <h1>Giocatori</h1>
+      </p>
+
+
+      <h3>Suggerimenti per i giochi da portare</h3>
+      <p>non portare giochi per cui serva studiare le regole per ore</p>
+      <p>non portare giochi che si giocano in dai 9 minuti in su</p>
+      <p>porta giochi che conosci e che sei in grado di spiegare agli altri nel giro di 10 minuti</p>
+      <p>se vuoi portare un gioco che non conosci, assicurati che qualcuno lo conosca o che il tempo di apprendimento sia veloce
+      </p>
+      
+      <h2>Partecipanti</h2>
       <table class={styles.playersList}>
         {people.value &&
           people.value.map((p) => (
             <tr key={p.id}>
               {/*<td>{p.number || "ND"}</td>*/}
               <td>
-                {p.firstname} {p.lastname} ({p.company})
+              <strong>{p.firstname} {p.lastname}</strong> {p.company}
               </td>
               <td>
                 {p.team ? (
@@ -71,6 +92,7 @@ export default component$(() => {
             </tr>
           ))}
       </table>
+      </div>
     </MainLayout>
   );
 });
