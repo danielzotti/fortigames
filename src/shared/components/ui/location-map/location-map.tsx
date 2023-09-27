@@ -1,5 +1,5 @@
 import { component$, useContext } from "@builder.io/qwik";
-import styles from "./map.module.scss";
+import styles from "./location-map.module.scss";
 import { ThemeContext } from "~/contexts/theme.context";
 
 import MapDark from "/public/static/backgrounds/map_dark.png?jsx";

@@ -11,8 +11,8 @@ import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import GamesTimeManager from "~/shared/components/games-time-manager/games-time-manager";
 import GamesTeam from "~/shared/components/games-team/games-team";
 import EventProgram from "~/shared/components/event-program/event-program";
-import Map from "~/shared/components/ui/map/map";
 import { ThemeContext } from "~/contexts/theme.context";
+import LocationMap from "~/shared/components/ui/location-map/location-map";
 
 export default component$(() => {
   const theme = useContext(ThemeContext);
@@ -32,7 +32,7 @@ export default component$(() => {
         Toggle theme
       </button>
 
-      <Map />
+      <LocationMap />
     </MainLayout>
   );
 });

@@ -53,9 +53,9 @@ export const config = {
   slack: {
     urls: {
       dragons: "https://databiz-group.slack.com/archives/C05U1BX87V1",
-      tigers: "",
-      admins: "",
-      boardGames: "",
+      tigers: "https://databiz-group.slack.com/archives/C05TLU6UU3Z",
+      admins: "https://databiz-group.slack.com/archives/C05TYH9RABF",
+      boardGames: "https://databiz-group.slack.com/archives/C05U78SG2KC",
     },
   },
   games: {

@@ -23,7 +23,6 @@ import { AuthContext } from "~/contexts/auth.context";
 import { GamesResults } from "~/types/games.types";
 import { GamesResultsContext } from "~/contexts/games-results.context";
 import { gamesResultsDefault } from "~/hooks/useGameResults";
-import { ColorModeContext } from "~/contexts/color-mode.context";
 import { ThemeContext } from "~/contexts/theme.context";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
