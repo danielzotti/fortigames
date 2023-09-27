@@ -1,4 +1,5 @@
 @use "@scss/mixins/button";
+@use "@scss/mixins/link";
 @use "@scss/variables";
 
 .container {
@@ -22,10 +23,11 @@
   background-color: var(--bottom-navigation-bg-color);
 
   box-shadow: 0px px 4px 0px var(--bottom-navigation-box-shadow);
-	backdrop-filter: blur(4.7px);
+  backdrop-filter: blur(4.7px);
 }
 
 .menuItem {
+  @include link.reset();
   color: var(--bottom-navigation-text-color);
   aspect-ratio: 1;
   border-radius: 50%;
@@ -36,12 +38,17 @@
   text-decoration: none;
   border-bottom: none;
 
+  &:hover, &:active, &:focus {
+    color: var(--bottom-navigation-text-color);
+  }
+
   i {
     display: inline-block;
     font-size: 2rem;
   }
 
   &:global(.active) {
+
     color: var(--accent-color);
 
 
@@ -49,6 +56,7 @@
       color: var(--accent-color);
       background-color: var(--bottom-navigation-accent-color);
     }
+
 
   }
 }

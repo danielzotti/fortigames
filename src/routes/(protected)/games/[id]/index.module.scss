@@ -1,3 +1,7 @@
+.title {
+  text-align: center;
+}
+
 .teamContainer {
   display: flex;
   justify-content: space-around;
@@ -11,6 +15,7 @@
     text-align: center;
     margin: 10px 0;
   }
+
   button {
     color: #000;
 

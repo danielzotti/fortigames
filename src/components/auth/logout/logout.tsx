@@ -1,6 +1,7 @@
 import { $, component$ } from "@builder.io/qwik";
 import { createClient } from "@supabase/supabase-js";
 import { config } from "~/config";
+import Button from "~/shared/components/ui/button/button";
 
 export const Logout = component$(() => {
   const handleGoogleLogout = $(async () => {
@@ -17,7 +18,7 @@ export const Logout = component$(() => {
 
   return (
     <>
-      <button onClick$={handleGoogleLogout}>Logout</button>
+      <Button onClick$={handleGoogleLogout}>Logout</Button>
     </>
   );
 });

@@ -32,8 +32,12 @@
   --orange: #FF614C;
   --accent-color: var(--yellow);
 
+  --box-shadow-width-default: 1px 2px 0px;
 
-  --link-color: inherit;
+  --tigers-color: var(--black);
+  --tigers-color-inverse: var(--white);
+  --dragons-color: var(--white);
+  --dragons-color-inverse: var(--black);
 
   //FONTS
   --font-family-title: 'Bungee', Georgia, serif;

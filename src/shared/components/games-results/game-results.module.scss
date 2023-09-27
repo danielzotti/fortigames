@@ -1,3 +1,5 @@
+@use "@scss/components/label";
+
 .resultContainer {
   display: flex;
   justify-content: center;
@@ -14,12 +16,16 @@
     border: 1px solid var(--button-border-color);
     background: var(--gradient-bg-color-bw);
     
+    //margin-bottom: var(--spacing-medium);
     .resultIcon {
       display: inline-block;
-      font-size: 1.4em;
+      font-size: 1.6em;
       margin-top: -0.5em;
       background: var(--text-bg-color);
       border-radius: 2em;
+      //color: var(--label-text-color);
+      //aspect-ratio: 1;
+      //border-radius: 50%;
       padding: 0.1em;
       text-align: center;
     }
@@ -27,16 +33,24 @@
     .resultInfo {
       font-size: 3.2em;
       font-family: var(--font-family-mono);
+      display: flex;
+      justify-content: space-evenly;
 
-      &.dragon {
-        color: var(--text-color-inverse);
+      .dragons {
+        color: var(--dragons-color-inverse);
+      }
+
+      .tigers {
+        color: var(--tigers-color-inverse);
       }
     }
 
     .resultLabel {
+      @extend .label-medium;
       position: absolute;
       bottom: -5px;
       left: 50%;
+
       white-space: nowrap;
       font-size: 1.1em;
       padding: 0.1em 0.4em;
@@ -49,17 +63,22 @@
       border-left: 2px solid var(--button-border-color);
       background-color: var(--button-bg-color);
       box-shadow: 0px px 4px 0px var(--button-shadow);
+
       transform: translateX(-50%);
-      
     }
 
-    i, span {
-      display: block;
-    }
+
 
     .manage {
       display: block;
       padding-top: var(--spacing-medium);
     }
+
   }
+}
+
+.manage {
+  position: relative;
+  display: block;
+  text-align: center;
 }

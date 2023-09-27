@@ -35,8 +35,6 @@ h1 {
   background: var(--text-bg-color-inverse);
 }
 
-
-
 h2 {
   font-size: clamp(1.2em, 1.4vw, 1.5em);
 }
@@ -84,12 +82,14 @@ a {
   text-decoration: none;
 
   &:hover, &:focus, &:active {
-    text-decoration: none;
-    color: var(---text-color-secondary);
+    text-decoration: underline;
+    background-color: var(--link-hover-bg-color);
+    color: var(--link-hover-text-color);
     cursor: var(--cursor-pointer);
   }
 }
 
+/*
 button {
   padding: var(--spacing-small) var(--spacing-default);
   font-family: var(--font-family-button);
@@ -113,7 +113,8 @@ button {
     color: var(--accent-text-color);
     //transform: rotate(-1deg);
   }
-}
+}*/
+
 
 blockquote {
   border-left: 5px solid var(--text-color-secondary);
@@ -161,6 +162,7 @@ table {
     &:hover {
       background-color: var(--text-bg-color-secondary);
     }
+
     text-align: center;
     border-width: 1px 0 1px 0;
     border-color: #444444;

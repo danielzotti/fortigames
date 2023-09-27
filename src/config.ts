@@ -1,17 +1,17 @@
 const baseUrl = "https://fortigames.danielzotti.it";
 
-interface SingleGame{
-  db_key: string,
-  label: string,
-  team: boolean,
-  icon: string
+interface SingleGame {
+  db_key: string;
+  label: string;
+  team: boolean;
+  icon: string;
 }
 
 export interface Games {
-  soccer: SingleGame,
-  table_tennis: SingleGame,
-  volley: SingleGame,
-  board_games: SingleGame
+  soccer: SingleGame;
+  table_tennis: SingleGame;
+  volley: SingleGame;
+  board_games: SingleGame;
 }
 
 export const config = {
@@ -69,25 +69,25 @@ export const config = {
       db_key: "is_playing_soccer",
       label: "Calcio",
       team: true,
-      icon: 'fa fa-soccer-ball'
+      icon: "fa fa-soccer-ball",
     },
     table_tennis: {
       db_key: "is_playing_pingpong",
-      label: "Tennis Tavolo",
+      label: "Ping Pong",
       team: true,
-      icon: 'fa fa-table-tennis-paddle-ball'
+      icon: "fa fa-table-tennis-paddle-ball",
     },
     volley: {
       db_key: "is_playing_volley",
-      label: "Pallavolo",
+      label: "Volley",
       team: true,
-      icon: 'fa fa-volleyball-ball'
+      icon: "fa fa-volleyball-ball",
     },
     board_games: {
       db_key: "is_playing_boardgames",
       label: "Boardgames",
       team: false,
-      icon: 'fa fa-chess-rook'
+      icon: "fa fa-chess-rook",
     },
   },
   // apis: {

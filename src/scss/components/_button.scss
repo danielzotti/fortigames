@@ -1,0 +1,42 @@
+._btn {
+  cursor: var(--cursor-pointer);
+  border-radius: var(--btn-border-radius);
+  border: 1px solid var(--btn-border-color);
+
+  box-shadow: var(--btn-default-box-shadow);
+  font-size: var(--btn-font-size);
+  font-family: var(--btn-font-family);
+  text-transform: uppercase;
+  display: inline-block;
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &:hover {
+    background: var(--btn-default-hover-bg-color);
+    color: var(--btn-default-hover-text-color);
+  }
+}
+
+.btn-default {
+  @extend ._btn;
+  background-color: var(--btn-default-bg-color);
+  color: var(--btn-default-text-color);
+}
+
+.btn-selected {
+  @extend ._btn;
+  background-color: var(--btn-selected-bg-color);
+  color: var(--btn-selected-text-color);
+}
+
+.btn-medium {
+  @extend ._btn;
+  padding: 12px;
+}
+
+.btn-large {
+  @extend ._btn;
+  padding: 13px 20px;
+}

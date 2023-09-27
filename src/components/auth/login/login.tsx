@@ -2,6 +2,7 @@ import { $, component$ } from "@builder.io/qwik";
 import { supabaseClient } from "~/supabase/supabase-client";
 import { useLocation } from "@builder.io/qwik-city";
 import { config } from "~/config";
+import Button from "~/shared/components/ui/button/button";
 
 export const Login = component$(() => {
   const location = useLocation();
@@ -19,7 +20,7 @@ export const Login = component$(() => {
 
   return (
     <>
-      <button onClick$={handleGoogleLogin}>Login with Google</button>
+      <Button onClick$={handleGoogleLogin}>Login with Google</Button>
     </>
   );
 });

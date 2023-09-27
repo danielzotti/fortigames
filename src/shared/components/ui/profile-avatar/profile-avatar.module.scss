@@ -1,18 +1,25 @@
-@use "@scss/mixins/button";
+@use "@scss/mixins/link";
 
 .profile {
-  @include button.reset();
+  @include link.reset();
   color: var(--profile-avatar-text-color);
   background-color: var(--profile-avatar-bg-color);
   padding: var(--spacing-small);
   border-radius: 50%;
   aspect-ratio: 1;
   width: 3em;
-  display: inline-block;
-  font-size: 1.3em;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   i {
     font-size: 2em;
+  }
+
+  &:hover {
+    color: var(--profile-avatar-text-color);
+    background-color: var(--profile-avatar-bg-color);
   }
 }

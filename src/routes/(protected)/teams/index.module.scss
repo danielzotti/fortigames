@@ -1,12 +1,31 @@
+@use "@scss/components/label";
+
+
 .teamsContainer {
+  --hexagon-height: 50px;
+
   display: flex;
+/*
   height: 40%;
   margin-top: 2.2rem;
+*/
+  flex-direction: row;
+  margin-bottom: calc(var(--hexagon-height) + var(--spacing-default))
+}
 
-  .teamContainer {
-    flex-grow: 1;
+.teamContainer {
+  width: 50%;
+
+
+  &.dragons {
+
+    .teamTitle {
+      color: var(--dragons-color-inverse);
+      background-color: var(--dragons-color);
+    }
 
     .teamCover {
+/*
       min-height: 300px;
       background-size: cover;
       background-position: center center;
@@ -22,8 +41,13 @@
         0% 90%,
         0% 10%
       );
+*/
+      background-image: url('/public/static/backgrounds/cover_dragon_big.png');
+
     }
+
     .teamInfoContainer {
+/*
       text-align: center;
       padding: 16px 1.2em;
       font-family: var(--font-family-fun);
@@ -53,9 +77,19 @@
         padding: var(--spacing-small);
         width: 1.5em;
         font-size: 2em;
+*/
+      background-color: var(--dragons-color);
+      color: var(--dragons-color-inverse);
+
+      &:before, &:after {
+        background-color: var(--dragons-color);
+        color: var(--dragons-color-inverse);
+
       }
     }
+  }
 
+/*
     &.tigers {
       color: var(--white);
       .teamCover {
@@ -110,11 +144,87 @@
           border-left: 2px solid var(--white-darker);
           box-shadow: 2px 3px 0px 0px var(--gray-light);
         }
+*/
+  &.tigers {
+
+    .teamTitle {
+      color: var(--tigers-color-inverse);
+      background-color: var(--tigers-color);
+    }
+
+    .teamCover {
+      background-image: url('/public/static/backgrounds/cover_tiger_big.png');
+    }
+
+    .teamInfoContainer {
+      background-color: var(--tigers-color);
+      color: var(--tigers-color-inverse);
+
+      &:before, &:after {
+        background-color: var(--tigers-color);
+        color: var(--tigers-color-inverse);
+
       }
 
     }
   }
+}
 
+.teamCover {
+  min-height: 300px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+.teamTitle {
+  @extend .label-large;
+  margin-bottom: var(--spacing-default);
+}
+
+.teamDescription {
+  padding-bottom: var(--spacing-default);
+}
+
+.teamInfoContainer {
+  position: relative;
+  text-align: center;
+  padding-inline: var(--spacing-default);
+
+  &:before, &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: var(--hexagon-height);
+
+    left: 0;
+    right: 0;
+  }
+
+  &:before {
+    clip-path: polygon(0 100%, 100% 100%, 50% 0%);
+    top: calc(var(--hexagon-height) * -1);
+  }
+
+  &:after {
+    clip-path: polygon(0 0, 100% 0%, 50% 100%);
+    bottom: calc(var(--hexagon-height) * -1);
+  }
+}
+
+.filtersContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: var(--spacing-small);
+  margin-top: var(--spacing-default);
+  margin-bottom: var(--spacing-default)
+}
+
+.filtersTitle {
+  text-align: center;
+  margin:0;
 }
 
 .playersList {
@@ -125,12 +235,20 @@
     height: 25px;
     display: block;
   }
+/*
+
+  .dragons {
+    background-color: #222222;
+  }
+
+*/
   .tigers {
     background-color: var(--black);
   }
   .dragons {
     background-color: var(--white);
   }
+
   .noTeam {
     background: var(--gradient-bg-color-bw);
   }
