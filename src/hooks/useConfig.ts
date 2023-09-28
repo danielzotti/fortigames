@@ -1,6 +1,6 @@
 import { $, useComputed$, useContext } from "@builder.io/qwik";
 import { supabaseClient } from "~/supabase/supabase-client";
-import { ConfigContext } from "~/contexts/conig.context";
+import { ConfigContext } from "~/contexts/config.context";
 import { Config } from "~/types/config.types";
 
 export const useConfig = () => {
@@ -12,6 +12,10 @@ export const useConfig = () => {
 
   const isGamesStarted = useComputed$(() => {
     return !!config.games_started_at;
+  });
+
+  const isGamesWaiting = useComputed$(() => {
+    return !config.games_started_at && !config.games_ended_at;
   });
 
   const countdownDate = useComputed$(() => {
@@ -48,6 +52,7 @@ export const useConfig = () => {
     config,
     isGamesEnded,
     isGamesStarted,
+    isGamesWaiting,
     countdownDate,
   };
 };

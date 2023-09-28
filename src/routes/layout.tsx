@@ -28,7 +28,7 @@ import {
 import { ThemeContext } from "~/contexts/theme.context";
 import { ParticipantsStore } from "~/types/participant.types";
 import { ParticipantsContext } from "~/contexts/participants.context";
-import { ConfigContext, configDefault } from "~/contexts/conig.context";
+import { ConfigContext, configDefault } from "~/contexts/config.context";
 import { Config } from "~/types/config.types";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {

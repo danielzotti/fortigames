@@ -24,7 +24,7 @@ export default component$(() => {
   // const config = useSignal<Config | null>();
   const { config, isGamesEnded, isGamesStarted, countdownDate } = useConfig();
   const remainingTime = useSignal<string | null>(null);
-  const time = useSignal("17:30");
+  const time = useSignal<string | undefined>();
 
   const updateRemainingTime = $(() => {
     const now = DateTime.now();
@@ -48,18 +48,23 @@ export default component$(() => {
     <div class={styles.endGameContainer}>
       <Trophy />
       <div class={styles.timerContainer}>
-        <div class={styles.header}>
-          <LabelLive
-            text={config.games_started_at ? "Fine giochi" : "Inizio giochi"}
-          />
-          <div
-            class={
-              config.games_started_at ? styles.plannedEnd : styles.plannedStart
-            }
-          >
-            h {time.value}
+        {time.value && (
+          <div class={styles.header}>
+            <LabelLive
+              text={config.games_started_at ? "Fine giochi" : "Inizio giochi"}
+            />
+            <div
+              class={
+                config.games_started_at
+                  ? styles.plannedEnd
+                  : styles.plannedStart
+              }
+            >
+              h {time.value}
+            </div>
           </div>
-        </div>
+        )}
+
         <div class={styles.remainingTime}>{remainingTime.value || "..."}</div>
       </div>
     </div>

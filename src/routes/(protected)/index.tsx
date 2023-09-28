@@ -17,17 +17,10 @@ export default component$(() => {
       <TeamsSlider>
         <GameResults />
       </TeamsSlider>
-      <GamesTimeManager />
-      {/*<GamesTeam />*/}
-      <EventProgram />
 
-      {/*<button
-        onClick$={() =>
-          (theme.value = theme.value == "dark" ? "light" : "dark")
-        }
-      >
-        Toggle theme
-      </button>*/}
+      <GamesTimeManager />
+
+      <EventProgram />
 
       <LocationMap />
     </MainLayout>

@@ -9,5 +9,6 @@ export const configDefault: Config = {
   id: 1,
   planned_end: null,
   planned_start: null,
+  winner: null,
 };
 export const ConfigContext = createContextId<Config>("config-context");
