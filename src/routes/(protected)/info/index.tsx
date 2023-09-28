@@ -106,7 +106,7 @@ export default component$(() => {
           <br />
         </p>
         <p>
-          La squadra vincitrice riceverà in premio la preziosa <a href="/public/static/images/taoScimmiaMaya.jpg" target="_blank">Taoscimmia
+          La squadra vincitrice riceverà in premio la preziosa <a href="/public/static/images/taoScimmiaMaya.jpg" target="_blank">Tao-scimmia
           Maya</a>, il capolavoro del maestro Gianluca La Rosa in copia unica.
           <br />
           Il torneo inizierà alle 17:30, o comunque dopo le presentazioni e si
@@ -122,15 +122,6 @@ export default component$(() => {
             target="_blank"
           >
             Scarica il regolamento completo
-          </Button>
-        </p>
-        <p>
-          <Button
-            isLink={true}
-            href="/public/static/documents/RegolamentoTorneo.pdf"
-            target="_blank"
-          >
-            scarica il regolamento completo
           </Button>
         </p>
         <h4>Calcio</h4>
