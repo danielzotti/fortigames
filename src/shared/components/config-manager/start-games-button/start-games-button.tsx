@@ -23,7 +23,7 @@ export default component$(({ restart = false }: Props) => {
   });
 
   return (
-    <Button onClick$={startGames}>
+    <Button onClick$={startGames} variant="selected">
       <i class="fa fa-play"></i>
       {restart ? "Riprendi i giochi" : "Inizia i giochi"}
     </Button>

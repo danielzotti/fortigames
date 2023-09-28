@@ -5,17 +5,17 @@ import { Games, GamesResults } from "~/types/games.types";
 import { useGamesResults } from "~/hooks/useGameResults";
 import Loader from "~/shared/components/ui/loader/loader";
 import Button from "~/shared/components/ui/button/button";
+import { useConfig } from "~/hooks/useConfig";
+import { useAuth } from "~/hooks/useAuth";
 
 interface Props {
   editMode?: boolean;
 }
 
 export default component$(({ editMode }: Props) => {
+  const { isAdmin } = useAuth();
+  const { isGamesStarted } = useConfig();
   const { results } = useGamesResults();
-
-  if (!results) {
-    return <Loader />;
-  }
 
   return (
     <>
@@ -38,7 +38,7 @@ export default component$(({ editMode }: Props) => {
                 {config.games[k as keyof Games].label}
               </span>
             </div>
-            {editMode && (
+            {editMode && (isGamesStarted.value || isAdmin) && (
               <div class={styles.manage}>
                 <Button isLink={true} href={`${config.urls.games}/${k}`}>
                   Arbitra

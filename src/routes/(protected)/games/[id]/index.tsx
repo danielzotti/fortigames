@@ -36,7 +36,7 @@ const SingleItem = component$(
 
     return (
       <div class={styles.singleTeam}>
-        Dragons
+        <h3>{config.teams[team].label}</h3>
         <div class={styles.singleTeamResult}>{result.value[team]}</div>
         <Button
           onClick$={() =>
@@ -49,6 +49,7 @@ const SingleItem = component$(
           -
         </Button>
         <Button
+          variant="selected"
           onClick$={() =>
             updateScore({
               team,
