@@ -11,7 +11,6 @@ import {
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import { useLocation } from "@builder.io/qwik-city";
 import { supabaseClient } from "~/supabase/supabase-client";
-import GameResults from "~/shared/components/games-results/game-results";
 import styles from "./index.module.scss";
 import Button from "~/shared/components/ui/button/button";
 import { config } from "~/config";
@@ -105,7 +104,10 @@ export default component$(() => {
       {game.value && result.value && (
         <>
           <BackButton url={config.urls.games} />
-          <h2 class={styles.title}>Arbitraggio</h2>
+          <h2 class={styles.title}>
+            Arbitraggio{" "}
+            {config.games[game.value as keyof typeof config.games].label}
+          </h2>
           <div class={styles.teamContainer}>
             <SingleItem
               team={"tigers"}

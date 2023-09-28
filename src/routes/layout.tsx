@@ -21,11 +21,15 @@ import { config } from "~/config";
 import { Session } from "supabase-auth-helpers-qwik";
 import { AuthContext } from "~/contexts/auth.context";
 import { GamesResults } from "~/types/games.types";
-import { GamesResultsContext } from "~/contexts/games-results.context";
-import { gamesResultsDefault } from "~/hooks/useGameResults";
+import {
+  GamesResultsContext,
+  gamesResultsDefault,
+} from "~/contexts/games-results.context";
 import { ThemeContext } from "~/contexts/theme.context";
 import { ParticipantsStore } from "~/types/participant.types";
 import { ParticipantsContext } from "~/contexts/participants.context";
+import { ConfigContext, configDefault } from "~/contexts/conig.context";
+import { Config } from "~/types/config.types";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -61,6 +65,9 @@ export default component$(() => {
 
   const auth = useSignal<Session | undefined>();
   useContextProvider(AuthContext, auth);
+
+  const config = useStore<Config>(configDefault);
+  useContextProvider(ConfigContext, config);
 
   const theme = useSignal("light");
   useContextProvider(ThemeContext, theme);

@@ -3,21 +3,6 @@ import { GamesResultsContext } from "~/contexts/games-results.context";
 import { Games, GamesResults, SportGames } from "~/types/games.types";
 import { supabaseClient } from "~/supabase/supabase-client";
 
-export const gamesResultsDefault: GamesResults = {
-  volley: {
-    tigers: 0,
-    dragons: 0,
-  },
-  soccer: {
-    tigers: 0,
-    dragons: 0,
-  },
-  table_tennis: {
-    tigers: 0,
-    dragons: 0,
-  },
-};
-
 export const useGamesResults = () => {
   const results = useContext(GamesResultsContext);
 

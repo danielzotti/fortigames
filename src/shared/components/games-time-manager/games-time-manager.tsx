@@ -1,10 +1,16 @@
-import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import {
+  component$,
+  useComputed$,
+  useSignal,
+  useVisibleTask$,
+} from "@builder.io/qwik";
 import { $ } from "@builder.io/qwik";
 import styles from "./games-time-manager.module.scss";
 import { supabaseClient } from "~/supabase/supabase-client";
 import { DateTime } from "luxon";
 import LabelLive from "~/shared/components/ui/label-live/label-live";
 import Trophy from "../../../../public/static/images/trophy.png?jsx";
+import { useConfig } from "~/hooks/useConfig";
 
 interface Config {
   id: number;
@@ -15,38 +21,27 @@ interface Config {
 }
 
 export default component$(() => {
-  const config = useSignal<Config | null>();
+  // const config = useSignal<Config | null>();
+  const { config, isGamesEnded, isGamesStarted, countdownDate } = useConfig();
   const remainingTime = useSignal<string | null>(null);
   const time = useSignal("17:30");
 
   const updateRemainingTime = $(() => {
     const now = DateTime.now();
-    const later = DateTime.fromISO(
-      (config.value?.games_started_at
-        ? config.value?.planned_end
-        : config.value?.planned_start) || "",
-    );
+    const later = DateTime.fromISO(countdownDate.value || "");
     time.value = later.hour + ":" + later.minute;
 
     const diff = later.diff(now, ["hours", "minutes", "seconds"]).toObject();
     remainingTime.value = `-${diff.hours}h ${String(diff.minutes).padStart(
       2,
       "0",
-    )}m`; // ${Math.round(Number(diff.seconds)
+    )}m ${diff.seconds?.toFixed(0).padStart(2, "0")}s`; // ${Math.round(Number(diff.seconds)
 
     return "";
   });
 
   useVisibleTask$(async () => {
-    const { data } = await supabaseClient
-      .from("config")
-      .select("*")
-      .eq("id", 1);
-
-    if (data) {
-      config.value = data[0];
-      setInterval(updateRemainingTime, 1000);
-    }
+    setInterval(updateRemainingTime, 1000);
   });
 
   return (
@@ -55,15 +50,11 @@ export default component$(() => {
       <div class={styles.timerContainer}>
         <div class={styles.header}>
           <LabelLive
-            text={
-              config.value?.games_started_at ? "Fine giochi" : "Inizio giochi"
-            }
+            text={config.games_started_at ? "Fine giochi" : "Inizio giochi"}
           />
           <div
             class={
-              config.value?.games_started_at
-                ? styles.plannedEnd
-                : styles.plannedStart
+              config.games_started_at ? styles.plannedEnd : styles.plannedStart
             }
           >
             h {time.value}

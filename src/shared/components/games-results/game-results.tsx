@@ -1,21 +1,10 @@
-import {
-  component$,
-  useContext,
-  useSignal,
-  useStore,
-  useTask$,
-  useVisibleTask$,
-} from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import styles from "./game-results.module.scss";
-import { supabaseClient } from "~/supabase/supabase-client";
 import { config } from "~/config";
-import { Link } from "@builder.io/qwik-city";
 import { Games, GamesResults } from "~/types/games.types";
-import { gamesResultsDefault, useGamesResults } from "~/hooks/useGameResults";
+import { useGamesResults } from "~/hooks/useGameResults";
 import Loader from "~/shared/components/ui/loader/loader";
-import { GamesResultsContext } from "~/contexts/games-results.context";
 import Button from "~/shared/components/ui/button/button";
-import { useAuth } from "~/hooks/useAuth";
 
 interface Props {
   editMode?: boolean;
@@ -51,7 +40,9 @@ export default component$(({ editMode }: Props) => {
             </div>
             {editMode && (
               <div class={styles.manage}>
-                <Button href={`${config.urls.games}/${k}`}>Arbitra</Button>
+                <Button isLink={true} href={`${config.urls.games}/${k}`}>
+                  Arbitra
+                </Button>
               </div>
             )}
           </div>

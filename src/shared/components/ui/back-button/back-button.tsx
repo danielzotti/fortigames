@@ -12,7 +12,7 @@ export default component$(({ url }: Props) => {
 
   return (
     <Button onClick$={() => navigate(url)}>
-      <i class="fa fa-chevron-left"></i>
+      <i class="fa fa-chevron-left"></i> Back
     </Button>
   );
 });

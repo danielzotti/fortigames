@@ -1,13 +1,20 @@
-import { component$, useContext } from "@builder.io/qwik";
+import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import styles from "./location-map.module.scss";
-import { ThemeContext } from "~/contexts/theme.context";
 
 import MapDark from "../../../../../public/static/backgrounds/map_dark.png?jsx";
 import MapLight from "../../../../../public/static/backgrounds/map_light.png?jsx";
 import Button from "~/shared/components/ui/button/button";
 
 export default component$(() => {
-  const theme = useContext(ThemeContext);
+  const isThemeDark = useSignal<boolean>(true);
+
+  useVisibleTask$(() => {
+    if (window.matchMedia) {
+      isThemeDark.value = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+    }
+  });
 
   return (
     <div class={styles.mapWrapper}>
@@ -19,7 +26,7 @@ export default component$(() => {
       >
         Apri Maps
       </Button>
-      {theme.value === "light" ? <MapLight /> : <MapDark />}
+      {isThemeDark.value ? <MapDark /> : <MapLight />}
     </div>
   );
 });

@@ -4,6 +4,9 @@ import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import { useAuth } from "~/hooks/useAuth";
 import styles from "./index.module.scss";
 import Button from "~/shared/components/ui/button/button";
+import StartGamesButton from "~/shared/components/config-manager/start-games-button/start-games-button";
+import StopGamesButton from "~/shared/components/config-manager/stop-games-button/stop-games-button";
+import EndGamesButton from "~/shared/components/config-manager/end-games-button/end-games-button";
 
 export default component$(() => {
   const { isReferee, isFacilitator, isAdmin } = useAuth();
@@ -13,10 +16,11 @@ export default component$(() => {
       <GameResults editMode={isAdmin || isReferee || isFacilitator} />
       {isAdmin && (
         <div class={styles.manage}>
-          <h2>TODO</h2>
-          <Button>Inizia i giochi!</Button>
-          <Button>Concludi i giochi!</Button>
-          <div>
+          <StartGamesButton />
+          <StopGamesButton />
+          <EndGamesButton />
+          <div class={styles.winner}>
+            <h2>TODO</h2>
             <input />
             <Button>Decreta il vincitore dei giochi!</Button>
           </div>
