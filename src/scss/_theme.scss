@@ -3,6 +3,7 @@
   --text-color: var(--white-dark);
   --text-color-secondary: var(--white);
   --text-bg-color: var(--black);
+  --text-bg-color-darken: var(--black-dark);
   --text-bg-color-secondary: var(--black-light);
   --text-color-inverse: var(--black-light);
   --text-bg-color-inverse: var(--white);
@@ -105,6 +106,7 @@
   --text-color: var(--black-light);
   --text-color-secondary: var(--gray-dark);
   --text-bg-color: var(--white);
+  --text-bg-color-darken: var(--white-dark);
   --text-bg-color-secondary: var(--white-dark);
   --text-color-inverse: var(--white);
   --text-bg-color-inverse: var(--black-light);
@@ -197,7 +199,8 @@
   --bottom-navigation-active-text-color: var(--accent-color);
 
   // Ribbon
-  --ribbon-text-color: #000; // var(--text-color);
-  --ribbon-bg-color: #FFF; // var(--text-bg-color);
-  --ribbon-bg-color-shadow: #333; // var(--text-bg-color-secondary);
+  --ribbon-text-color: var(--text-color);
+  --ribbon-border-color: var(--border-color);
+  --ribbon-bg-color: var(--white);
+  --ribbon-bg-color-shadow: rgba(0, 0, 0, 0.25);
 }

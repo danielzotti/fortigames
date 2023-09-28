@@ -25,7 +25,7 @@ export default component$(
         </div>
         <div class={styles.container}>
           <div class={styles.top}>
-            {title && <h1 class={styles.title}>{title}</h1>}
+            {title && <aside class={styles.title}>{title}</aside>}
           </div>
           <div
             ref={ref}

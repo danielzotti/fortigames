@@ -12,62 +12,45 @@
   right: var(--spacing-small);
 }
 
-.title {
-  font-family: var(--font-family-title);
-  //background-color: var(--text-color);
-  ////border:1px solid var(--text-bg-color);
-  //box-shadow: var(--label-box-shadow);
-  //color: var(--text-bg-color);
-  //margin-block: 0;
-  //margin-inline: var(--spacing-small);
-  //padding-inline: var(--spacing-default);
-  //padding-block: var(--spacing-small);
-  //margin: 0 auto;
-  //text-align: center;
-  //text-overflow: ellipsis;
-  //overflow-x: hidden;
-  //white-space: nowrap;
+$ribbon:  var(--text-bg-color); //da trasformare in variabile
 
+aside:before, aside:after {
+  height: 0;
+  width: 0;
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 1px;
+}
+
+aside {
+  margin: 60px 0;
+  padding: 0 10px;
+  line-height: 24px;
   position: relative;
-  margin: 0 auto;
-  padding: var(--spacing-small) var(--spacing-small);
   text-align: center;
-  background-color: var(--ribbon-bg-color);
-  color: var(--ribbon-text-color);
-  min-width: 150px;
-
-  &::before, &::after {
-    content: '';
-    width: 50px;
-    height: 100%;
-    //background-color: #724b34;
-    background-color: var(--ribbon-bg-color);
-
-    /* position ribbon ends behind and slightly lower */
-    position: absolute;
-    z-index: -1;
-    top: 20px;
-
-    /* clip ribbon end shape */
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 25% 50%);
-
-    /* draw and position the folded ribbon bit */
-    background-image: linear-gradient(45deg, transparent 50%, var(--ribbon-bg-color-shadow) 50%);
-    //background-color: var(--ribbon-bg-color-shadow);
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
-    background-position: bottom right;
-  }
-
-  &::before {
-    left: -30px;
-  }
-
-  &::after {
-    right: -30px;
-    transform: scaleX(-1); /* flip horizontally */
+  
+  &.title {
+    background-color: $ribbon;
+    $ribbon: var(--text-bg-color-darken);
+    filter: drop-shadow(3px 3px 0 rgba(black, 0.25));
+    &:before, &:after {
+      top: 3px;
+      border-style:solid;
+    }
+    &:before {
+      border-color: $ribbon $ribbon $ribbon transparent;
+      left: -20px;
+      border-width: 10px;
+    }
+    &:after {
+      border-color: $ribbon transparent $ribbon $ribbon;
+      right: -20px;
+      border-width: 10px;
+    }
   }
 }
+
 
 .top {
   position: fixed;
@@ -76,8 +59,11 @@
   left: 0;
   right: 0;
   display: flex;
+  width: 100px;
   max-width: 800px;
-  margin: auto;
+  margin: 0  auto;
+
+
   height: var(--layout-top-height);
   flex-direction: row;
   justify-content: space-between;
@@ -98,13 +84,6 @@
   max-height: 100%;
   min-height: 100%;
   scrollbar-gutter: stable both-edges;
-
-
-  /*h1, h2, h3, h4, h5, h6 {
-    &:first-of-type {
-      margin-top: 0;
-    }
-  }*/
 }
 
 .contentWithPaddingTop {
