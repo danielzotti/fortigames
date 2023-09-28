@@ -1,15 +1,6 @@
-import {
-  $,
-  component$,
-  Signal,
-  Slot,
-  useSignal,
-  useVisibleTask$,
-} from "@builder.io/qwik";
+import { $, component$, Signal, Slot } from "@builder.io/qwik";
 import ProfileAvatar from "~/shared/components/ui/profile-avatar/profile-avatar";
 import BottomNavigation from "~/shared/components/ui/bottom-navigation/bottom-navigation";
-import { useAuth } from "~/hooks/useAuth";
-import { supabaseClient } from "~/supabase/supabase-client";
 
 import styles from "./main-layout.module.scss";
 

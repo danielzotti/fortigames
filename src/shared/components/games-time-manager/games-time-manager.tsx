@@ -16,15 +16,22 @@ interface Config {
 export default component$(() => {
   const config = useSignal<Config | null>();
   const remainingTime = useSignal<string | null>(null);
-  const time = useSignal("17:30")
+  const time = useSignal("17:30");
 
   const updateRemainingTime = $(() => {
     const now = DateTime.now();
-    const later = DateTime.fromISO((config.value?.games_started_at ? config.value?.planned_end : config.value?.planned_start) || "");
+    const later = DateTime.fromISO(
+      (config.value?.games_started_at
+        ? config.value?.planned_end
+        : config.value?.planned_start) || "",
+    );
     time.value = later.hour + ":" + later.minute;
 
     const diff = later.diff(now, ["hours", "minutes", "seconds"]).toObject();
-    remainingTime.value = `-${diff.hours}h ${String(diff.minutes).padStart(2, "0")}´`; // ${Math.round(Number(diff.seconds)
+    remainingTime.value = `-${diff.hours}h ${String(diff.minutes).padStart(
+      2,
+      "0",
+    )}´`; // ${Math.round(Number(diff.seconds)
 
     return "";
   });
@@ -43,11 +50,23 @@ export default component$(() => {
 
   return (
     <div class={styles.endGameContainer}>
-      <img src="/static/backgrounds/Trophy.png" alt=""/>
+      <img src="/public/static/images/trophy.png" alt="" />
       <div class={styles.timerContainer}>
         <div class={styles.header}>
-          <LabelLive text={config.value?.games_started_at ? "Fine giochi" : "Inizio giochi"} />
-          <div class={config.value?.games_started_at ? styles.plannedEnd : styles.plannedStart}>h {time.value}</div>
+          <LabelLive
+            text={
+              config.value?.games_started_at ? "Fine giochi" : "Inizio giochi"
+            }
+          />
+          <div
+            class={
+              config.value?.games_started_at
+                ? styles.plannedEnd
+                : styles.plannedStart
+            }
+          >
+            h {time.value}
+          </div>
         </div>
         <div class={styles.remainingTime}>{remainingTime.value || "..."}</div>
       </div>

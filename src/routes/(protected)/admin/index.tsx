@@ -22,7 +22,7 @@ export default component$(() => {
 
   return (
     <MainLayout title="Gestione">
-      {!people.value && !user && <Loader />}
+      {/*{!people.value && !user && <Loader />}*/}
 
       {user && <pre>Current user: {user?.email}</pre>}
 

@@ -1,6 +1,5 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import styles from "./event-program.module.scss";
-import { useAuth } from "~/hooks/useAuth";
 import { supabaseClient } from "~/supabase/supabase-client";
 
 interface AgendaParsed {
@@ -57,32 +56,38 @@ export default component$(() => {
   return (
     <div class={[styles.programContainer]}>
       <div class={[styles.eventLabelContainer]}>
-        <div><span class={[styles.label]}>Ora</span></div>
-        <div><span class={[styles.label]}>Prossimi</span></div>
-        <div><span class={[styles.label]} style="visibility: hidden"></span></div>
+        <div>
+          <span class={[styles.label]}>Ora</span>
+        </div>
+        <div>
+          <span class={[styles.label]}>Prossimi</span>
+        </div>
+        <div>
+          <span class={[styles.label]} style="visibility: hidden"></span>
+        </div>
       </div>
       <div class={styles.eventsContainer}>
         <div class={[styles.event]}>
           <div>
             {currentEvent.value ? (
-                <>
-                  <div class={styles.time}>h {currentEvent.value.startTime}</div>
-                  <div class="event-name">{currentEvent.value.activity}</div>
-                </>
+              <>
+                <div class={styles.time}>h {currentEvent.value.startTime}</div>
+                <div class="event-name">{currentEvent.value.activity}</div>
+              </>
             ) : (
-                <div>In attesa dell'evento ...</div>
+              <div>In attesa dell'evento ...</div>
             )}
           </div>
         </div>
         <div class={[styles.event]}>
           <div>
             {nextEvents.value?.length ? (
-                <>
-                  <div class={styles.time}>h {nextEvents.value[0].startTime}</div>
-                  <div class="event-name">{nextEvents.value[0].activity}</div>
-                </>
+              <>
+                <div class={styles.time}>h {nextEvents.value[0].startTime}</div>
+                <div class="event-name">{nextEvents.value[0].activity}</div>
+              </>
             ) : (
-                <div>Non ci sono altri eventi :(</div>
+              <div>Non ci sono altri eventi :(</div>
             )}
           </div>
         </div>
@@ -91,12 +96,12 @@ export default component$(() => {
             {nextEvents.value?.length &&
             nextEvents.value?.length &&
             nextEvents.value.length > 1 ? (
-                <>
-                  <div class={styles.time}>h {nextEvents.value[1].startTime}</div>
-                  <div class="event-name">{nextEvents.value[1].activity}</div>
-                </>
+              <>
+                <div class={styles.time}>h {nextEvents.value[1].startTime}</div>
+                <div class="event-name">{nextEvents.value[1].activity}</div>
+              </>
             ) : (
-                <div>Non ci sono altri eventi :(</div>
+              <div>Non ci sono altri eventi :(</div>
             )}
           </div>
         </div>
