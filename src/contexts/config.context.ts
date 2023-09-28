@@ -10,5 +10,6 @@ export const configDefault: Config = {
   planned_end: null,
   planned_start: null,
   winner: null,
+  is_paused: false,
 };
 export const ConfigContext = createContextId<Config>("config-context");

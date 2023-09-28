@@ -6,38 +6,63 @@ import {
 } from "@builder.io/qwik";
 import { $ } from "@builder.io/qwik";
 import styles from "./games-time-manager.module.scss";
-import { supabaseClient } from "~/supabase/supabase-client";
 import { DateTime } from "luxon";
 import LabelLive from "~/shared/components/ui/label-live/label-live";
 import Trophy from "../../../../public/static/images/trophy.png?jsx";
 import { useConfig } from "~/hooks/useConfig";
 
-interface Config {
-  id: number;
-  games_started_at?: string | null;
-  games_ended_at?: string | null;
-  planned_start: string | null;
-  planned_end: string | null;
-}
-
 export default component$(() => {
-  // const config = useSignal<Config | null>();
-  const { config, isGamesEnded, isGamesStarted, countdownDate } = useConfig();
+  const {
+    isGamesPaused,
+    isGamesWaiting,
+    isGamesEnded,
+    isGamesStarted,
+    countdownDate,
+  } = useConfig();
   const remainingTime = useSignal<string | null>(null);
   const time = useSignal<string | undefined>();
 
-  const updateRemainingTime = $(() => {
-    const now = DateTime.now();
-    const later = DateTime.fromISO(countdownDate.value || "");
-    time.value = later.hour + ":" + later.minute;
-
-    const diff = later.diff(now, ["hours", "minutes", "seconds"]).toObject();
-    remainingTime.value = `-${diff.hours}h ${String(diff.minutes).padStart(
-      2,
-      "0",
-    )}m ${diff.seconds?.toFixed(0).padStart(2, "0")}s`; // ${Math.round(Number(diff.seconds)
+  const labelLive = useComputed$(() => {
+    if (isGamesEnded.value) {
+      return "Giochi finiti!";
+    }
+    if (isGamesWaiting.value) {
+      return "Pianificato";
+    }
+    if (isGamesStarted.value) {
+      return "Fine";
+    }
+    if (isGamesPaused.value) {
+      return "In pausa";
+    }
 
     return "";
+  });
+
+  const updateRemainingTime = $(() => {
+    const now = DateTime.now();
+    const deadline = DateTime.fromISO(countdownDate.value || "");
+    time.value = deadline.hour + ":" + deadline.minute;
+
+    if (isGamesEnded.value) {
+      remainingTime.value = "Finiti!";
+      return;
+    }
+
+    if (now > deadline) {
+      remainingTime.value = "...";
+      return;
+    }
+
+    const diff = deadline.diff(now, ["hours", "minutes", "seconds"]).toObject();
+
+    remainingTime.value = `-${
+      diff.hours! !== 0 ? diff.hours + "h " : ""
+    }${String(Math.abs(diff.minutes!)).padStart(2, "0")}m ${
+      diff.hours !== 0
+        ? ""
+        : Math.abs(diff.seconds!)?.toFixed(0).padStart(2, "0") + "s"
+    }`;
   });
 
   useVisibleTask$(async () => {
@@ -50,14 +75,10 @@ export default component$(() => {
       <div class={styles.timerContainer}>
         {time.value && (
           <div class={styles.header}>
-            <LabelLive
-              text={config.games_started_at ? "Fine giochi" : "Inizio giochi"}
-            />
+            {!!labelLive && <LabelLive text={labelLive.value} />}
             <div
               class={
-                config.games_started_at
-                  ? styles.plannedEnd
-                  : styles.plannedStart
+                isGamesStarted.value ? styles.plannedEnd : styles.plannedStart
               }
             >
               h {time.value}

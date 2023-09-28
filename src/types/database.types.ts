@@ -38,6 +38,7 @@ export interface Database {
           games_ended_at: string | null
           games_started_at: string | null
           id: number
+          is_paused: boolean | null
           planned_end: string | null
           planned_start: string | null
           winner: string | null
@@ -46,6 +47,7 @@ export interface Database {
           games_ended_at?: string | null
           games_started_at?: string | null
           id?: number
+          is_paused?: boolean | null
           planned_end?: string | null
           planned_start?: string | null
           winner?: string | null
@@ -54,6 +56,7 @@ export interface Database {
           games_ended_at?: string | null
           games_started_at?: string | null
           id?: number
+          is_paused?: boolean | null
           planned_end?: string | null
           planned_start?: string | null
           winner?: string | null

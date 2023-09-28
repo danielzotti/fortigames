@@ -6,21 +6,27 @@ import { Config } from "~/types/config.types";
 export const useConfig = () => {
   const config = useContext(ConfigContext);
 
-  const isGamesEnded = useComputed$(() => {
-    return !!config.games_ended_at;
-  });
+  const isGamesEnded = useComputed$(() => !!config.games_ended_at);
 
-  const isGamesStarted = useComputed$(() => {
-    return !!config.games_started_at;
-  });
+  const isGamesStarted = useComputed$(
+    () =>
+      !!config.games_started_at && !config.games_ended_at && !config.is_paused,
+  );
 
-  const isGamesWaiting = useComputed$(() => {
-    return !config.games_started_at && !config.games_ended_at;
-  });
+  const isGamesPaused = useComputed$(() => config.is_paused);
 
-  const countdownDate = useComputed$(() => {
-    return config.games_started_at ? config.planned_end : config.planned_start;
-  });
+  const isGamesWaiting = useComputed$(
+    () =>
+      !config.games_started_at && !config.games_ended_at && !config.is_paused,
+  );
+
+  const countdownDate = useComputed$(() =>
+    config.games_started_at
+      ? config.planned_end
+      : config.games_ended_at
+      ? config.games_ended_at
+      : config.planned_start,
+  );
 
   const initializeContext = $(async () => {
     const { data } = await supabaseClient.from("config").select("*");
@@ -38,10 +44,12 @@ export const useConfig = () => {
         "postgres_changes",
         { event: "UPDATE", schema: "public", table: "config" },
         (payload) => {
+          console.log("Config update (payload)", payload);
           Object.entries(payload.new).forEach(([key, value]) => {
             // @ts-ignore
             config[key as keyof Config] = value as any;
           });
+          console.log("config", config);
         },
       )
       .subscribe();
@@ -52,6 +60,7 @@ export const useConfig = () => {
     config,
     isGamesEnded,
     isGamesStarted,
+    isGamesPaused,
     isGamesWaiting,
     countdownDate,
   };

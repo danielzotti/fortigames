@@ -3,19 +3,18 @@ import Button from "~/shared/components/ui/button/button";
 import { supabaseClient } from "~/supabase/supabase-client";
 
 export default component$(() => {
-  const stopGames = $(async () => {
+  const pauseGames = $(async () => {
     const { data, error } = await supabaseClient
       .from("config")
       .update({
-        games_started_at: null,
-        games_ended_at: null,
+        is_paused: true,
       })
       .eq("id", 1);
   });
 
   return (
-    <Button onClick$={stopGames}>
-      <i class="fa fa-pause"></i> Ferma i giochi
+    <Button onClick$={pauseGames}>
+      <i class="fa fa-pause"></i> Metti i giochi in pausa
     </Button>
   );
 });
