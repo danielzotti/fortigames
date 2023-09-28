@@ -16,14 +16,14 @@
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
-  font-size: 1.5em;
-  padding: var(--spacing-small);
+  font-size: 1.3em;
+  padding: var(--spacing-xsmall);
   border-top: 1px solid var(--bottom-navigation-border-color-light);
   border-right: 1px solid var(--bottom-navigation-border-color-dark);
   border-bottom: 1px solid var(--bottom-navigation-border-color-dark);
   border-left: 1px solid var(--bottom-navigation-border-color-light);
   background-color: var(--bottom-navigation-bg-color);
-  box-shadow: 0 px 4px 0px var(--bottom-navigation-box-shadow);
+  box-shadow: 2px 2px 0 0px rgba(0,0,0,0.25); //TODO
   backdrop-filter: blur(4.7px);
 }
 

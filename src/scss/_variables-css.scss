@@ -50,8 +50,10 @@
   --font-family-fun: 'Itim', 'Roboto', Verdana, Helvetica, Arial, sans-serif;
   --font-family-text: 'Special Elite', 'Roboto', Verdana, Helvetica, Arial, sans-serif;
   --font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --font-family-badge: Xahn Mono, sans-serif;
-  --font-family-digit: 'VT323', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-family-badge: 'Noto Sans JP', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-family-digit:'Noto Sans Mono', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-family-mono: var(--font-family-digit);
+  
 
   //MARGINS
   --spacing-xxsmall: 0.3rem;//4,8

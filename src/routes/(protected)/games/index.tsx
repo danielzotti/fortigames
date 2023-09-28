@@ -25,16 +25,19 @@ export default component$(() => {
           {isGamesStarted.value && <EndGamesButton />}
           {isGamesEnded.value && (
             <>
-              <p>I giochi sono terminati, vuoi ricominciare da capo?</p>
+              <p>Il torneo è terminato</p>
               <StartGamesButton />
             </>
           )}
 
-          {/*<div class={styles.winner}>
+         <div class={styles.winner}>
             <h2>TODO</h2>
-            <input />
-            <Button>Decreta il vincitore dei giochi!</Button>
-          </div>*/}
+
+            <p>Annuncia il vincitore del torneo</p>
+            <input placeholder="es. Tigers" />
+            <Button>Decreta vincitore</Button>
+          </div>
+
         </div>
       )}
     </MainLayout>

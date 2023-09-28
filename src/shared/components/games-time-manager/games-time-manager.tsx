@@ -30,7 +30,7 @@ export default component$(() => {
       return "Pianificato";
     }
     if (isGamesStarted.value) {
-      return "Fine";
+      return "In corso";
     }
     if (isGamesPaused.value) {
       return "In pausa";
@@ -45,7 +45,7 @@ export default component$(() => {
     time.value = deadline.hour + ":" + deadline.minute;
 
     if (isGamesEnded.value) {
-      remainingTime.value = "Finiti!";
+      remainingTime.value = "Terminato";
       return;
     }
 

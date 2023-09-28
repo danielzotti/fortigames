@@ -21,8 +21,9 @@ export default component$(() => {
   });
 
   return (
-    <Button onClick$={endGames} variant="selected">
-      <i class="fa fa-flag"></i> {"Termina i giochi"}
+    <Button onClick$={endGames} variant="default">
+      <i class="fa fa-flag"></i>  &nbsp; 
+      {"Termina il torneo"}
     </Button>
   );
 });

@@ -14,7 +14,8 @@ export default component$(() => {
 
   return (
     <Button onClick$={pauseGames}>
-      <i class="fa fa-pause"></i> Metti i giochi in pausa
+      <i class="fa fa-pause"></i>  &nbsp; 
+      Metti in pausa il torneo
     </Button>
   );
 });

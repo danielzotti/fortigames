@@ -34,7 +34,7 @@
   --border-color: var(--black-light);
 
   // Button
-  --btn-font-size: 14px; // TODO: manca la variabile in variables-css (se è riutilizzabile, ES: font-size-default, font-size-small o roba simile)
+  --btn-font-size: 0.8rem; // TODO: manca la variabile in variables-css (se è riutilizzabile, ES: font-size-default, font-size-small o roba simile)
   --btn-font-family: Bungee, sans-serif; // TODO: variabile in variables-css?
   --btn-border-radius: var(--border-radius); // 8px
   --btn-border-color: var(--black); // #222222
@@ -42,7 +42,7 @@
   --btn-default-text-color: var(--white); // #EEEEEE
   --btn-default-bg-color: var(--black-light); // #333333
   --btn-default-border-color: var(--gray-lighter); // #CCCCCC
-  --btn-default-box-shadow: var(--box-shadow-width-default) #111111; // TODO: manca il colore in variables-css
+  --btn-default-box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25); // TODO
 
   --btn-default-hover-text-color: var(--black-pure); // #EEEEEE
   --btn-default-hover-bg-color: var(--accent-color); // #333333
@@ -137,7 +137,7 @@
   --border-color: var(--white-dark);
   //
   // Button
-  --btn-font-size: 14px; // TODO: manca la variabile in variables-css (se è riutilizzabile, ES: font-size-default, font-size-small o roba simile)
+  --btn-font-size: 0.8rem; // TODO: manca la variabile in variables-css (se è riutilizzabile, ES: font-size-default, font-size-small o roba simile)
   --btn-font-family: Bungee, sans-serif; // TODO: variabile in variables-css?
   --btn-border-radius: var(--border-radius); // 8px
   --btn-border-color: var(--gray-lighter); // #CCCCCC
@@ -145,12 +145,12 @@
   --btn-default-text-color: var(--text-color); // var(--black-pure); // #000000
   --btn-default-bg-color: var(--white-pure); // #FFFFFF
   --btn-default-border-color: var(--gray-lighter); // #CCCCCC
-  --btn-default-box-shadow: var(--box-shadow-width-default) var(--white);
+  --btn-default-box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25); // TODO
 
   --btn-default-hover-text-color: var(--black-light); // #EEEEEE
-  --btn-default-hover-bg-color: var(--accent-color); // #333333
+  --btn-default-hover-bg-color: var(--accent-color); 
 
-  --btn-selected-text-color: var(--black-pure); // #333333
+  --btn-selected-text-color: var(--black-pure); 
   --btn-selected-bg-color: var(--accent-color); // #FFF500
 
   // Profile Avatar
