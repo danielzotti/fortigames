@@ -116,6 +116,7 @@
       .teamTitle {
         color: var(--dragons-color-inverse);
         background-color: var(--dragons-color);
+        border-color: var(--gray-lighter);
       }
 
       .teamCover {
@@ -136,7 +137,8 @@
 
       .teamTitle {
         color: var(--tigers-color-inverse);
-        background-color: var(--tigers-color);
+        background-color: var(--tigers-color-light);
+        border-color: var(--tigers-border-color);
       }
 
       .teamCover {

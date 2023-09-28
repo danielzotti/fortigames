@@ -26,9 +26,11 @@ aside:before, aside:after {
 aside {
   margin: 60px 0;
   padding: 0 10px;
-  line-height: 24px;
+  line-height: 34px;
   position: relative;
   text-align: center;
+  font-family: var(--font-family-title);
+  font-size: 1.2rem;
   
   &.title {
     background-color: $ribbon;
@@ -40,13 +42,13 @@ aside {
     }
     &:before {
       border-color: $ribbon $ribbon $ribbon transparent;
-      left: -20px;
-      border-width: 10px;
+      left: -30px;
+      border-width: 17px;
     }
     &:after {
       border-color: $ribbon transparent $ribbon $ribbon;
-      right: -20px;
-      border-width: 10px;
+      right: -30px;
+      border-width: 17px;
     }
   }
 }
