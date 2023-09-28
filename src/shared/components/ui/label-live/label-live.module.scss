@@ -4,53 +4,15 @@
 .labelLive, .labelLiveOff {
   @extend.label-medium;
   padding: var(--spacing-xsmall) var(--spacing-xsmall);
+  font-family: var(--font-family-title);
+  font-size: 0.9rem;
 }
 
 .labelLive {
   color: var(--label-live-text-color);
   background-color: var(--label-live-bg-color);
-  //animation: flicker 1.5s infinite alternate;
 }
 
 .labelLiveOff {
 
 }
-
-/*
-@keyframes flicker {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
-
-    text-shadow:
-            0 0 0.1rem var(--error-text-color),
-            0 0 0.4rem var(--error-text-color),
-            0 0 4rem var(--error-bg-color),
-            0 0 6rem var(--error-bg-color),
-            0 0 8rem var(--error-bg-color),
-            0 0 9rem var(--error-bg-color),
-            0 0 10rem var(--error-bg-color);
-
-  }
-
-  20%, 24%, 55% {
-    text-shadow: none;
-  }
-}
-
-@keyframes flicker {
-	0%, 18%, 22%, 25%, 53%, 57%, 100% {
-		text-shadow:
-		0 0 0.4rem #fff,
-		0 0 0.9rem #fff,
-		0 0 1.9rem #fff,
-		0 0 4rem #D00,
-		0 0 6rem #D00,
-		0 0 8rem #D00,
-		0 0 9rem #D00,
-		0 0 10rem #D00;
-
-	}
-
-	20%, 24%, 55% {
-		text-shadow: none;
-	}
-  }*/

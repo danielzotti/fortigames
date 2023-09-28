@@ -27,7 +27,7 @@ export default component$(() => {
             Agenda
           </Button>
           <Button isLink={true} href="#location">
-            Dove
+            Location
           </Button>
           <Button isLink={true} href="#torneo">
             Torneo

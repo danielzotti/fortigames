@@ -13,17 +13,14 @@ export default component$(() => {
   return (
       <MainLayout title="Profilo">
         <div class={styles.container}>
-          {isAdmin === true && (
-              <div>
-                <Button isLink={true} href={config.urls.admin}>
-                  Amministra
-                </Button>
-              </div>
-          )}
-          {/*<div>
-          <strong>{auth.value?.user?.email}</strong>
-        </div>*/}
           <div class={styles.chatList}>
+        <h2>Nome utente {/*<div>
+          <strong>{auth.value?.user?.email}</strong>
+        </div>*/}</h2>
+        <p>
+          <i class="fa fa-table-tennis-paddle-ball"></i> sport 1, <i class="fa fa-volleyball-ball"></i> sport 2, <i class="fa fa-volleyball-ball"></i> sport 3
+          </p>
+          
             <h3 class={styles.chatTitle}>Chatta con</h3>
             {!!team && (
                 <div>
@@ -51,6 +48,14 @@ export default component$(() => {
               Tutti
             </Link>
           </div>*/}
+
+{isAdmin === true && (
+              <div class={styles.admin}>
+                <Button isLink={true} href={config.urls.admin}>
+                  Amministra
+                </Button>
+              </div>
+          )}
           </div>
           <div class={styles.logout}>
             <Logout />

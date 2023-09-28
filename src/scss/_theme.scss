@@ -138,7 +138,7 @@
   --btn-default-text-color: var(--text-color); // var(--black-pure); // #000000
   --btn-default-bg-color: var(--white-pure); // #FFFFFF
   --btn-default-border-color: var(--gray-lighter); // #CCCCCC
-  --btn-default-box-shadow: var(--box-shadow-width-default) #e3e3e3; // TODO: manca il colore in variables-css
+  --btn-default-box-shadow: var(--box-shadow-width-default) var(--white);
 
   --btn-default-hover-text-color: var(--black-light); // #EEEEEE
   --btn-default-hover-bg-color: var(--accent-color); // #333333

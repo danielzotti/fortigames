@@ -31,7 +31,7 @@ export default component$(() => {
     remainingTime.value = `-${diff.hours}h ${String(diff.minutes).padStart(
       2,
       "0",
-    )}´`; // ${Math.round(Number(diff.seconds)
+    )}m`; // ${Math.round(Number(diff.seconds)
 
     return "";
   });
