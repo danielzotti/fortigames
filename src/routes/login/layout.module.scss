@@ -1,19 +1,32 @@
 .container {
-  display: flex;
-  height: 100dvh;
-  overflow: hidden;
-  background: var(--black) url('/public/static/backgrounds/cover_tiger_big.png') no-repeat;
-  background-position: bottom;
+  display: grid;
+  height: 100vh;
+}
+
+.coverTiger {
+  height: 57.5vh;
+  background: var(--black) url("/public/static/backgrounds/cover_tiger_big.png")
+    no-repeat;
+  background-position: bottom left;
   background-size: cover;
+  clip-path: polygon(100% 0, 0 0, 0 75%, 100% 100%);
+  transform: scaleX(-1);
+}
+
+.coverDragon {
+  position: relative;
+  top: -25%;
+  height: 57.5vh;
+  background: var(--black)
+    url("/public/static/backgrounds/cover_dragon_big.png") no-repeat;
+  background-size: cover;
+  clip-path: polygon(100% 25%, 0 0, 0 100%, 100% 100%);
+  transform: scaleX(-1);
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  max-height: 100%;
-  overflow-y: auto;
-  padding: var(--spacing-default);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

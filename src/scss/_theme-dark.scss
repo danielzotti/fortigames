@@ -1,0 +1,101 @@
+:root {
+  // THEME (dark)
+  --text-color: var(--white-dark);
+  --text-color-secondary: var(--white);
+  --text-bg-color: var(--black);
+  --text-bg-color-secondary: var(--black-light);
+  --text-color-inverse: var(--black-light);
+  --text-bg-color-inverse: var(--white);
+  --gradient-bg-color: linear-gradient(
+    155deg,
+    var(--gray-dark) 28.44%,
+    var(--black-pure) 84.76%
+  );
+
+  // B/W pattern
+  --gradient-bg-color-bw: linear-gradient(
+    80deg,
+    var(--black) 0%,
+    var(--black-light) 50%,
+    var(--white-pure) 50%,
+    var(--white) 100%
+  );
+
+  --accent-color: var(--yellow);
+  --error-bg-color: var(--red);
+  --error-text-color: var(--white);
+
+  // Link
+  --link-color: var(--accent-color);
+  --link-color-hover: var(-red);
+
+  // border
+  --border-color: var(--black-light);
+
+  // Button
+  --btn-font-size: 14px; // TODO: manca la variabile in variables-css (se è riutilizzabile, ES: font-size-default, font-size-small o roba simile)
+  --btn-font-family: Bungee, sans-serif; // TODO: variabile in variables-css?
+  --btn-border-radius: var(--border-radius); // 8px
+  --btn-border-color: var(--black); // #222222
+
+  --btn-default-text-color: var(--white); // #EEEEEE
+  --btn-default-bg-color: var(--black-light); // #333333
+  --btn-default-border-color: var(--gray-lighter); // #CCCCCC
+  --btn-default-box-shadow: var(--box-shadow-width-default) #111111; // TODO: manca il colore in variables-css
+
+  --btn-default-hover-text-color: var(--black-pure); // #EEEEEE
+  --btn-default-hover-bg-color: var(--accent-color); // #333333
+
+  --btn-selected-text-color: var(--black-light); // #333333
+  --btn-selected-bg-color: var(--accent-color); // #FFF500
+
+  // ProfileAvatar
+  --profile-avatar-font-family: var(--font-family-button);
+  --profile-avatar-font-size: 2em;
+  --profile-avatar-bg-color: var(--accent-color);
+  --profile-avatar-text-color: var(--text-color-inverse);
+
+  // TeamBadge
+  --team-badge-font-size: 24px;
+  --team-badge-size: 50px;
+  --team-badge-font-family: var(--font-family-badge);
+  --team-badge-border-radius: 50%;
+
+  --team-badge-dragons-text-color: var(--dragons-color-inverse);
+  --team-badge-dragons-bg-color: var(--dragons-color);
+  --team-badge-dragons-border-color: #333; // TODO: check
+  --team-badge-dragons-box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25); // TODO: check
+
+  --team-badge-tigers-text-color: var(--tigers-color-inverse);
+  --team-badge-tigers-bg-color: var(--tigers-color);
+  --team-badge-tigers-border-color: #000; // TODO: check
+  --team-badge-tigers-box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25); // TODO: check
+
+  --team-badge-selected-border-color: 4px solid var(--accent-color);
+
+  // Label
+  --label-border-color: var(--black-dark);
+  --label-font-family: var(--font-family-label);
+  --label-medium-font-size: 1rem;
+  --label-large-font-size: 1.5rem;
+  --label-bg-color: var(--black-light);
+  --label-text-color: var(--white);
+  --label-box-shadow: var(--box-shadow-width-default) #111111;
+  --label-padding: var(--spacing-xxsmall) var(--spacing-xsmall);
+  --label-live-bg-color: var(--red);
+  --label-live-text-color: var(--white);
+
+  // BottomNavigation
+  --bottom-navigation-bg-color: rgba(
+    35,
+    35,
+    35,
+    0.7
+  ); // var(--white--transparent) ?
+  --bottom-navigation-text-color: var(--white);
+  --bottom-navigation-border-color: var(--black-pure);
+  --bottom-navigation-border-color-light: var(--black-light);
+  --bottom-navigation-border-color-dark: var(--black);
+  --bottom-navigation-box-shadow: var(--gray-dark);
+  --bottom-navigation-active-text-color: var(--accent-color);
+}
