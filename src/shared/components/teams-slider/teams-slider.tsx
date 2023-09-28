@@ -10,9 +10,11 @@ export default component$(() => {
       </div>
       <div class={styles.slotContainer}>
         <div class={[styles.teamInfoContainer, styles.tigers]}>
+
           <div class={styles.teamTitle}>Tigers</div>
         </div>
         <div class={[styles.teamInfoContainer, styles.dragons]}>
+          
           <div class={styles.teamTitle}>Dragons</div>
         </div>
         <div class={styles.slot}>

@@ -49,14 +49,15 @@ export default component$(() => {
           <li>Hive</li>
           <li>Santorini</li>
           <li>Backgammon</li>
-          <li>dead of winter</li>
-          <li>zombicide</li>
-          <li>furnace</li>
-          <li>lluminati</li>
+          <li>Dead of winter</li>
+          <li>Zombicide</li>
+          <li>Furnace</li>
+          <li>Illuminati</li>
         </ul>
         <h4>Easy/Party</h4>
         <ul>
-          <li>Secret Hitler</li>
+          <li>Masquerade</li>
+          <li>Hanabi</li>
           <li>Dixit</li>
           <li>Saboteur</li>
           <li>Time bomb</li>

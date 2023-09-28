@@ -28,13 +28,17 @@
   --blue: #008dc9;
   --yellow: rgb(255, 245, 0);
   --red: #FF5A5A;
-  --orange: #FF8A00;
+  --orange: #FF614C;
   --accent-color: var(--yellow);
 
   --tigers-color: var(--black);
+  --tigers-color-light: var(--black-light);
   --tigers-color-inverse: var(--white);
+  --tigers-border-color: var(--black);
   --dragons-color: var(--white);
+  --dragons-color-light: var(--white-pure);
   --dragons-color-inverse: var(--black);
+  --dragons-border-color: var(--gray-lighter);
 
   // BOX-SHADOW
   --box-shadow-width-default: 1px 2px 0px;
