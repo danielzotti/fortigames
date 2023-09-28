@@ -34,26 +34,41 @@ export default component$(() => {
 
         <h2>A cosa si gioca?</h2>
         <p>
-          Qui sotto un elenco di giochi disponibili, puoi richiedere il gioco
-          alle persone di riferimento, o portare il tuo, se preferisci mettiti
-          d'accordo con i partecipanti, che trovi qui sotto, su cosa portare.
+          Qui un elenco di giochi disponibili durante fortigames:
         </p>
-        <p>
-          {" "}
-          <a
-            href="https://docs.google.com/spreadsheets/d/1bHBQ89PyXy7j_EPEGyFHJHMcR01Q2Mb4Ur5uPgI5MLo/edit?usp=sharing"
-            target="_blank"
-          >
-            lista completa
-          </a>{" "}
-        </p>
-
+        <h4>Impegno alto</h4>
+        <ul>
+          <li>Magic the gathering, cards</li>
+          <li>Lorenzo il magnifico</li>
+          <li>Puerto rico</li>
+          <li>Mice and Mystics</li>
+        </ul>
+        <h4>Medio Impegno</h4>
+        <ul>
+          <li>Stratego</li>
+          <li>Hive</li>
+          <li>Santorini</li>
+          <li>Backgammon</li>
+          <li>dead of winter</li>
+          <li>zombicide</li>
+          <li>furnace</li>
+          <li>lluminati</li>
+        </ul>
+        <h4>Easy/Party</h4>
+        <ul>
+          <li>Secret Hitler</li>
+          <li>Dixit</li>
+          <li>Saboteur</li>
+          <li>Time bomb</li>
+          <li>exploding kittens</li>
+          <li>stay away</li>
+        </ul>
+        
         <h3>Suggerimenti per i giochi da portare</h3>
         <p>non portare giochi per cui serva studiare le regole per ore</p>
-        <p>non portare giochi che si giocano in dai 9 minuti in su</p>
+        <p>non portare giochi che durano più di 90 minuti</p>
         <p>
-          porta giochi che conosci e che sei in grado di spiegare agli altri nel
-          giro di 10 minuti
+          porta giochi che conosci e che sei in grado di spiegare agli altri in 10 minuti
         </p>
         <p>
           se vuoi portare un gioco che non conosci, assicurati che qualcuno lo

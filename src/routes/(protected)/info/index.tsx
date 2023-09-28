@@ -6,6 +6,7 @@ import styles from "./index.module.scss";
 import BackTopButton from "~/shared/components/ui/back-top-button/back-top-button";
 import { Agenda } from "~/types/agenda.types";
 import LocationMap from "~/shared/components/ui/location-map/location-map";
+import { Link } from "@builder.io/qwik-city";
 
 export default component$(() => {
   const containerRef = useSignal<HTMLElement>();
@@ -68,9 +69,9 @@ export default component$(() => {
           casello autostradale di Desenzano
         </p>
         <p>
-          <a href="https://westgardahotel.com/location/" target="_blank">
+        <Link href={"https://westgardahotel.com/location/"} target="_blank">
             Sito Hotel
-          </a>{" "}
+          </Link>
           &nbsp; GPS: 45°29’50.9″N 10°30’17.6″E
         </p>
         <LocationMap />
@@ -94,26 +95,23 @@ export default component$(() => {
         </p>
         <h2 id="torneo">Il torneo</h2>
         <p>
-          Due squadre Tigers e Dragon si affronteranno in tre competizioni:{" "}
-          <br />
-          Calcio a 5<br />
-          Volley
-          <br />
-          Ping Pong
-          <br />
-          Sarà decretata vincitrice del torneo la squadra che avrà vinto almeno
-          due competizioni.
-          <br />
+          Due squadre, Tigers e Dragons si affronteranno in tre competizioni sportive: Calcio a 5, Volley, Ping Pong.
         </p>
         <p>
-          La squadra vincitrice riceverà in premio la preziosa <a href="/public/static/images/taoScimmiaMaya.jpg" target="_blank">Tao-scimmia
-          Maya</a>, il capolavoro del maestro Gianluca La Rosa in copia unica.
-          <br />
+          Sarà decretata vincitrice del torneo la squadra che avrà vinto almeno
+          due competizioni.
+        </p>
+        <h4>Premio</h4>
+        <p>
+          La squadra vincitrice riceverà in premio la preziosa <Link href={"/public/static/images/taoScimmiaMaya.jpg"} target="_blank">Tao-scimmia
+          Maya</Link>, il capolavoro del maestro Gianluca La Rosa in copia unica.
+        </p>
+        <h4>Durata</h4>
+        <p>
           Il torneo inizierà alle 17:30, o comunque dopo le presentazioni e si
           concluderà tassativamente alle 19:20 per consentire alle eventuali
           sfide in parità di concludersi secondo le modalità sottoindicate e di
           prepararsi per la cena.
-          <br />
         </p>
         <p>
           <Button
@@ -165,7 +163,7 @@ export default component$(() => {
           parità si procederà con una sfida secca, ogni squadra sceglierà chi
           schierare per lo spareggio.
         </p>
-        Facilitatori
+        <h3>Facilitatori</h3>
         <p>
           Ogni competizione avrà un facilitatore, questi avrà il compito di:
         </p>
