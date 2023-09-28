@@ -101,6 +101,13 @@ export default component$(() => {
           ping pong. Ognuna di queste discipline è parte integrante del torneo e
           determinerà il vincitore generale.
         </p>
+        <p>
+          <Button isLink={true} href="/public/static/documents/RegolamentoTorneo.pdf" target="_blank">
+          scarica il regolamento completo
+          </Button>
+         
+        </p>
+
 
         <h3>Condizioni di Vincita</h3>
         <p>
