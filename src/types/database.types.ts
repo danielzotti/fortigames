@@ -40,6 +40,7 @@ export interface Database {
           id: number
           planned_end: string | null
           planned_start: string | null
+          winner: string | null
         }
         Insert: {
           games_ended_at?: string | null
@@ -47,6 +48,7 @@ export interface Database {
           id?: number
           planned_end?: string | null
           planned_start?: string | null
+          winner?: string | null
         }
         Update: {
           games_ended_at?: string | null
@@ -54,6 +56,7 @@ export interface Database {
           id?: number
           planned_end?: string | null
           planned_start?: string | null
+          winner?: string | null
         }
         Relationships: []
       }

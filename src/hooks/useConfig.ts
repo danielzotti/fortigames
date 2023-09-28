@@ -38,7 +38,6 @@ export const useConfig = () => {
             // @ts-ignore
             config[key as keyof Config] = value as any;
           });
-          console.log("update config", config);
         },
       )
       .subscribe();

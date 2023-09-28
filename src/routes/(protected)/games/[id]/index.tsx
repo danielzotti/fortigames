@@ -91,8 +91,6 @@ export default component$(() => {
         .from("games_results")
         .update(row)
         .eq("name", game.value);
-
-      console.log("Arbitraggio", { data, error });
     },
   );
 

@@ -11,7 +11,6 @@ export default component$(() => {
         games_ended_at: null,
       })
       .eq("id", 1);
-    console.log("STOP", { data, error });
   });
 
   return (

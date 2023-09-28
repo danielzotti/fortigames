@@ -14,7 +14,6 @@ export default component$(({ reset = false }: Props) => {
         games_ended_at: reset ? null : new Date().toISOString(),
       })
       .eq("id", 1);
-    console.log("END", { data, error });
   });
 
   return (

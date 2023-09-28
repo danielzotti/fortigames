@@ -6,6 +6,8 @@ import { useParticipants } from "~/hooks/useParticipants";
 import { useAuth } from "~/hooks/useAuth";
 import { useNavigate } from "@builder.io/qwik-city";
 import styles from "./index.module.scss";
+import Button from "~/shared/components/ui/button/button";
+import { config } from "~/config";
 
 export default component$(() => {
   const navigate = useNavigate();
@@ -21,61 +23,18 @@ export default component$(() => {
   });
 
   return (
-    <MainLayout title="Gestione">
-      {/*{!people.value && !user && <Loader />}*/}
-
+    <MainLayout title="Admin">
       {user && <pre>Current user: {user?.email}</pre>}
 
-      {people.value && (
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>N.</th>
-                <th>Team</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Admin</th>
-                <th>Email</th>
-                <th>Company</th>
-                <th>Form</th>
-                <th>Soccer</th>
-                <th>Volley</th>
-                <th>Ping Pong</th>
-                <th>Board Games</th>
-                <th>Referee</th>
-                <th>Facilitator</th>
-              </tr>
-            </thead>
-            <tbody>
-              {people.value.map((p) => (
-                <tr
-                  class={styles.row}
-                  key={p.id}
-                  onClick$={() => navigate(`/admin/${p.id}`)}
-                >
-                  <td>{p.id}</td>
-                  <td>{p.number}</td>
-                  <td>{p.team}</td>
-                  <td>{p.firstname}</td>
-                  <td>{p.lastname}</td>
-                  <td>{p.is_admin ? "X" : ""}</td>
-                  <td>{p.email}</td>
-                  <td>{p.company}</td>
-                  <td>{p.has_filled_form ? "X" : ""}</td>
-                  <td>{p.is_playing_soccer ? "X" : ""}</td>
-                  <td>{p.is_playing_volley ? "X" : ""}</td>
-                  <td>{p.is_playing_pingpong ? "X" : ""}</td>
-                  <td>{p.is_playing_boardgames ? "X" : ""}</td>
-                  <td>{p.is_referee ? "X" : ""}</td>
-                  <td>{p.is_facilitator ? "X" : ""}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+      <Button isLink={true} href={`${config.urls.admin}/users`}>
+        Utenti
+      </Button>
+      <Button isLink={true} href={`${config.urls.admin}/config`}>
+        Configurazione
+      </Button>
+      <Button isLink={true} href={`${config.urls.admin}/analytics`}>
+        Statistiche
+      </Button>
     </MainLayout>
   );
 });
