@@ -5,7 +5,9 @@
 }
 
 .tigersDescription, .dragonsDescription {
+  font-family: var(--font-family-fun);
   padding: var(--spacing-small);
+  font-size:1.2em;
   text-align: center;
   width: 50%;
 }

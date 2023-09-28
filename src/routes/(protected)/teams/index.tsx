@@ -91,8 +91,8 @@ export default component$(() => {
       <TeamsSlider>
         <div class={styles.teamDescriptions}>
           <div class={styles.tigersDescription}>
-            La tigre è la regina di tutte le fiere, l’imperatore che regna con
-            virtù assoluta
+            La tigre è il re di tutte le fiere, l’imperatore che regna con
+            virtù assoluta<br/><br/>
           </div>
           <div class={styles.dragonsDescription}>
             Simbolo di forza e potere e buona fortuna, il drago controlla i
