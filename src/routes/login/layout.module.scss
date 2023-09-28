@@ -5,9 +5,9 @@
 
 .coverTiger {
   height: 57.5vh;
-  background: var(--black) url("/public/static/backgrounds/cover_tiger_big.png")
+  background: var(--black) url("/public/static/backgrounds/tiger2.jpg")
     no-repeat;
-  background-position: bottom left;
+  background-position: right;
   background-size: cover;
   clip-path: polygon(100% 0, 0 0, 0 75%, 100% 100%);
   transform: scaleX(-1);

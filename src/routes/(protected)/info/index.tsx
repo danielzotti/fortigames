@@ -97,9 +97,22 @@ export default component$(() => {
 
         <h2 id="torneo">Il torneo</h2>
         <p>
-          Questo torneo comprende tre diverse discipline: calcio, pallavolo e
-          ping pong. Ognuna di queste discipline è parte integrante del torneo e
-          determinerà il vincitore generale.
+        Due squadre Tigers e Dragon si affronteranno in tre competizioni: <br/>
+        Calcio a 5<br/>
+        Volley<br/>
+        Ping Pong<br/>
+        Sarà decretata vincitrice del torneo la squadra che avrà vinto almeno due competizioni.<br/>
+        </p>
+        <p>
+        La squadra vincitrice riceverà in premio la preziosa 'Taoscimmia Maya', il capolavoro del maestro Gianluca La Rosa in copia unica.<br/>
+        Il torneo inizierà alle 17:30, o comunque dopo le presentazioni e si concluderà tassativamente alle 19:20 per consentire alle eventuali sfide in parità di concludersi secondo le modalità sottoindicate e di prepararsi per la cena.<br/>
+
+        </p>
+        <p>
+          <Button isLink={true} href="/public/static/documents/RegolamentoTorneo.pdf" target="_blank">
+          Scarica il regolamento completo
+          </Button>
+         
         </p>
         <p>
           <Button isLink={true} href="/public/static/documents/RegolamentoTorneo.pdf" target="_blank">
@@ -109,71 +122,43 @@ export default component$(() => {
         </p>
 
 
-        <h3>Condizioni di Vincita</h3>
-        <p>
-          Per vincere il torneo, una squadra deve avere la migliore performance
-          complessiva nelle tre discipline. Ecco come funzionano le condizioni
-          di vittoria:
-        </p>
-        <p>esempio:</p>
-        <ul>
-          <li>
-            La squadra dei Dragons ha vinto la disciplina del calcio (1 punto).
-          </li>
-          <li>
-            La squadra dei Tigers ha vinto le discipline del ping pong e della
-            pallavolo (2 punti).
-          </li>
-          <li>
-            Di conseguenza, il torneo è stato vinto dai Dragons grazie alla loro
-            vittoria nel calcio.
-          </li>
-        </ul>
-
-        <h3>Calcolo Punteggi</h3>
-        <p>
-          Vediamo di seguito come vengono calcolati i punteggi in ciascuna
-          disciplina.
-        </p>
         <h4>Calcio</h4>
         <p>
-          la partita dura 2 ore e il vincitore è determinato dal numero di gol
-          segnati. L'arbitro assegna "+1" per ogni gol segnato. Il risultato
-          finale è basato sul numero di gol segnati:
-        </p>
-        <p>esempio:</p>
-        <ul>
-          <li>
-            Dragons 8 gol - Tigers 4 gol: I Dragons vincono la partita di
-            calcio.
-          </li>
+        Si sfideranno due squadre composte da 9 giocatori, 5 in campo e 4 riserve.<br/>
+        Le squadre sono libere di decidere se tenere il portiere fisso o se effettuare una rotazione per questo ruolo.<br/>
+        Ogni 10 minuti ci saranno 2 sostituzioni.<br/>
+        Vincerà la squadra che alle 19:20 avrà segnato più gol; in caso di parità si procederà con i calci di rigore (5 ed eventualmente ad oltranza).
+                </p>
+                <h4>Volley</h4>
+                <p>
+                Si sfideranno due squadre composte da 13 giocatori, 6 in campo e 7 riserve.<br/>
+        Le squadre sono libere di ruotare nelle varie posizioni o di mantenere posizioni fisse.<br/>
+        Ogni 10 minuti ci saranno 4 sostituzioni.<br/>
+        Vincerà la squadra che alle 19:20 avrà vinto più set (al meglio dei 25 punti); in caso di parità si procederà al tie break (al meglio dei 15 punti)
+                </p>
+                <h4>Ping pong</h4>
+                <p>
+                Si sfideranno due squadre composte da 14 giocatori.<br/>
+        Ci saranno 14 sfide al meglio dei 21 punti.<br/>
+        Si potranno giocare 2 sfide contemporaneamente vista la presenza di due tavoli.<br/>
+        Vincerà la squadra che alle 19:20 avrà vinto più sfide; in caso di parità si procederà con una sfida secca, ogni squadra sceglierà chi schierare per lo spareggio.
+                </p>
+
+
+                Facilitatori
+                <p>Ogni competizione avrà un facilitatore, questi avrà il compito di:</p>
+                <ul>
+                  <li>verificare il corretto svolgimento dei giochi</li>
+                <li>segnalare eventuali comportamenti scorretti (falli, provocazioni gratuite, insulti, ecc) che saranno sanzionati con il cartellino giallo (ammonizione) o rosso (espulsione) secondo il suo insindacabile giudizio; un doppio cartellino giallo porterà al cartellino rosso e all’espulsione</li>
+              <li>conteggiare i gol/punti</li>
+              </ul>
+        <p>Il facilitatore della partita di calcio a 5 dovrà inoltre:
+        <li>chiamare il cambio ogni 10 minuti tramite avvisatore acustico (fischietto o voce) e verificare che le sostituzioni siano effettuate</li>
+        <li>appuntare il nome dei marcatori</li>
         </ul>
-        <h4>Pallavolo</h4>
-        <p>
-          La partita di pallavolo dura 2 ore e il vincitore è chi vince più set,
-          ciascuno a 25 punti. L'arbitro assegna "+1" per ogni set vinto. Il
-          risultato finale è basato sul numero di set vinti:
-        </p>
-        <p>esempio:</p>
+        <p>Il facilitatore della partita di volley dovrà inoltre:</p>
         <ul>
-          <li>
-            Dragons 2 set - Tigers 4 set: I Tigers vincono la partita di
-            pallavolo.
-          </li>
-        </ul>
-        <h4>Ping pong</h4>
-        <p>
-          Nel ping pong, la partita dura 2 ore e il vincitore è chi vince più
-          set, ciascuno a 21 punti. L'arbitro assegna "+1" per ogni set vinto.
-          Il risultato finale è basato sul numero di set vinti:
-        </p>
-        <p>esempio:</p>
-        <ul>
-          <li>
-            Dragons 3 set - Tigers 7 set: I Tigers vincono la partita di ping
-            pong.
-          </li>
-          <li>(Un set nel ping pong è la partita tra Bruno e Chiarello)</li>
+          <li>chiamare il cambio ogni 10 minuti tramite avvisatore acustico (fischietto o voce) e verificare che le sostituzioni siano effettuate</li>
         </ul>
       </div>
       <BackTopButton ref={containerRef} />
