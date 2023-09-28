@@ -11,13 +11,15 @@
   text-align: center;
 
   .singleTeamResult {
-    font-size: 2em;
+    font-size: 3em;
     text-align: center;
     margin: 10px 0;
+    font-family: var(--font-family-digit);
   }
 
   button {
-    width:40px;
+    width: 46px;
+    height: 46px;
     margin: var(--spacing-xsmall);
   }
 }

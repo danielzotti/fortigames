@@ -57,10 +57,10 @@ export default component$(() => {
     <div class={[styles.programContainer]}>
       <div class={[styles.eventLabelContainer]}>
         <div>
-          <span class={[styles.label]}>Ora</span>
+          <span class={[styles.label]}>Adesso</span>
         </div>
         <div>
-          <span class={[styles.label]}>Prossimi</span>
+          <span class={[styles.label]}>A seguire</span>
         </div>
       </div>
       <div class={styles.eventsContainer}>
@@ -72,7 +72,7 @@ export default component$(() => {
                 <div class="event-name">{currentEvent.value.activity}</div>
               </>
             ) : (
-              <div>In attesa dell'evento...</div>
+              <div><br />In attesa dell'evento...</div>
             )}
           </div>
         </div>
