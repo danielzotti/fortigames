@@ -106,8 +106,8 @@ export default component$(() => {
           <br />
         </p>
         <p>
-          La squadra vincitrice riceverà in premio la preziosa 'Taoscimmia
-          Maya', il capolavoro del maestro Gianluca La Rosa in copia unica.
+          La squadra vincitrice riceverà in premio la preziosa <a href="/public/static/images/taoScimmiaMaya.jpg" target="_blank">Taoscimmia
+          Maya</a>, il capolavoro del maestro Gianluca La Rosa in copia unica.
           <br />
           Il torneo inizierà alle 17:30, o comunque dopo le presentazioni e si
           concluderà tassativamente alle 19:20 per consentire alle eventuali
