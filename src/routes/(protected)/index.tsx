@@ -20,9 +20,9 @@ export default component$(() => {
         <GameResults />
       </TeamsSlider>
 
-      {isGamesEnded && <Winner />}
+      {isGamesEnded.value && <Winner />}
 
-      {!isGamesEnded && (
+      {!isGamesEnded.value && (
         <>
           <GamesTimeManager />
         </>
