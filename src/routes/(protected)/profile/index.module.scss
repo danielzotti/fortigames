@@ -8,6 +8,17 @@
   }
 }
 
+.name {
+  text-align: center;
+}
+
+.gameList {
+  display: flex;
+  gap: var(--spacing-small);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .chatList {
   @extend .container;
   gap: var(--spacing-small);
@@ -17,9 +28,11 @@
 .chatTitle {
   margin: var(--spacing-small) 0 0 0;
 }
+
 .admin {
   margin-top: var(--spacing-medium)
 }
+
 .logout {
   margin-top: var(--spacing-medium)
 }

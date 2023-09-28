@@ -6,6 +6,8 @@
   padding: var(--spacing-small);
   max-width: 500px;
   margin: auto;
+  position: relative;
+  z-index: 200;
 }
 
 .menu {
@@ -21,8 +23,7 @@
   border-bottom: 1px solid var(--bottom-navigation-border-color-dark);
   border-left: 1px solid var(--bottom-navigation-border-color-light);
   background-color: var(--bottom-navigation-bg-color);
-
-  box-shadow: 0px px 4px 0px var(--bottom-navigation-box-shadow);
+  box-shadow: 0 px 4px 0px var(--bottom-navigation-box-shadow);
   backdrop-filter: blur(4.7px);
 }
 

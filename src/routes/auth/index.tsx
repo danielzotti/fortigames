@@ -29,18 +29,25 @@ export default component$(() => {
       // Get additional info from users table
       const { data } = await supabaseClient
         .from("users")
-        .select("is_admin, is_referee, is_facilitator, team")
+        .select("*")
         .eq("email", session.user.email);
 
       isEmailFromFortitudeDomain.value = !!data?.length;
 
+      const u = data?.[0];
       enhancedSession = {
         ...session,
-        is_admin: data?.[0]?.is_admin ?? false,
-        is_referee: data?.[0]?.is_referee ?? false,
-        is_facilitator: data?.[0]?.is_facilitator ?? false,
+        is_admin: u?.is_admin ?? false,
+        is_referee: u?.is_referee ?? false,
+        is_facilitator: u?.is_facilitator ?? false,
         is_fortitude: !!data?.length,
-        team: data?.[0]?.team as TeamsValues,
+        team: u?.team as TeamsValues,
+        firstname: u?.firstname,
+        lastname: u?.lastname,
+        is_playing_soccer: u?.is_playing_soccer,
+        is_playing_pingpong: u?.is_playing_pingpong,
+        is_playing_volley: u?.is_playing_volley,
+        is_playing_boardgames: u?.is_playing_boardgames,
       };
     }
 

@@ -11,7 +11,7 @@ type BasicProps = {
 type LinkProps = {
   isLink?: boolean;
   href?: string;
-  target?: "_blank" | "_self";
+  target?: "_blank";
 };
 type ButtonProps = {
   onClick$?: PropFunction<() => void> | PropFunction<() => void>[];
@@ -27,7 +27,7 @@ export default component$(
     onClick$,
     isLink = false,
     href,
-    target = "_self",
+    target,
     class: _class,
   }: Props) => {
     if (isLink) {

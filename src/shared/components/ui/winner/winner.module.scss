@@ -24,23 +24,28 @@
 .trophyImgContainer {
   position: relative;
 }
+
 .trophyImg {
   max-height: 60dvh;
   width: auto;
   display: block;
 }
+
 .teamWinner {
   position: absolute;
   top: 0;
-  left:0;
+  left: 0;
   right: 0;
 }
+
 .label {
   @extend .label-large;
+
   &.dragons {
     background-color: var(--dragons-color);
     color: var(--dragons-color-inverse);
   }
+
   &.tigers {
     background-color: var(--tigers-color);
     color: var(--tigers-color-inverse);
@@ -50,6 +55,6 @@
 .teamBadge {
   position: absolute;
   top: 55%;
-  left:50%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }

@@ -4,13 +4,11 @@ import Loader from "~/shared/components/ui/loader/loader";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import { useParticipants } from "~/hooks/useParticipants";
 import { useAuth } from "~/hooks/useAuth";
-import { useNavigate } from "@builder.io/qwik-city";
-import styles from "./index.module.scss";
 import Button from "~/shared/components/ui/button/button";
 import { config } from "~/config";
+import BackButton from "~/shared/components/ui/back-button/back-button";
 
 export default component$(() => {
-  const navigate = useNavigate();
   const { user } = useAuth();
   const { usersList, store } = useParticipants();
   const people = useComputed$<Participant[]>(() => {
@@ -24,6 +22,8 @@ export default component$(() => {
 
   return (
     <MainLayout title="Admin">
+      <BackButton url={config.urls.profile} />
+
       {user && <pre>Current user: {user?.email}</pre>}
 
       <Button isLink={true} href={`${config.urls.admin}/users`}>
@@ -32,9 +32,9 @@ export default component$(() => {
       <Button isLink={true} href={`${config.urls.admin}/config`}>
         Configurazione
       </Button>
-      <Button isLink={true} href={`${config.urls.admin}/analytics`}>
+      {/*<Button isLink={true} href={`${config.urls.admin}/analytics`}>
         Statistiche
-      </Button>
+      </Button>*/}
     </MainLayout>
   );
 });

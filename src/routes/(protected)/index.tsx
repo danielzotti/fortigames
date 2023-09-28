@@ -8,9 +8,11 @@ import EventProgram from "~/shared/components/event-program/event-program";
 import { ThemeContext } from "~/contexts/theme.context";
 import LocationMap from "~/shared/components/ui/location-map/location-map";
 import TeamsSlider from "~/shared/components/teams-slider/teams-slider";
+import Winner from "~/shared/components/ui/winner/winner";
+import { useConfig } from "~/hooks/useConfig";
 
 export default component$(() => {
-  const theme = useContext(ThemeContext);
+  const { winner, isGamesEnded } = useConfig();
 
   return (
     <MainLayout title="Dashboard" hasContentPaddingTop={false}>
@@ -18,7 +20,13 @@ export default component$(() => {
         <GameResults />
       </TeamsSlider>
 
-      <GamesTimeManager />
+      {isGamesEnded && <Winner />}
+
+      {!isGamesEnded && (
+        <>
+          <GamesTimeManager />
+        </>
+      )}
 
       <EventProgram />
 

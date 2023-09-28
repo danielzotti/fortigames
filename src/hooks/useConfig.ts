@@ -2,6 +2,7 @@ import { $, useComputed$, useContext } from "@builder.io/qwik";
 import { supabaseClient } from "~/supabase/supabase-client";
 import { ConfigContext } from "~/contexts/config.context";
 import { Config } from "~/types/config.types";
+import { TeamsValues } from "~/types/teams.types";
 
 export const useConfig = () => {
   const config = useContext(ConfigContext);
@@ -27,6 +28,8 @@ export const useConfig = () => {
       ? config.games_ended_at
       : config.planned_start,
   );
+
+  const winner = useComputed$(() => config.winner as TeamsValues | null);
 
   const initializeContext = $(async () => {
     const { data } = await supabaseClient.from("config").select("*");
@@ -63,5 +66,6 @@ export const useConfig = () => {
     isGamesPaused,
     isGamesWaiting,
     countdownDate,
+    winner,
   };
 };
