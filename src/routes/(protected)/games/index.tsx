@@ -30,11 +30,11 @@ export default component$(() => {
             </>
           )}
 
-          <div class={styles.winner}>
+          {/*<div class={styles.winner}>
             <h2>TODO</h2>
             <input />
             <Button>Decreta il vincitore dei giochi!</Button>
-          </div>
+          </div>*/}
         </div>
       )}
     </MainLayout>

@@ -56,7 +56,7 @@ export default component$(() => {
                 <tr
                   class={styles.row}
                   key={p.id}
-                  onClick$={() => navigate(`/admin/${p.id}`)}
+                  onClick$={() => navigate(`/admin/users/${p.id}`)}
                 >
                   <td>{p.id}</td>
                   <td>{p.number}</td>

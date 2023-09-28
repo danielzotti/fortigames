@@ -87,7 +87,7 @@ export default component$(() => {
       return;
     }
 
-    navigate(config.urls.admin);
+    navigate(`${config.urls.admin}/users`);
   });
 
   useVisibleTask$(async () => {
@@ -108,7 +108,7 @@ export default component$(() => {
 
   return (
     <MainLayout title={"Modifica"}>
-      <BackButton url={config.urls.admin} />
+      <BackButton url={`${config.urls.admin}/users`} />
 
       {!participant.value && <Loader />}
 
