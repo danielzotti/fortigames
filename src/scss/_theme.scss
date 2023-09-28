@@ -74,15 +74,15 @@
   --team-badge-selected-border-color: 4px solid var(--accent-color);
 
   // Label
-  --label-border-color: var(--black);
+  --label-border-color: var(--black-dark);
   --label-font-family: var(--font-family-label);
-  --label-medium-font-size: 16px;
-  --label-large-font-size: 24px;
+  --label-medium-font-size: 1rem;
+  --label-large-font-size: 1.5rem;
   --label-bg-color: var(--black-light);
   --label-text-color: var(--white);
   --label-box-shadow: var(--box-shadow-width-default) #111111;
-  --label-padding: 6px 10px;
-  --label-live-bg-color: #FF5A5A;
+  --label-padding:   var(--spacing-xxsmall)  var(--spacing-xsmall);
+  --label-live-bg-color: var(--red);
   --label-live-text-color: var(--white);
 
   // BottomNavigation
@@ -171,15 +171,15 @@
   --team-badge-selected-border-color: 4px solid var(--accent-color);
 
   // Label
-  --label-border-color: var(--white);
+  --label-border-color: var(--white-dark);
   --label-font-family: var(--font-family-label);
-  --label-medium-font-size: 16px;
-  --label-large-font-size: 24px;
+  --label-medium-font-size: 1rem;
+  --label-large-font-size: 1.5rem;
   --label-bg-color: var(--white-pure);
   --label-text-color: var(--black-light);
   --label-box-shadow: var(--box-shadow-width-default) #e3e3e3; // TODO: manca il colore in variables-css
-  --label-padding: 6px 10px;
-  --label-live-bg-color: #FF5A5A;
+  --label-padding:   var(--spacing-xxsmall)  var(--spacing-xsmall);
+  --label-live-bg-color: var(--red);
   --label-live-text-color: var(--white);
 
   // BottomNavigation

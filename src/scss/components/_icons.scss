@@ -1,6 +1,6 @@
 .icon {
   border-radius: 50%;
-  border: 1px solid #555555;
+  border: 1px solid var(--border-color);
   width: 20px;
   height: 20px;
   display: block;
@@ -18,5 +18,5 @@
 
 .icon-no-team {
   @extend .icon;
-  background: linear-gradient(315deg, #222223 45%, #EEEEEE 55%);
+  background: var(--gradient-bg-color-bw);
 }
