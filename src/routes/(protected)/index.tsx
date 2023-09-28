@@ -1,7 +1,4 @@
-import {
-  component$,
-  useContext
-} from "@builder.io/qwik";
+import { component$, useContext } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
 import GameResults from "~/shared/components/games-results/game-results";
@@ -16,10 +13,10 @@ export default component$(() => {
   const theme = useContext(ThemeContext);
 
   return (
-    <MainLayout title="Home" hasContentPaddingTop={false}>
-        <TeamsSlider>
-            <GameResults />
-        </TeamsSlider>
+    <MainLayout title="Dashboard" hasContentPaddingTop={false}>
+      <TeamsSlider>
+        <GameResults />
+      </TeamsSlider>
       <GamesTimeManager />
       {/*<GamesTeam />*/}
       <EventProgram />

@@ -4,6 +4,7 @@ import styles from "./games-time-manager.module.scss";
 import { supabaseClient } from "~/supabase/supabase-client";
 import { DateTime } from "luxon";
 import LabelLive from "~/shared/components/ui/label-live/label-live";
+import Trophy from "../../../../public/static/images/trophy.png?jsx";
 
 interface Config {
   id: number;
@@ -50,7 +51,7 @@ export default component$(() => {
 
   return (
     <div class={styles.endGameContainer}>
-      <img src="/public/static/images/trophy.png" alt="" />
+      <Trophy />
       <div class={styles.timerContainer}>
         <div class={styles.header}>
           <LabelLive

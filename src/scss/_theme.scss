@@ -81,7 +81,7 @@
   --label-bg-color: var(--black-light);
   --label-text-color: var(--white);
   --label-box-shadow: var(--box-shadow-width-default) #111111;
-  --label-padding:   var(--spacing-xxsmall)  var(--spacing-xsmall);
+  --label-padding: var(--spacing-xxsmall) var(--spacing-xsmall);
   --label-live-bg-color: var(--red);
   --label-live-text-color: var(--white);
 
@@ -93,6 +93,11 @@
   --bottom-navigation-border-color-dark: var(--black);
   --bottom-navigation-box-shadow: var(--gray-dark);
   --bottom-navigation-active-text-color: var(--accent-color);
+
+  // Ribbon
+  --ribbon-text-color: #FFF; // var(--text-color);
+  --ribbon-bg-color: #000; // var(--text-bg-color);
+  --ribbon-bg-color-shadow: #333; // var(--text-bg-color-secondary);
 }
 
 @mixin light {
@@ -128,7 +133,7 @@
 
   // border
   --border-color: var(--gray-light);
-// 
+  //
   // Button
   --btn-font-size: 14px; // TODO: manca la variabile in variables-css (se è riutilizzabile, ES: font-size-default, font-size-small o roba simile)
   --btn-font-family: Bungee, sans-serif; // TODO: variabile in variables-css?
@@ -178,7 +183,7 @@
   --label-bg-color: var(--white-pure);
   --label-text-color: var(--black-light);
   --label-box-shadow: var(--box-shadow-width-default) #e3e3e3; // TODO: manca il colore in variables-css
-  --label-padding:   var(--spacing-xxsmall)  var(--spacing-xsmall);
+  --label-padding: var(--spacing-xxsmall) var(--spacing-xsmall);
   --label-live-bg-color: var(--red);
   --label-live-text-color: var(--white);
 
@@ -191,4 +196,8 @@
   --bottom-navigation-box-shadow: var(--gray-light);
   --bottom-navigation-active-text-color: var(--accent-color);
 
+  // Ribbon
+  --ribbon-text-color: #000; // var(--text-color);
+  --ribbon-bg-color: #FFF; // var(--text-bg-color);
+  --ribbon-bg-color-shadow: #333; // var(--text-bg-color-secondary);
 }

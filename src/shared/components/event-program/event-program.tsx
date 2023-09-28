@@ -62,9 +62,6 @@ export default component$(() => {
         <div>
           <span class={[styles.label]}>Prossimi</span>
         </div>
-        <div>
-          <span class={[styles.label]} style="visibility: hidden"></span>
-        </div>
       </div>
       <div class={styles.eventsContainer}>
         <div class={[styles.event]}>
@@ -75,7 +72,7 @@ export default component$(() => {
                 <div class="event-name">{currentEvent.value.activity}</div>
               </>
             ) : (
-              <div>In attesa dell'evento ...</div>
+              <div>In attesa dell'evento...</div>
             )}
           </div>
         </div>
@@ -91,7 +88,7 @@ export default component$(() => {
             )}
           </div>
         </div>
-        <div class={[styles.event]}>
+        <div class={[styles.eventLast]}>
           <div>
             {nextEvents.value?.length &&
             nextEvents.value?.length &&

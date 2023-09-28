@@ -5,7 +5,7 @@ import {
   useSignal,
   useVisibleTask$,
 } from "@builder.io/qwik";
-import { Participant } from "~/types/participant.types";
+import { CompanyValues, Participant } from "~/types/participant.types";
 import { useLocation, useNavigate } from "@builder.io/qwik-city";
 import { config } from "~/config";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
@@ -14,6 +14,7 @@ import TeamsFilter from "~/shared/components/teams-filter/teams-filter";
 import { useParticipants } from "~/hooks/useParticipants";
 import { Games } from "~/types/games.types";
 import TeamsSlider from "~/shared/components/teams-slider/teams-slider";
+import CompanyLogo from "~/shared/components/ui/company-logo/company-logo";
 
 type ParticipationFlags =
   | "is_playing_soccer"
@@ -91,8 +92,10 @@ export default component$(() => {
       <TeamsSlider>
         <div class={styles.teamDescriptions}>
           <div class={styles.tigersDescription}>
-            La tigre è il re di tutte le fiere, l’imperatore che regna con
-            virtù assoluta<br/><br/>
+            La tigre è il re di tutte le fiere, l’imperatore che regna con virtù
+            assoluta
+            <br />
+            <br />
           </div>
           <div class={styles.dragonsDescription}>
             Simbolo di forza e potere e buona fortuna, il drago controlla i
@@ -115,13 +118,7 @@ export default component$(() => {
               <tr key={p.id}>
                 <td>
                   <div class={styles.name}>
-                    <img
-                      class={styles.playersListImg}
-                      src={`/public/static/images/${p.company}.png`}
-                      alt={""}
-                      width="20"
-                      height="20"
-                    />
+                    <CompanyLogo company={p.company as CompanyValues} />
                     <span>{p.firstname}</span>
                     <span>{p.lastname}</span>
                   </div>

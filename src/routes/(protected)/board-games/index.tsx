@@ -1,9 +1,10 @@
 import { component$, useComputed$, useSignal } from "@builder.io/qwik";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import styles from "./index.module.scss";
-import { Participant } from "~/types/participant.types";
+import { CompanyValues, Participant } from "~/types/participant.types";
 import BackTopButton from "~/shared/components/ui/back-top-button/back-top-button";
 import { useParticipants } from "~/hooks/useParticipants";
+import CompanyLogo from "~/shared/components/ui/company-logo/company-logo";
 
 export default component$(() => {
   const containerRef = useSignal<HTMLElement>();
@@ -66,13 +67,7 @@ export default component$(() => {
               <tr key={p.id}>
                 <td>
                   <div class={styles.name}>
-                    <img
-                      class={styles.playersListImg}
-                      src={`/public/static/images/${p.company}.png`}
-                      alt={""}
-                      width="20"
-                      height="20"
-                    />
+                    <CompanyLogo company={p.company as CompanyValues} />
                     <span>{p.firstname}</span>
                     <span>{p.lastname}</span>
                   </div>

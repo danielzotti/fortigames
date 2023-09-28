@@ -14,6 +14,8 @@ import { Games, GamesResults } from "~/types/games.types";
 import { gamesResultsDefault, useGamesResults } from "~/hooks/useGameResults";
 import Loader from "~/shared/components/ui/loader/loader";
 import { GamesResultsContext } from "~/contexts/games-results.context";
+import Button from "~/shared/components/ui/button/button";
+import { useAuth } from "~/hooks/useAuth";
 
 interface Props {
   editMode?: boolean;
@@ -27,32 +29,34 @@ export default component$(({ editMode }: Props) => {
   }
 
   return (
-    <div class={styles.resultContainer}>
-      {Object.keys(results).map((k) => (
-        <div key={k}>
-          <div class={styles.result}>
-            <span class={styles.resultIcon}>
-              <i class={[config.games[k as keyof Games].icon]}></i>
-            </span>
-            <span class={styles.resultInfo}>
-              <span class={styles.tigers}>
-                {results[k as keyof GamesResults].tigers}
+    <>
+      <div class={styles.resultContainer}>
+        {Object.keys(results).map((k) => (
+          <div key={k}>
+            <div class={styles.result}>
+              <span class={styles.resultIcon}>
+                <i class={[config.games[k as keyof Games].icon]}></i>
               </span>
-              <span class={styles.dragons}>
-                {results[k as keyof GamesResults].dragons}
+              <span class={styles.resultInfo}>
+                <span class={styles.tigers}>
+                  {results[k as keyof GamesResults].tigers}
+                </span>
+                <span class={styles.dragons}>
+                  {results[k as keyof GamesResults].dragons}
+                </span>
               </span>
-            </span>
-            <span class={styles.resultLabel}>
-              {config.games[k as keyof Games].label}
-            </span>
-          </div>
-          {editMode && (
-            <div class={styles.manage}>
-              <Link href={"/games/" + k}>Arbitra</Link>
+              <span class={styles.resultLabel}>
+                {config.games[k as keyof Games].label}
+              </span>
             </div>
-          )}
-        </div>
-      ))}
-    </div>
+            {editMode && (
+              <div class={styles.manage}>
+                <Button href={`${config.urls.games}/${k}`}>Arbitra</Button>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </>
   );
 });

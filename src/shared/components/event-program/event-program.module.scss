@@ -1,27 +1,48 @@
 @use "@scss/components/label";
 
+$program-breakpoint: 600px;
+
 .programContainer {
   .eventLabelContainer {
     display: flex;
+
     div {
-      width: 33.3333%;
       padding: var(--spacing-small) var(--spacing-small);
+      width: 50%;
+      @media(min-width: $program-breakpoint) {
+        width: calc(100% / 3);
+      }
     }
 
     .label {
-      @extend.label-medium;
+      @extend .label-medium;
     }
   }
-  .eventsContainer{
+
+  .eventsContainer {
     display: flex;
+    flex-direction: row;
+    align-content: stretch;
+
+    > div:first-child {
+      border-left: 0;
+    }
 
     .event {
-      width: 33.3333%;
-      border-right: 1px solid #444444;
+      border-left: 1px solid #444444;
       padding: 0 var(--spacing-small);
+      align-self: stretch;
+      width: 50%;
+      @media(min-width: $program-breakpoint) {
+        width: calc(100% / 3);
+      }
+    }
 
-      &:last-child {
-        border-right: 0;
+    .eventLast {
+      @extend .event;
+      display: none;
+      @media(min-width: $program-breakpoint) {
+        display: block;
       }
     }
 

@@ -22,16 +22,13 @@
 }
 
 
-  h2, h3, h4, p{
-    font-family: var(--font-family-board);
-  }
-  h2{
-      font-size: 1.6em;
-    color: var(--accent-color);
-  }
+h2, h3, h4, p {
+  font-family: var(--font-family-board);
+}
 
-.playersListImg {
-  width: 1.2em;
+h2 {
+  font-size: 1.6em;
+  color: var(--accent-color);
 }
 
 .name {
@@ -45,6 +42,7 @@
     justify-content: flex-start;
     align-items: center;
   }
+
   > span {
     line-height: 20px;
   }

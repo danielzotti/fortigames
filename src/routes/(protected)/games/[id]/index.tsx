@@ -25,7 +25,7 @@ interface SingleItemProps {
   team: TeamsValues;
   updateScore: PropFunction<
     (result: { team: TeamsValues; score: number }) => void
-  >; // QRL<(result: { team: TeamsValues; score: number }) => Promise<void>>; //
+  >;
   result: Signal<GameResult | undefined>;
 }
 
@@ -92,6 +92,8 @@ export default component$(() => {
         .from("games_results")
         .update(row)
         .eq("name", game.value);
+
+      console.log("Arbitraggio", { data, error });
     },
   );
 
