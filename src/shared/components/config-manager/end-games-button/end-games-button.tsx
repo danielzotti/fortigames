@@ -4,6 +4,13 @@ import { supabaseClient } from "~/supabase/supabase-client";
 
 export default component$(() => {
   const endGames = $(async () => {
+    const isConfirm = window.confirm(
+      "Sei sicuro di voler terminare i giochi???",
+    );
+
+    if (!isConfirm) {
+      return;
+    }
     const { data, error } = await supabaseClient
       .from("config")
       .update({
@@ -14,7 +21,7 @@ export default component$(() => {
   });
 
   return (
-    <Button onClick$={endGames}>
+    <Button onClick$={endGames} variant="selected">
       <i class="fa fa-flag"></i> {"Termina i giochi"}
     </Button>
   );

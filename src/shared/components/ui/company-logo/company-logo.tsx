@@ -17,7 +17,7 @@ export default component$(({ company = null, width = "20px" }: Props) => {
         return <BitrockLogo style={{ width }} />;
       case "Radicalbit":
         return <RadicalbitLogo style={{ width }} />;
-      case "Proactivity":
+      case "ProActivity":
         return <ProactivityLogo style={{ width }} />;
       case "Fortitude":
         return <FortitudeLogo style={{ width }} />;

@@ -6,6 +6,6 @@ export type ParticipantsStore = Record<string, Participant>;
 
 export type CompanyValues =
   | "Bitrock"
-  | "Proactivity"
+  | "ProActivity"
   | "Radicalbit"
   | "Fortitude";
