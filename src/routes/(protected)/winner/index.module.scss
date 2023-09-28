@@ -1,0 +1,40 @@
+.trophy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  text-align: center;
+}
+.label {
+  color: var(--Yellow, #fff500);
+  text-align: center;
+  font-family: JejuHallasan;
+  font-size: 24px;
+}
+
+.winner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .teamWinner {
+    position: relative;
+    top: -80px;
+    color: #333;
+    text-align: center;
+    font-family: JejuHallasan;
+    font-size: 30px;
+    padding: 3px 5px;
+    border: 1px solid #dbdbdb;
+    background: #fff;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+    z-index: 2;
+  }
+
+  .teamBadge {
+    position: relative;
+    top: -90px;
+  }
+}
