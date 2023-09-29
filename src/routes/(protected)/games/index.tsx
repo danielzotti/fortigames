@@ -29,15 +29,6 @@ export default component$(() => {
               <StartGamesButton />
             </>
           )}
-
-         <div class={styles.winner}>
-            <h2>TODO</h2>
-
-            <p>Annuncia il vincitore del torneo</p>
-            <input placeholder="es. Tigers" />
-            <Button>Decreta vincitore</Button>
-          </div>
-
         </div>
       )}
     </MainLayout>

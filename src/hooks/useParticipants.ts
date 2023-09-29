@@ -19,6 +19,10 @@ export const useParticipants = () => {
     return Object.values(store);
   });
 
+  const boardgamersList = useComputed$<Participant[]>(() => {
+    return Object.values(store).filter((u) => u.is_playing_boardgames);
+  });
+
   const participantByEmail = $((email: string) => store[email]);
 
   useVisibleTask$(({ track }) => {});
@@ -49,5 +53,6 @@ export const useParticipants = () => {
     participantByEmail,
     participantsList,
     usersList,
+    boardgamersList,
   };
 };

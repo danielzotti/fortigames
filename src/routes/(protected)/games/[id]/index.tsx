@@ -26,10 +26,11 @@ interface SingleItemProps {
     (result: { team: TeamsValues; score: number }) => void
   >;
   result: Signal<GameResult | undefined>;
+  disabled: boolean;
 }
 
 const SingleItem = component$(
-  ({ team, updateScore, result }: SingleItemProps) => {
+  ({ team, updateScore, result, disabled }: SingleItemProps) => {
     if (!result.value) {
       return <Loader />;
     }
@@ -39,6 +40,7 @@ const SingleItem = component$(
         <h3>{config.teams[team].label}</h3>
         <div class={styles.singleTeamResult}>{result.value[team]}</div>
         <Button
+          disabled={disabled}
           onClick$={() =>
             updateScore({
               team,
@@ -50,6 +52,7 @@ const SingleItem = component$(
         </Button>
         <Button
           variant="selected"
+          disabled={disabled}
           onClick$={() =>
             updateScore({
               team,
@@ -69,6 +72,7 @@ export default component$(() => {
   const game = useSignal(location.params.id);
   const { results, resultsByGame } = useGamesResults();
   const result = useSignal<GameResult>();
+  const isSubmitting = useSignal<boolean>(false);
 
   useVisibleTask$(async () => {
     result.value = await resultsByGame(game.value as SportGames);
@@ -83,15 +87,22 @@ export default component$(() => {
         return;
       }
 
-      const row = {
-        ...result.value,
-        last_update: new Date().toISOString(),
-        [team]: score,
-      };
-      const { data, error } = await supabaseClient
-        .from("games_results")
-        .update(row)
-        .eq("name", game.value);
+      isSubmitting.value = true;
+      try {
+        const row = {
+          ...result.value,
+          last_update: new Date().toISOString(),
+          [team]: score,
+        };
+        const { data, error } = await supabaseClient
+          .from("games_results")
+          .update(row)
+          .eq("name", game.value);
+      } catch (ex) {
+        alert("C'è stato un errore :( Riprova!");
+      } finally {
+        isSubmitting.value = false;
+      }
     },
   );
 
@@ -103,19 +114,21 @@ export default component$(() => {
       {game.value && result.value && (
         <>
           <BackButton url={config.urls.games} />
-          <p>Arbitraggio{" "}</p>
+          <p>Arbitraggio </p>
           <h2 class={styles.title}>
-              {config.games[game.value as keyof typeof config.games].label}
+            {config.games[game.value as keyof typeof config.games].label}
           </h2>
 
           <div class={styles.teamContainer}>
             <SingleItem
               team={"tigers"}
+              disabled={isSubmitting.value}
               result={result}
               updateScore={updateScore}
             />
             <SingleItem
               team={"dragons"}
+              disabled={isSubmitting.value}
               result={result}
               updateScore={updateScore}
             />

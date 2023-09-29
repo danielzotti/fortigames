@@ -15,6 +15,7 @@ type LinkProps = {
 };
 type ButtonProps = {
   onClick$?: PropFunction<() => void> | PropFunction<() => void>[];
+  disabled?: boolean;
 };
 
 type Props = BasicProps & LinkProps & ButtonProps; // TODO: check types!
@@ -28,6 +29,7 @@ export default component$(
     isLink = false,
     href,
     target,
+    disabled = false,
     class: _class,
   }: Props) => {
     if (isLink) {
@@ -45,7 +47,13 @@ export default component$(
     return (
       <button
         type={type}
-        class={[_class, `btn-${size}`, `btn-${variant}`]}
+        disabled={disabled}
+        class={[
+          _class,
+          `btn-${size}`,
+          `btn-${variant}`,
+          `${disabled ? "disabled" : ""}`,
+        ]}
         onClick$={[onClick$]}
       >
         <Slot />

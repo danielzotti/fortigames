@@ -8,10 +8,10 @@ import CompanyLogo from "~/shared/components/ui/company-logo/company-logo";
 
 export default component$(() => {
   const containerRef = useSignal<HTMLElement>();
-  const { participantsList, store } = useParticipants();
+  const { boardgamersList } = useParticipants();
 
   const people = useComputed$<Participant[]>(() => {
-    const filteredList = participantsList.value.filter(
+    const filteredList = boardgamersList.value.filter(
       (p) => p.is_playing_boardgames,
     );
     return [...filteredList].sort((a, b) => a.email.localeCompare(b.email));
@@ -33,9 +33,7 @@ export default component$(() => {
         </p>
 
         <h2>A cosa si gioca?</h2>
-        <p>
-          Qui un elenco di giochi disponibili durante fortigames:
-        </p>
+        <p>Qui un elenco di giochi disponibili durante fortigames:</p>
         <h4>Impegno alto</h4>
         <ul>
           <li>Magic the gathering, cards</li>
@@ -64,12 +62,13 @@ export default component$(() => {
           <li>exploding kittens</li>
           <li>stay away</li>
         </ul>
-        
+
         <h3>Suggerimenti per i giochi da portare</h3>
         <p>non portare giochi per cui serva studiare le regole per ore</p>
         <p>non portare giochi che durano più di 90 minuti</p>
         <p>
-          porta giochi che conosci e che sei in grado di spiegare agli altri in 10 minuti
+          porta giochi che conosci e che sei in grado di spiegare agli altri in
+          10 minuti
         </p>
         <p>
           se vuoi portare un gioco che non conosci, assicurati che qualcuno lo

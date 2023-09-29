@@ -1,4 +1,7 @@
 ._btn {
+  &.disabled {
+    opacity: 0.5;
+  }
   &,&:visited {
     cursor: var(--cursor-pointer);
     border-radius: var(--btn-border-radius);
