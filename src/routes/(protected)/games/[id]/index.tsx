@@ -114,8 +114,8 @@ export default component$(() => {
       {game.value && result.value && (
         <>
           <BackButton url={config.urls.games} />
-          <p>Arbitraggio </p>
           <h2 class={styles.title}>
+            Arbitraggio{" "}
             {config.games[game.value as keyof typeof config.games].label}
           </h2>
 
