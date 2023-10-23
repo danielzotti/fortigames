@@ -78,7 +78,7 @@ mine.
 - Realtime for boardgamers
 
 ### 2023-09-28
-
+- Section to manage games: start/pause/stop/restart
 - Winner page
 - Trophy
 - Login background

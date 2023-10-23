@@ -30,6 +30,7 @@ import { ParticipantsStore } from "~/types/participant.types";
 import { ParticipantsContext } from "~/contexts/participants.context";
 import { ConfigContext, configDefault } from "~/contexts/config.context";
 import { Config } from "~/types/config.types";
+import { AuthSession } from "~/types/auth.types";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -63,7 +64,7 @@ export default component$(() => {
   useStyles$(fontawesomeBrands);
   useStyles$(fontawesomeSolid);
 
-  const auth = useSignal<Session | undefined>();
+  const auth = useSignal<AuthSession | undefined>();
   useContextProvider(AuthContext, auth);
 
   const config = useStore<Config>(configDefault);
