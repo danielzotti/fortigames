@@ -3,6 +3,10 @@
 A companion app for the Fortitude Group Convention 2023, developed in less than a week with a couple of colleagues of
 mine.
 
+## Blog post
+
+I wrote an in-depth [article](https://dev.to/danielzotti/how-we-built-an-app-in-less-than-5-days-with-qwik-supabase-and-vercel-1b3n) about the project.
+
 ## Technologies used
 
 - [Balsamiq](https://balsamiq.com): wireframe
