@@ -36,7 +36,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Fortigames 2023",
+  title: "Fortigames",
   meta: [
     {
       name: "description",

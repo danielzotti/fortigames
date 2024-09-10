@@ -35,7 +35,7 @@ export default component$(() => {
           </Button>
         </div>
         <h2 id="agenda">Agenda Convention</h2>
-        <h3>Venerdì 29</h3>
+        <h3>Venerdì 4 Ottobre</h3>
         {agenda.value?.map((e) => (
           <div key={e.id} class="agenda-item">
             <div class="agenda-item-time">
@@ -54,7 +54,7 @@ export default component$(() => {
             <div class="agenda-item-text"> {e.activity}</div>
           </div>
         ))}
-        <h3>Sabato 30</h3>
+        <h3>Sabato 5 Ottobre</h3>
         <div class="agenda-item">
           <div class="agenda-item-time">MAX 11:00</div>
           <div class="agenda-item-text">Check-out</div>

@@ -1,6 +1,6 @@
-# Fortigames 2023
+# Fortigames
 
-A companion app for the Fortitude Group Convention 2023, developed in less than a week with a couple of colleagues of
+A companion app for the Fortitude Group Convention since 2023, developed in less than a week with a couple of colleagues of
 mine.
 
 ## Blog post

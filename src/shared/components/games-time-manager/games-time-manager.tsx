@@ -42,7 +42,7 @@ export default component$(() => {
   const updateRemainingTime = $(() => {
     const now = DateTime.now();
     const deadline = DateTime.fromISO(countdownDate.value || "");
-    time.value = deadline.hour + ":" + deadline.minute;
+    time.value = deadline.hour + ":" + deadline.minute.toString().padStart(2,"0");
 
     if (isGamesEnded.value) {
       remainingTime.value = "Terminato";
