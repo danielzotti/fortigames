@@ -55,7 +55,7 @@ export const config = {
       dragons: "https://databiz-group.slack.com/archives/C05U1BX87V1",
       tigers: "https://databiz-group.slack.com/archives/C05TLU6UU3Z",
       admins: "https://databiz-group.slack.com/archives/C05TYH9RABF",
-      boardGames: "https://databiz-group.slack.com/archives/C05U78SG2KC",
+      boardGames: "https://databiz-group.slack.com/archives/C07MN0E53S9",
     },
   },
   games: {

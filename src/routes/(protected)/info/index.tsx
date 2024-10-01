@@ -37,24 +37,28 @@ export default component$(() => {
         <h2 id="agenda">Agenda Convention</h2>
         <h3>Venerdì 4 Ottobre</h3>
         {agenda.value?.map((e) => (
-          <div key={e.id} class="agenda-item">
-            <div class="agenda-item-time">
-              {e.start
-                ? new Date(e.start).getHours() +
-                  ":" +
-                  String(new Date(e.start).getMinutes()).padStart(2, "0")
-                : ""}
-              {e.end
-                ? "-" +
-                  new Date(e.end).getHours() +
-                  ":" +
-                  String(new Date(e.end).getMinutes()).padStart(2, "0")
-                : ""}
+            <div key={e.id} class="agenda-item">
+              <div class="agenda-item-time">
+                {e.start
+                    ? new Date(e.start).getHours() +
+                    ":" +
+                    String(new Date(e.start).getMinutes()).padStart(2, "0")
+                    : ""}
+                {e.end
+                    ? "-" +
+                    new Date(e.end).getHours() +
+                    ":" +
+                    String(new Date(e.end).getMinutes()).padStart(2, "0")
+                    : ""}
+              </div>
+              <div class="agenda-item-text"> {e.activity}</div>
             </div>
-            <div class="agenda-item-text"> {e.activity}</div>
-          </div>
         ))}
         <h3>Sabato 5 Ottobre</h3>
+        <div class="agenda-item">
+          <div class="agenda-item-time">07:00-10:00</div>
+          <div class="agenda-item-text">Colazione</div>
+        </div>
         <div class="agenda-item">
           <div class="agenda-item-time">MAX 11:00</div>
           <div class="agenda-item-text">Check-out</div>
@@ -62,19 +66,19 @@ export default component$(() => {
         <h2 id="location">Location</h2>
         <p>
           <strong>West Garda Hotel</strong>
-          <br />
+          <br/>
           Via Prais 32, 25080 Padenghe sul Garda (BS) Italy
-          <br />
+          <br/>
           West Garda Hotel si trova nel comune di Padenghe sul Garda a 5 km dal
           casello autostradale di Desenzano
         </p>
         <p>
-        <Link href={"https://westgardahotel.com/location/"} target="_blank">
+          <Link href={"https://westgardahotel.com/location/"} target="_blank">
             Sito Hotel
           </Link>
           &nbsp; GPS: 45°29’50.9″N 10°30’17.6″E
         </p>
-        <LocationMap />
+        <LocationMap/>
         <h3>Come raggiungere l'Hotel</h3>
         <h4>Auto</h4>
         <p>
@@ -103,63 +107,52 @@ export default component$(() => {
         </p>
         <h4>Premio</h4>
         <p>
-          La squadra vincitrice riceverà in premio la preziosa <Link href={"/public/static/images/taoScimmiaMaya.jpg"} target="_blank">Tao-scimmia
-          Maya</Link>, il capolavoro del maestro Gianluca La Rosa in copia unica.
+          La squadra vincitrice dell'edizione 2023 ha ricevuto in premio la preziosa <Link href={"/public/static/images/taoScimmiaMaya.jpg"}
+                                                                     target="_blank">Tao-scimmia
+          Maya</Link>, il capolavoro del maestro <b>Gianluca La Rosa</b> in copia unica.
         </p>
+        <p>Per l'edizione 2024 è previsto un nuovo premio creato appositamente dall'artigiano <b>Claudiu Pintilie</b></p>
         <h4>Durata</h4>
         <p>
-          Il torneo inizierà alle 17:30, o comunque dopo le presentazioni e si
-          concluderà tassativamente alle 19:20 per consentire alle eventuali
+          Il torneo inizierà alle 16:30 e si
+          concluderà alle 18:30 per consentire alle eventuali
           sfide in parità di concludersi secondo le modalità sottoindicate e di
           prepararsi per la cena.
         </p>
-        <p>
-          <Button
-            isLink={true}
-            href="/public/static/documents/RegolamentoTorneo.pdf"
-            target="_blank"
-          >
-            Scarica il regolamento completo
-          </Button>
-        </p>
         <h4>Calcio</h4>
         <p>
-          Si sfideranno due squadre composte da 9 giocatori, 5 in campo e 4
-          riserve.
-          <br />
+          Si sfideranno due squadre che schiereranno in campo 5 giocatori ciascuna.
+          <br/>
           Le squadre sono libere di decidere se tenere il portiere fisso o se
           effettuare una rotazione per questo ruolo.
-          <br />
-          Ogni 10 minuti ci saranno 2 sostituzioni.
-          <br />
-          Vincerà la squadra che alle 19:20 avrà segnato più gol; in caso di
+          <br/>
+          Ogni 10 minuti l'arbitro fermerà il gioco in modo da effettuare le sostituzioni.
+          <br/>
+          Vincerà la squadra che alle 18:30 avrà segnato più gol; in caso di
           parità si procederà con i calci di rigore (5 ed eventualmente ad
           oltranza).
         </p>
         <h4>Volley</h4>
         <p>
-          Si sfideranno due squadre composte da 13 giocatori, 6 in campo e 7
-          riserve.
-          <br />
+          Si sfideranno due squadre composte da 6 giocatori in campo (e gli altri pronti ad entrare come riserve).
+          <br/>
           Le squadre sono libere di ruotare nelle varie posizioni o di mantenere
           posizioni fisse.
-          <br />
-          Ogni 10 minuti ci saranno 4 sostituzioni.
-          <br />
-          Vincerà la squadra che alle 19:20 avrà vinto più set (al meglio dei 25
+          <br/>
+          Ogni 10 minuti ci saranno le sostituzioni.
+          <br/>
+          Vincerà la squadra che alle 18:30 avrà vinto più set (al meglio dei 25
           punti); in caso di parità si procederà al tie break (al meglio dei 15
           punti)
         </p>
         <h4>Ping pong</h4>
         <p>
-          Si sfideranno due squadre composte da 14 giocatori.
-          <br />
-          Ci saranno 14 sfide al meglio dei 21 punti.
-          <br />
+          Le due squadre si sfideranno in partite singole al meglio dei 21 punti.
+          <br/>
           Si potranno giocare 2 sfide contemporaneamente vista la presenza di
           due tavoli.
-          <br />
-          Vincerà la squadra che alle 19:20 avrà vinto più sfide; in caso di
+          <br/>
+          Vincerà la squadra che alle 18:30 avrà vinto più sfide; in caso di
           parità si procederà con una sfida secca, ogni squadra sceglierà chi
           schierare per lo spareggio.
         </p>
@@ -182,8 +175,7 @@ export default component$(() => {
         <ul>
           <li>
             chiamare il cambio ogni 10 minuti tramite avvisatore acustico
-            (fischietto o voce) e verificare che le sostituzioni siano
-            effettuate
+            (fischietto o voce).
           </li>
           <li>appuntare il nome dei marcatori</li>
         </ul>
@@ -196,7 +188,7 @@ export default component$(() => {
           </li>
         </ul>
       </div>
-      <BackTopButton ref={containerRef} />
+      <BackTopButton ref={containerRef}/>
     </MainLayout>
   );
 });

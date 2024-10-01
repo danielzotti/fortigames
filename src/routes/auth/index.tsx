@@ -64,6 +64,5 @@ export default component$(() => {
     return <NoFortitude />;
   }
 
-  // return <p>Checking JWT... Do not refresh page!</p>;
   return <Loader />;
 });

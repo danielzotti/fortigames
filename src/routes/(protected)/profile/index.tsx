@@ -55,7 +55,7 @@ export default component$(() => {
         </div>
         <div class={styles.chatList}>
           <h3 class={styles.chatTitle}>Chatta con</h3>
-          {!!team && (
+          {/*{!!team && (
             <div>
               <Link href={config.slack.urls.dragons} target="_blank">
                 Il tuo team
@@ -70,7 +70,7 @@ export default component$(() => {
                 I facilitatori
               </Link>
             </div>
-          )}
+          )}*/}
           <div>
             <Link href={config.slack.urls.boardGames} target="_blank">
               I Boardgamers

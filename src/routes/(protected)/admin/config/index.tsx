@@ -188,7 +188,6 @@ const InputDate = (
             value={field.value as string}
             onInput$={(e) => {
                 const newValue = (e.target as HTMLInputElement).value;
-                console.log({newValue})
                 field.value = newValue ? newValue : null;
             }}
         />
