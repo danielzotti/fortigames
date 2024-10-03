@@ -3,7 +3,6 @@ import GameResults from "~/shared/components/games-results/game-results";
 import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import { useAuth } from "~/hooks/useAuth";
 import styles from "./index.module.scss";
-import Button from "~/shared/components/ui/button/button";
 import StartGamesButton from "~/shared/components/config-manager/start-games-button/start-games-button";
 import EndGamesButton from "~/shared/components/config-manager/end-games-button/end-games-button";
 import { useConfig } from "~/hooks/useConfig";

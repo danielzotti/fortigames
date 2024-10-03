@@ -6,8 +6,6 @@ import { supabaseClient } from "~/supabase/supabase-client";
 export const useGamesResults = () => {
   const results = useContext(GamesResultsContext);
 
-  const resultsByGame = $((game: SportGames) => results[game]);
-
   const initializeContext = $(async () => {
     const { data } = await supabaseClient.from("games_results").select("*");
     data?.forEach((row) => {
@@ -30,5 +28,5 @@ export const useGamesResults = () => {
       .subscribe();
   });
 
-  return { initializeContext, results, resultsByGame };
+  return { initializeContext, results };
 };

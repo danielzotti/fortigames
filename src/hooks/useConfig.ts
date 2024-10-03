@@ -47,12 +47,10 @@ export const useConfig = () => {
         "postgres_changes",
         { event: "UPDATE", schema: "public", table: "config" },
         (payload) => {
-          console.log("Config update (payload)", payload);
           Object.entries(payload.new).forEach(([key, value]) => {
             // @ts-ignore
             config[key as keyof Config] = value as any;
           });
-          console.log("config", config);
         },
       )
       .subscribe();

@@ -2,23 +2,22 @@ import {
   $,
   component$,
   PropFunction,
-  QRL,
   Signal,
+  useComputed$,
   useSignal,
-  useStore,
   useVisibleTask$,
 } from "@builder.io/qwik";
-import MainLayout from "~/shared/layouts/main-layout/main-layout";
 import { useLocation } from "@builder.io/qwik-city";
-import { supabaseClient } from "~/supabase/supabase-client";
-import styles from "./index.module.scss";
-import Button from "~/shared/components/ui/button/button";
 import { config } from "~/config";
-import BackButton from "~/shared/components/ui/back-button/back-button";
 import { useGamesResults } from "~/hooks/useGameResults";
-import { GameResult, GamesResults, SportGames } from "~/types/games.types";
+import BackButton from "~/shared/components/ui/back-button/back-button";
+import Button from "~/shared/components/ui/button/button";
 import Loader from "~/shared/components/ui/loader/loader";
+import MainLayout from "~/shared/layouts/main-layout/main-layout";
+import { supabaseClient } from "~/supabase/supabase-client";
+import { GameResult, SportGames } from "~/types/games.types";
 import { TeamsValues } from "~/types/teams.types";
+import styles from "./index.module.scss";
 
 interface SingleItemProps {
   team: TeamsValues;
@@ -70,12 +69,16 @@ const SingleItem = component$(
 export default component$(() => {
   const location = useLocation();
   const game = useSignal(location.params.id);
-  const { results, resultsByGame } = useGamesResults();
+  const { results } = useGamesResults();
   const result = useSignal<GameResult>();
   const isSubmitting = useSignal<boolean>(false);
 
+  const computed = useComputed$(() => {
+    return results[game.value as SportGames];
+  });
+
   useVisibleTask$(async () => {
-    result.value = await resultsByGame(game.value as SportGames);
+    result.value = computed.value;
   });
 
   const updateScore = $(
@@ -98,6 +101,9 @@ export default component$(() => {
           .from("games_results")
           .update(row)
           .eq("name", game.value);
+        if (!error) {
+          result.value = row;
+        }
       } catch (ex) {
         alert("C'è stato un errore :( Riprova!");
       } finally {
